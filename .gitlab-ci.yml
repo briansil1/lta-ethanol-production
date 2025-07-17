@@ -1,0 +1,41 @@
+stages:
+  - prod_build
+  - prod_deploy
+prod_build:
+  stage: prod_build
+  script:
+    - ls
+    - echo $PWD
+    - npm ci
+    - npm run production
+  only: 
+    - production
+  tags:
+    - u20node14
+
+prod_deploy:
+  stage: prod_deploy
+  environment:
+    name: production
+    url: https://ethanolblendslta.grains.org
+  dependencies:
+      - prod_build
+  script:
+    - ls
+    - rsync -avz  --exclude={'node_modules','.git','.gitignore'} . prodjenkins@usgcweb302.aws.mtxgp.net:/data/sites/ethanolblendslta/
+    - |
+      ssh -T prodjenkins@usgcweb302.aws.mtxgp.net << 'EOT'
+      cd /data/sites/ethanolblendslta
+      composer install
+      # restore users manually
+      # php artisan migrate:fresh --seed
+      php artisan cache:clear
+      php artisan config:clear
+      php artisan view:clear
+      php artisan route:clear
+      EOT
+
+  only: 
+    - production
+  tags:
+    - u20node14

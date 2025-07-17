@@ -1,0 +1,95 @@
+.canvas-container canvas {
+    background: #f6f4f0;
+}
+
+.table-titles {
+    background: #cf8228;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    padding: 0.4em!important;
+}
+
+.description-col {
+    background: #7f7363;
+    color: #fff;
+    padding: 0.4em!important;
+}
+
+.data {
+    background: #f6f4f0;
+    color: #402f15;
+    border: 1px solid #7f7363;
+    text-align: center;
+    padding: 0.4em!important;
+    font-size: 14px!important;
+}
+
+div#extra_data_compare {
+    width: 47.9%;
+}
+
+.w-100.canvas-container {
+    position: relative;
+}
+
+.w-80 {
+    width: 80%;
+    margin: 0 auto;
+}
+
+span.impact-vehicles {
+    color: #0A5D74;
+}
+
+span.impact-vehicles-compare {
+    color: #742457;
+}
+
+.country-select {
+    margin: 10px auto!important;
+    padding: 20px!important;
+    background: #ece8e1!important;
+    border-radius: 5px!important;
+    text-align: center!important;
+}
+
+#v-pills-tab {
+    position: relative;
+    min-width: 215px;
+}
+
+#v-pills-thc-tab {
+    font-size: 15px;
+}
+
+.mw-50 {
+    width: 50%;
+}
+
+.col-05 {
+    flex: 0 0 auto;
+    width: 4.16666665%
+}
+
+.col-15 {
+    flex: 0 0 auto;
+    width: 12.49999998%
+}
+
+.legends {
+    font-size: 0.8rem;
+}
+
+.legends.light_primary_naphtha-legend {
+    font-size: 0.6rem;
+}
+
+.legends.coker_naphtha-legend.esp {
+    font-size: 0.65rem;
+}
+
+h4.mh4-custom {
+    margin-bottom: 18px;
+    margin-top: 10px;
+}
