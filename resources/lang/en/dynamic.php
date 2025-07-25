@@ -111,7 +111,17 @@ return [
                 'hydrocracked_gasoline' => 'Hydrocracked gasoline',
                 'normal_pentane' => 'Normal pentane',
                 'low_octane_blendstock' => 'Low octane blendstock'
-            ]
+            ],
+            'modal-price-update' => 'Please input the new prices. Prices should be spot reference prices in US dollars per gallon from the same period in time and place (e.g. US Gulf Coast).  If needed, prices can be obtained from the US Grains\’s “Ethanol Market and Price Data” Report.',
+            'modal-price-update-fuel-component' => 'Fuel / Component',
+            'modal-price-update-price' => 'Price (US$/gal)',
+            'modal-price-update-gasoline-regular' => 'Gasoline (Regular)',
+            'modal-price-update-gasoline-premium' => 'Gasoline (Premium)',
+            'modal-price-update-normal-butane' => 'Normal Butane',
+            'modal-price-update-ethanol' => 'Ethanol',
+            'modal-price-update-mtbe' => 'MTBE',
+            'modal-price-update-btx-weighted' => 'BTX Weighted Average',
+            'modal-price-update-continue' => 'Continue'
         ],
         'impact-tab' => [
             'model-reference' => 'The model used in this analysis takes as a reference the',

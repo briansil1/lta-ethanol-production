@@ -111,7 +111,17 @@ return [
                 'hydrocracked_gasoline' => 'Gasolina hidrocraqueada',
                 'normal_pentane' => 'Pentano normal',
                 'low_octane_blendstock' => 'Mezcla de bajo octano'
-            ]
+            ],
+            'modal-price-update' => 'Lo mismo pero en español jejej',
+            'modal-price-update-fuel-component' => 'Fuel / Component',
+            'modal-price-update-price' => 'Price (US$/gal)',
+            'modal-price-update-gasoline-regular' => 'Gasoline (Regular)',
+            'modal-price-update-gasoline-premium' => 'Gasoline (Premium)',
+            'modal-price-update-normal-butane' => 'Normal Butane',
+            'modal-price-update-ethanol' => 'Ethanol',
+            'modal-price-update-mtbe' => 'MTBE',
+            'modal-price-update-btx-weighted' => 'BTX Weighted Average',
+            'modal-price-update-continue' => 'Continue'
         ],
         'impact-tab' => [
             'model-reference' => 'El modelo utilizado en este análisis toma como referencia al',

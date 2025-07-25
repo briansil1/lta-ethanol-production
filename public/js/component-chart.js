@@ -89,7 +89,69 @@ $( function() {
 
     $('#chart-tab-download-component-db').on('click', () => window.open(_getComponentsFileUrl(), '_blank'));
     $('#chart-accordion-download-component-db').on('click', () => window.open(_getComponentsFileUrl(), '_blank'));
+
+    /// Modified by: Brian Munoz
+    //  Date: July 2025
+    //  Adding functionality to estimate fuel cost with components cost inputs
+
+    $('#modal-price-update-continue').on('click', evt => {
+        evt.preventDefault();
+        let gasoline_regular = $('#price_gasoline_regular').val() != '' ? $('#price_gasoline_regular').val() : 6;
+        let gasoline_premium = $('#price_gasoline_premium').val()
+        let normal_butane = $('#price_normal_butane').val()
+        let ethanol = $('#price_ethanol').val()
+        let emtbe = $('#price_emtbe').val()
+        let btx_weighted = $('#price_btx_weighted').val()
+
+        
+        // window.location.replace(_getCountryUrl(countryId));
+        // $(countrySelect).change();
+
+        // if (country_id > 0 && gasoline && gasoline !== '0' && quality && quality !== '0') {
+            determinePriceUpdate(1, 2, 3,4,5,6)
+        // }
+    });
+
+
+
+    $('#modalGasolineEthanolBlending_2 ').on('hidden.bs.modal', function () {
+        $('body').removeClass('modal-open');
+    });
+
+    
+    //END V3 July 2025
+
 });
+
+function determinePriceUpdate(gasolineRegular, gasolinePremium, normalButane, ethanol, emtbe, btxWeighted) {
+    $.get({
+        url: _getPriceUpdateResultsURL(gasolineRegular, gasolinePremium, normalButane, ethanol, emtbe, btxWeighted),
+        success: function (response) {
+            if (!response.error) {
+            //$('#modalGasolineEthanolBlending').modal().hide();
+            
+            const modal_1 = document.querySelector('#modalGasolineEthanolBlending');
+            const modal_1_obj = bootstrap.Modal.getOrCreateInstance(modal_1);
+            modal_1_obj.hide();
+
+            const modal_2 = document.querySelector('#modalGasolineEthanolBlending_2');
+            const modal_2_obj = bootstrap.Modal.getOrCreateInstance(modal_2);
+            modal_2_obj.show();
+
+            
+            const campo = document.querySelector('#variable_brian');
+            campo.value = response.data.hola;
+
+            }
+        },
+        error: function (response) {
+            alert("Todo mal" + response);
+            console.log(response);
+        }
+    });
+    
+
+}
 
 function changeCountry(evt) {
     country_compare_id = parseInt(this.value);

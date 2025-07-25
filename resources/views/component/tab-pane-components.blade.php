@@ -195,6 +195,13 @@
             </div>
         </div>
     </div>
+    
+    <div class="col-12 mb-3 mt-2 text-center">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalGasolineEthanolBlending">
+        Update Prices
+        </button>
+    </div>
+    
     <div class="col-12 text-justify">
         {{ __('dynamic.content.component-tab.instructions-5') }}
     </div>
