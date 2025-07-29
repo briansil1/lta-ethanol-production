@@ -102,13 +102,14 @@ $( function() {
         let ethanol = $('#price_ethanol').val()
         let emtbe = $('#price_emtbe').val()
         let btx_weighted = $('#price_btx_weighted').val()
+        country_id = $('#country-select').val();
 
         
         // window.location.replace(_getCountryUrl(countryId));
         // $(countrySelect).change();
 
         // if (country_id > 0 && gasoline && gasoline !== '0' && quality && quality !== '0') {
-            determinePriceUpdate(1, 2, 3,4,5,6)
+            determinePriceUpdate(country_id, 2.43, 2.74, 1.03, 1.67, 3.02, 3.89)
         // }
     });
 
@@ -123,9 +124,9 @@ $( function() {
 
 });
 
-function determinePriceUpdate(gasolineRegular, gasolinePremium, normalButane, ethanol, emtbe, btxWeighted) {
+function determinePriceUpdate(country_id, gasolineRegular, gasolinePremium, normalButane, ethanol, emtbe, btxWeighted) {
     $.get({
-        url: _getPriceUpdateResultsURL(gasolineRegular, gasolinePremium, normalButane, ethanol, emtbe, btxWeighted),
+        url: _getPriceUpdateResultsURL(country_id, gasolineRegular, gasolinePremium, normalButane, ethanol, emtbe, btxWeighted),
         success: function (response) {
             if (!response.error) {
             //$('#modalGasolineEthanolBlending').modal().hide();

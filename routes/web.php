@@ -50,7 +50,7 @@ Route::get('component/c/{country?}/{gasoline?}/{grade?}', '\App\Http\Controllers
 Route::get('component/c/{country}/{gasoline}/{grade}/c/{compare?}', '\App\Http\Controllers\ComponentController@getComponentsByCountry')->middleware(['auth', 'verified']);
 
 // Routes Gasolin/ethanol blendings components ///BAMS TODO
-Route::get('component/price-update/{gasolineRegular?}/{gasolinePremium?}/{normalButane?}/{ethanol?}/{emtbe?}/{btxWeighted?}', '\App\Http\Controllers\ComponentController@getPriceUpdateResults')->middleware(['auth', 'verified'])->name('price-update-get-results');
+Route::get('component/price-update/{country?}/{gasolineRegular?}/{gasolinePremium?}/{normalButane?}/{ethanol?}/{emtbe?}/{btxWeighted?}', '\App\Http\Controllers\ComponentController@getPriceUpdateResults')->middleware(['auth', 'verified'])->name('price-update-get-results');
 
 // Admin Section
 Route::get('admin/c4js2', '\App\Http\Controllers\AdminController@home')->name('admin-home');

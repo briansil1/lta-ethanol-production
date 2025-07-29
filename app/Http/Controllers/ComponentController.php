@@ -99,17 +99,47 @@ class ComponentController extends Controller {
     }
 
     
-    public function getPriceUpdateResults($gasoline_regular = 'co', $gasoline_premium = 'co', $normal_butane = 'co', $ethanol = 'co', $emtbe = 'co', $btx_weighted = 'co') {
+    public function getPriceUpdateResults(Country $country, $gasoline_regular = 'co', $gasoline_premium = 'co', $normal_butane = 'co', $ethanol = 'co', $emtbe = 'co', $btx_weighted = 'co') {
+
+        $octane_difference = 93-87;
+        $octane_adjust = ($gasoline_premium - $gasoline_regular) / $octane_difference;
+        $var = pow(9,1.25);
+        $rvp_adjust = ($gasoline_regular - $normal_butane + (5 * $octane_adjust)) / (pow(9,1.25) - pow(51.7,1.25) );
+
+        //Step 3
+        $gasoline_types = $country->gasolineComponents()->where('quality_restriction', "constant-octane-number")->distinct()
+                    ->pluck('gasoline_type'); 
+        foreach ($gasoline_types as $gasoline_type) {
+            
+            $blendstoks = $country->gasolineComponents()->select('id', 'price', 'blendstoks', 'ron')->where('gasoline_type', $gasoline_type)->where('quality_restriction', "constant-octane-number")->get();
+
+            foreach ($blendstoks as $blendstok) {
+                $gasoline_type_rows[$blendstok->id] = [
+                    'gasoline' => $gasoline_type,
+                    'blendstok' => $blendstok->blendstoks,
+                    'price' => $blendstok->price,
+                    'ron' => $blendstok->ron
+                ];
+            }
+        }
 
 
         $gasoline_redddgular = $gasoline_regular;
         $response = [
             'error' => false,
             'data' => [
-                  'hola' => 2
+                'gasoline_type_rows' => $gasoline_type_rows,
+                'hola' => $rvp_adjust
             ]
         ];
         return response()->json($response);
+
+        // return response()->json([
+        //     'error' => false,
+        //     'data' => [
+        //         'hola' => 2
+        //     ],
+        // ]);
  
     }
 }

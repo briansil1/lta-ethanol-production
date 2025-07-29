@@ -62,7 +62,7 @@
         var _getProfilePDFUrl = () => '{{ route(__('routes.profile-pdf')) }}';
         var _getComponentsFileUrl = () => '{{ route(__('routes.components-file')) }}';
         var _getImpactFileUrl = () => '{{ route(__('routes.emission-file')) }}';
-        var _getPriceUpdateResultsURL = (gasolineRegular, gasolinePremium, normalButane, ethanol, emtbe, btxWeighted) => '{{ route('price-update-get-results') }}' + (gasolineRegular ? '/' + gasolineRegular : '') + (gasolinePremium ? '/' + gasolinePremium : '') + (normalButane ? '/' + normalButane : '') + (ethanol ? '/' + ethanol : '') + (emtbe ? '/' + emtbe : '') + (btxWeighted ? '/' + btxWeighted : '');
+        var _getPriceUpdateResultsURL = (country, gasolineRegular, gasolinePremium, normalButane, ethanol, emtbe, btxWeighted) => '{{ route('price-update-get-results') }}/' + country + (gasolineRegular ? '/' + gasolineRegular : '') + (gasolinePremium ? '/' + gasolinePremium : '') + (normalButane ? '/' + normalButane : '') + (ethanol ? '/' + ethanol : '') + (emtbe ? '/' + emtbe : '') + (btxWeighted ? '/' + btxWeighted : '');
     </script>
 @endsection
 
@@ -244,7 +244,7 @@
 
 
                                     <div class="modal fade" id="modalGasolineEthanolBlending_2" data-keyboard="false" tabindex="-1" aria-labelledby="modalGasolineEthanolBlendingLabel_2" aria-hidden="true">
-                                        <div class="modal-dialog">
+                                        <div class="modal-dialog modal-xl">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title">Datos calculados</h5>
@@ -256,6 +256,58 @@
                                                 <div class="col-sm-4">
                                                                 <input type="text" class="form-control" id="variable_brian" aria-label="variable_brian" aria-describedby="variable_brian">
                                                             </div>
+
+
+
+                                                
+                                                    <div class="table-responsive">
+                                                        <table width="100%" border="1" cellpadding="0" cellspacing="0">
+                                                            <tbody>
+                                                            <tr  class="table-titles">
+                                                                <td> {{ __('dynamic.content.component-tab.prices') }}</td>
+                                                                <td colspan="2">{{ __('dynamic.content.component-tab.modal-price-update-gasoline') }}</td>
+                                                                <td colspan="2">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e0') }}</td>
+                                                                <td colspan="2">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e10') }}</td>
+                                                                <td colspan="2">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e15') }}</td>
+                                                                <td colspan="2">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e20') }}</td>
+                                                                <td colspan="2">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e25') }}</td>
+                                                                <td colspan="2">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e30') }}</td>
+
+
+                                                            </tr>
+
+                                                            
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+                                                    <div class="table-responsive">
+                                                        <table class="table-titles">
+                                                            <thead>
+                                                                <tr>
+                                                                <th scope="col">{{ __('dynamic.content.component-tab.prices') }}</th>
+                                                                <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline') }}</th>
+                                                                <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e0') }}</th>
+                                                                <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e10') }}</th>
+                                                                <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e15') }}</th>
+                                                                <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e20') }}</th>
+                                                                <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e25') }}</th>
+                                                                <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e30') }}</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody class="table-bordered">
+                                                                <tr>
+                                                                <th scope="row">1</th>
+                                                                <td>Mark</td>
+                                                                <td>Otto</td>
+                                                                <td>@mdo</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+
+
+
 
 
 

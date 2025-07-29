@@ -121,7 +121,14 @@ return [
             'modal-price-update-ethanol' => 'Ethanol',
             'modal-price-update-mtbe' => 'MTBE',
             'modal-price-update-btx-weighted' => 'BTX Weighted Average',
-            'modal-price-update-continue' => 'Continue'
+            'modal-price-update-continue' => 'Continue',
+            'modal-price-update-gasoline' => 'Gasoline',
+            'modal-price-update-gasoline-e0' => 'Equivalent Gasoline E0',
+            'modal-price-update-gasoline-e10' => 'Gasoline E10',
+            'modal-price-update-gasoline-e15' => 'Gasoline E15',
+            'modal-price-update-gasoline-e20' => 'Gasoline E20',
+            'modal-price-update-gasoline-e25' => 'Gasoline E25',
+            'modal-price-update-gasoline-e30' => 'Gasoline E30'
         ],
         'impact-tab' => [
             'model-reference' => 'The model used in this analysis takes as a reference the',
