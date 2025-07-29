@@ -15,10 +15,10 @@ class AddColumnsToGasolineComponent extends Migration
     {
         Schema::table('gasoline_component', function (Blueprint $table) {
             //
-            $table->float('bno_on', 8, 2)->after('ron')->nullable();
-            $table->float('bno_rvp', 8, 2)->after('ron')->nullable();
-            $table->float('logistica', 8, 2)->after('ron')->nullable();
-            $table->float('bno', 8, 2)->after('ron')->nullable();
+            $table->float('bno_on', 23, 20)->after('ron')->nullable();
+            $table->float('bno_rvp', 23, 20)->after('bno_on')->nullable();
+            $table->float('logistica', 23, 20)->after('bno_rvp')->nullable();
+            $table->float('bno', 23, 20)->after('logistica')->nullable();
         });
     }
 
