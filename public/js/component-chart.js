@@ -138,10 +138,12 @@ function determinePriceUpdate(country_id, gasolineRegular, gasolinePremium, norm
             const modal_2 = document.querySelector('#modalGasolineEthanolBlending_2');
             const modal_2_obj = bootstrap.Modal.getOrCreateInstance(modal_2);
             modal_2_obj.show();
-
+           
+            const table_data_constant_octane = document.getElementById('table-data-constant-octane');
+            table_data_constant_octane.innerHTML = formatPriceUpdateTable(response, 'constant_octane_number');
             
-            const campo = document.querySelector('#variable_brian');
-            campo.value = response.data.hola;
+            const table_data_increased_octane = document.getElementById('table-data-increased-octane');
+            table_data_increased_octane.innerHTML = formatPriceUpdateTable(response, 'increased_octane_number');
 
             }
         },
@@ -149,9 +151,28 @@ function determinePriceUpdate(country_id, gasolineRegular, gasolinePremium, norm
             alert("Todo mal" + response);
             console.log(response);
         }
-    });
-    
+    });  
+}
 
+function formatPriceUpdateTable(response, octane_number){
+    let html_table_data_historic = "";
+    let html_table_data_updated = "";
+
+    for(const gasoline_quality in response.data.gasoline_quality_rows) {
+        if(gasoline_quality == octane_number){
+        const gas_quality = response.data.gasoline_quality_rows[gasoline_quality];
+            for(const gasoline_type in gas_quality.gasoline_type_rows) {
+                const gas_type = gas_quality.gasoline_type_rows[gasoline_type];
+                html_table_data_historic+= '<tr class="table-primary"><th class="data_historic_header">2024</th><th class="data_historic_header">'+ gasoline_type + '<th class="data_historic_data">' + gas_type.blendstok_constant.equivalent_gasoline_e0.price +'</th><th class="data_historic_data">' + gas_type.blendstok_constant.gasoline_e10.price +'</th><th class="data_historic_data">' + gas_type.blendstok_constant.gasoline_e15.price +'</th><th class="data_historic_data">' + gas_type.blendstok_constant.gasoline_e20.price +'</th><th class="data_historic_data">' + gas_type.blendstok_constant.gasoline_e25.price +'</th><th class="data_historic_data">' + gas_type.blendstok_constant.gasoline_e30.price +'</th></tr>';
+                html_table_data_updated+= '<tr class="table-primary"><th class="data_updated_header">2024</th><th class="data_updated_header">'+ gasoline_type + '<th class="data_updated_data">' + gas_type.blendstok_constant.equivalent_gasoline_e0.estimate_price +'</th><th class="data_updated_data">' + gas_type.blendstok_constant.gasoline_e10.estimate_price +'</th><th class="data_updated_data">' + gas_type.blendstok_constant.gasoline_e15.estimate_price +'</th><th class="data_updated_data">' + gas_type.blendstok_constant.gasoline_e20.price +'</th><th class="data_updated_data">' + gas_type.blendstok_constant.gasoline_e25.estimate_price +'</th><th class="data_updated_data">' + gas_type.blendstok_constant.gasoline_e30.estimate_price +'</th></tr>';
+            };
+        }
+    };
+    return html_table_data_historic + html_table_data_updated;
+}
+
+function retrieveGasoline() {
+    return 'response.data.gasoline_quality_rows.constant_octane_number.gasoline_type_rows.superior.blendstok';
 }
 
 function changeCountry(evt) {

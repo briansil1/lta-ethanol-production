@@ -98,48 +98,63 @@ class ComponentController extends Controller {
         ]);
     }
 
-    
-    public function getPriceUpdateResults(Country $country, $gasoline_regular = 'co', $gasoline_premium = 'co', $normal_butane = 'co', $ethanol = 'co', $emtbe = 'co', $btx_weighted = 'co') {
+   public function getPriceUpdateResults(Country $country, $gasoline_regular = 1, $gasoline_premium = 1, $normal_butane = 1, $ethanol = 1, $emtbe = 1, $btx_weighted = 1) {
 
+    //Step 2
         $octane_difference = 93-87;
         $octane_adjust = ($gasoline_premium - $gasoline_regular) / $octane_difference;
         $var = pow(9,1.25);
         $rvp_adjust = ($gasoline_regular - $normal_butane + (5 * $octane_adjust)) / (pow(9,1.25) - pow(51.7,1.25) );
 
         //Step 3
-        $gasoline_types = $country->gasolineComponents()->where('quality_restriction', "constant-octane-number")->distinct()
+        $quality_restrictions = $country->gasolineComponents()->select('quality_restriction')->distinct()
+                    ->pluck('quality_restriction'); 
+        foreach ($quality_restrictions as $quality_restriction){
+            $gasoline_types = $country->gasolineComponents()->where('quality_restriction', $quality_restriction)->distinct()
                     ->pluck('gasoline_type'); 
-        foreach ($gasoline_types as $gasoline_type) {
-            
-            $blendstoks = $country->gasolineComponents()->select('id', 'price', 'blendstoks', 'ron')->where('gasoline_type', $gasoline_type)->where('quality_restriction', "constant-octane-number")->get();
+            foreach ($gasoline_types as $gasoline_type) {
+                $blendstoks_constant_octane_rows = [];
+                //Spec.- aromatics fields responds to the name BTX
+                $blendstoks_constant_octane = $country->gasolineComponents()->select('id', 'blendstoks', 'bno_on', 'bno_rvp', 'logistica', 'price', 'mtbe', 'aromatics', 'ethanol')
+                ->where('gasoline_type', $gasoline_type)->where('quality_restriction', $quality_restriction)->get();
 
-            foreach ($blendstoks as $blendstok) {
-                $gasoline_type_rows[$blendstok->id] = [
-                    'gasoline' => $gasoline_type,
-                    'blendstok' => $blendstok->blendstoks,
-                    'price' => $blendstok->price,
-                    'ron' => $blendstok->ron
-                ];
+                foreach ($blendstoks_constant_octane as $blendstok_constant_octane) {
+                    //Step 4
+                    $bno =  ( $gasoline_regular + ($blendstok_constant_octane->bno_on - 87) * $octane_adjust ) + ((pow($blendstok_constant_octane->bno_rvp,1.25) - pow(9,1.25)) * $rvp_adjust );
+                    $db_mtbe = $blendstok_constant_octane->mtbe == 'NULL' ? 0 : str_replace('%','', $blendstok_constant_octane->mtbe);
+                    $db_mtbe = $db_mtbe == 0 ? 0 : $db_mtbe / 100;
+                    $db_btx = $blendstok_constant_octane->aromatics == 'NULL' ? 0 : str_replace('%','', $blendstok_constant_octane->aromatics);
+                    $db_btx = $db_btx == 0 ? 0 : $db_btx / 100;
+                    $db_ethanol = $blendstok_constant_octane->ethanol == 'NULL' ? 0 : str_replace('%','', $blendstok_constant_octane->ethanol);
+                    $db_ethanol = $db_ethanol == 0 ? 0 : $db_ethanol / 100;
+                    $blendstoks_constant_octane_rows[str_replace('-', '_', $blendstok_constant_octane->blendstoks)] = [
+                        'price' => $blendstok_constant_octane->price,
+                        'bno_on' => $blendstok_constant_octane->bno_on,
+                        'bno_rvp' => $blendstok_constant_octane->bno_rvp,
+                        'logistica' => $blendstok_constant_octane->logistica,
+                        'bno' => $bno, //BNO
+                        'estimate_price' => round( (((1-$db_mtbe - $db_btx - $db_ethanol) * $bno ) + $db_mtbe * $emtbe + $db_btx * $btx_weighted + $db_ethanol * $ethanol + $blendstok_constant_octane->logistica),2)
+                    ];
+                }
+
+                $gasoline_type_rows[$gasoline_type] = [
+                        'blendstok_constant' => $blendstoks_constant_octane_rows
+                    ];
             }
+            
+            $gasoline_quality_rows[str_replace('-', '_', $quality_restriction)] = [
+                    'gasoline_type_rows' => $gasoline_type_rows
+                ];
         }
 
-
-        $gasoline_redddgular = $gasoline_regular;
         $response = [
             'error' => false,
             'data' => [
-                'gasoline_type_rows' => $gasoline_type_rows,
+                'gasoline_quality_rows' => $gasoline_quality_rows,
                 'hola' => $rvp_adjust
             ]
         ];
         return response()->json($response);
 
-        // return response()->json([
-        //     'error' => false,
-        //     'data' => [
-        //         'hola' => 2
-        //     ],
-        // ]);
- 
     }
 }

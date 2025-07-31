@@ -25,6 +25,42 @@
     font-size: 14px!important;
 }
 
+.data_historic_header {
+    background: #69a2e2;
+    color: #ffffff;
+    border: 1px solid #7f7363;
+    text-align: center;
+    padding: 0.4em!important;
+    font-size: 14px!important;
+}
+
+.data_historic_data {
+    background: #b0cef1;
+    color: #402f15;
+    border: 1px solid #7f7363;
+    text-align: center;
+    padding: 0.4em!important;
+    font-size: 14px!important;
+}
+
+.data_updated_header {
+    background: #081f3a;
+    color: #ffffff;
+    border: 1px solid #7f7363;
+    text-align: center;
+    padding: 0.4em!important;
+    font-size: 14px!important;
+}
+
+.data_updated_data {
+    background: #ffffff;
+    color: #402f15;
+    border: 1px solid #7f7363;
+    text-align: center;
+    padding: 0.4em!important;
+    font-size: 14px!important;
+}
+
 div#extra_data_compare {
     width: 47.9%;
 }

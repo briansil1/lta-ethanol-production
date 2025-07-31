@@ -252,39 +252,11 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <p> {{ __('dynamic.content.component-tab.modal-price-update') }}</p>
-
-                                                <div class="col-sm-4">
-                                                                <input type="text" class="form-control" id="variable_brian" aria-label="variable_brian" aria-describedby="variable_brian">
-                                                            </div>
-
-
-
                                                 
                                                     <div class="table-responsive">
-                                                        <table width="100%" border="1" cellpadding="0" cellspacing="0">
-                                                            <tbody>
-                                                            <tr  class="table-titles">
-                                                                <td> {{ __('dynamic.content.component-tab.prices') }}</td>
-                                                                <td colspan="2">{{ __('dynamic.content.component-tab.modal-price-update-gasoline') }}</td>
-                                                                <td colspan="2">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e0') }}</td>
-                                                                <td colspan="2">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e10') }}</td>
-                                                                <td colspan="2">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e15') }}</td>
-                                                                <td colspan="2">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e20') }}</td>
-                                                                <td colspan="2">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e25') }}</td>
-                                                                <td colspan="2">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e30') }}</td>
-
-
-                                                            </tr>
-
-                                                            
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
-
-                                                    <div class="table-responsive">
-                                                        <table class="table-titles">
-                                                            <thead>
-                                                                <tr>
+                                                        <table class="table-bordered" border="1" cellpadding="0" cellspacing="0">
+                                                            <thead >
+                                                                <tr class="table-titles ">
                                                                 <th scope="col">{{ __('dynamic.content.component-tab.prices') }}</th>
                                                                 <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline') }}</th>
                                                                 <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e0') }}</th>
@@ -295,21 +267,33 @@
                                                                 <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e30') }}</th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody class="table-bordered">
-                                                                <tr>
-                                                                <th scope="row">1</th>
-                                                                <td>Mark</td>
-                                                                <td>Otto</td>
-                                                                <td>@mdo</td>
-                                                                </tr>
+                                                            
+                                                            <tbody class="table-bordered" id="table-data-constant-octane">
+
                                                             </tbody>
                                                         </table>
                                                     </div>
+                                                    
+                                                    <div class="table-responsive">
+                                                        <table class="table-bordered" border="1" cellpadding="0" cellspacing="0">
+                                                            <thead >
+                                                                <tr class="table-titles ">
+                                                                <th scope="col">{{ __('dynamic.content.component-tab.prices') }}</th>
+                                                                <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline') }}</th>
+                                                                <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e0') }}</th>
+                                                                <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e10') }}</th>
+                                                                <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e15') }}</th>
+                                                                <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e20') }}</th>
+                                                                <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e25') }}</th>
+                                                                <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e30') }}</th>
+                                                                </tr>
+                                                            </thead>
+                                                            
+                                                            <tbody class="table-bordered" id="table-data-increased-octane">
 
-
-
-
-
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
 
                                                 </div>
                                                 <div class="modal-footer">
