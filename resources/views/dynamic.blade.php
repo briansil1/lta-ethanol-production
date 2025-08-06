@@ -172,7 +172,7 @@
                                                 <div class="modal-body">
                                                     <p> {{ __('dynamic.content.component-tab.modal-price-update') }}</p>
                                                     
-                                                    <form id="login-form" method="post" action="{{ route('price-update-get-results') }}" >
+                                                    <form id="login-form" method="post" onsubmit="return validatePriceUpdateInput();" action="{{ route('price-update-get-results') }}" >
                                                         <input type="hidden" name="user_locale" value="{{ app()->getLocale() }}" />
 
                                                         <div class="form-group row">

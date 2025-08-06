@@ -118,9 +118,9 @@ class ComponentController extends Controller {
                 $blendstoks_constant_octane = $country->gasolineComponents()->select('id', 'blendstoks', 'bno_on', 'bno_rvp', 'logistica', 'price', 'mtbe', 'aromatics', 'ethanol')
                 ->where('gasoline_type', $gasoline_type)->where('quality_restriction', $quality_restriction)->get();
 
-                foreach ($blendstoks_constant_octane as $blendstok_constant_octane) {
+                foreach ($blendstoks_constant_octane as $blendstok_constant_octane) { 
                     //Step 4
-                    $bno =  ( $gasoline_regular + ($blendstok_constant_octane->bno_on - 87) * $octane_adjust ) + ((pow($blendstok_constant_octane->bno_rvp,1.25) - pow(9,1.25)) * $rvp_adjust );
+                    $bno = ( $gasoline_regular + ($blendstok_constant_octane->bno_on - 87) * $octane_adjust ) + ((pow($blendstok_constant_octane->bno_rvp,1.25) - pow(9,1.25)) * $rvp_adjust );
                     $db_mtbe = $blendstok_constant_octane->mtbe == 'NULL' ? 0 : str_replace('%','', $blendstok_constant_octane->mtbe);
                     $db_mtbe = $db_mtbe == 0 ? 0 : $db_mtbe / 100;
                     $db_btx = $blendstok_constant_octane->aromatics == 'NULL' ? 0 : str_replace('%','', $blendstok_constant_octane->aromatics);
