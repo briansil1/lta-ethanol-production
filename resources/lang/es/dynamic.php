@@ -128,7 +128,14 @@ return [
             'modal-price-update-gasoline-e15' => 'Gasoline E15',
             'modal-price-update-gasoline-e20' => 'Gasoline E20',
             'modal-price-update-gasoline-e25' => 'Gasoline E25',
-            'modal-price-update-gasoline-e30' => 'Gasoline E30'
+            'modal-price-update-gasoline-e30' => 'Gasoline E30',
+            'modal-price-update-updated-text' => 'Updated',
+            'modal-price-update-price-text' => 'Prices',
+            'modal-price-update-updated-text-button' => 'Update Prices',
+            'modal-price-update-report-text' => 'Price Update Report',
+            'modal-price-update-go-back' => 'Go back',
+            'modal-price-update-close' => 'Close',
+            'modal-price-update-text' => 'Price update'
         ],
         'impact-tab' => [
             'model-reference' => 'El modelo utilizado en este análisis toma como referencia al',

@@ -71,6 +71,9 @@
     <script src="{{ asset('js/dynamic.js') }}"></script>
     <script src="{{ asset('js/component-chart.js') }}"></script>
     <script src="{{ asset('js/impact-graphs.js') }}"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/json2csv"></script>
+
 @endpush
 
 @push('styles')
@@ -162,17 +165,17 @@
                                 <li class="nav-item col-4" role="presentation">
 
                                 <div id="content" class="site-content">
-                                    <div class="modal fade" id="modalGasolineEthanolBlending" data-keyboard="false" tabindex="-1" aria-labelledby="modalGasolineEthanolBlendingLabel" aria-hidden="true">
+                                    <div class="modal fade" id="modalGasolineEthanolBlending" data-keyboard="false" tabindex="-1" aria-labelledby="modalGasolineEthanolBlendingLabel">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title">Price Update</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    <h5 class="modal-title"> {{ __('dynamic.content.component-tab.modal-price-update-text') }}</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                                                 </div>
                                                 <div class="modal-body">
                                                     <p> {{ __('dynamic.content.component-tab.modal-price-update') }}</p>
                                                     
-                                                    <form id="login-form" method="post" onsubmit="return validatePriceUpdateInput();" action="{{ route('price-update-get-results') }}" >
+                                                    <form id="price-update-form" method="post" onsubmit="return validatePriceUpdateInput()" action="{{ route('price-update-get-results') }}" >
                                                         <input type="hidden" name="user_locale" value="{{ app()->getLocale() }}" />
 
                                                         <div class="form-group row">
@@ -183,7 +186,7 @@
                                                         <div class="form-group row">
                                                             <label for="price_gasoline_regular" class="col-sm-8 col-form-label">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-regular') }}</label>                           
                                                             <div class="col-sm-4">
-                                                                <input type="text" class="form-control-sm" id="price_gasoline_regular" aria-label="price_gasoline_regular" aria-describedby="price_gasoline_regular">
+                                                                <input type="text" class="form-control-sm" id="price_gasoline_regular" aria-label="price_gasoline_regular" aria-describedby="price_gasoline_regular" required="True">
                                                             </div>
                                                         </div>
                                                         
@@ -235,9 +238,6 @@
                                                 
 
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <button class="btn btn-primary" data-bs-target="#modalGasolineEthanolBlending_2" data-bs-toggle="modal">Open second modal</button>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -247,24 +247,30 @@
                                         <div class="modal-dialog modal-xl">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title">Datos calculados</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    <h5 class="modal-title">{{ __('dynamic.content.component-tab.modal-price-update-report-text') }}</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                                                 </div>
                                                 <div class="modal-body">
                                                     <p> {{ __('dynamic.content.component-tab.modal-price-update') }}</p>
-                                                
+
+
+
                                                     <div class="table-responsive">
                                                         <table class="table-bordered" border="1" cellpadding="0" cellspacing="0">
                                                             <thead >
                                                                 <tr class="table-titles ">
-                                                                <th scope="col">{{ __('dynamic.content.component-tab.prices') }}</th>
-                                                                <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline') }}</th>
-                                                                <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e0') }}</th>
-                                                                <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e10') }}</th>
-                                                                <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e15') }}</th>
-                                                                <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e20') }}</th>
-                                                                <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e25') }}</th>
-                                                                <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e30') }}</th>
+                                                                    <th colspan="2" id="th_price_text" scope="col">{{ __('countries.' . $country->name) }} </th>
+                                                                    <th colspan="6" style="text-align:center" id="th_gasoline_text" scope="col">{{ __('dynamic.content.component-tab.constant-octane-number') }}</th>
+                                                                </tr>
+                                                                <tr class="table-titles ">
+                                                                    <th id="th_price_text" scope="col">{{ __('dynamic.content.component-tab.prices') }}</th>
+                                                                    <th id="th_gasoline_text" scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline') }}</th>
+                                                                    <th id="th_gasoline_e0_text" scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e0') }}</th>
+                                                                    <th id="th_gasoline_e10_text" scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e10') }}</th>
+                                                                    <th id="th_gasoline_e15_text" scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e15') }}</th>
+                                                                    <th id="th_gasoline_e20_text" scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e20') }}</th>
+                                                                    <th id="th_gasoline_e25_text" scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e25') }}</th>
+                                                                    <th id="th_gasoline_e30_text" scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e30') }}</th>
                                                                 </tr>
                                                             </thead>
                                                             
@@ -273,19 +279,25 @@
                                                             </tbody>
                                                         </table>
                                                     </div>
+
+
                                                     
                                                     <div class="table-responsive">
                                                         <table class="table-bordered" border="1" cellpadding="0" cellspacing="0">
                                                             <thead >
                                                                 <tr class="table-titles ">
-                                                                <th scope="col">{{ __('dynamic.content.component-tab.prices') }}</th>
-                                                                <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline') }}</th>
-                                                                <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e0') }}</th>
-                                                                <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e10') }}</th>
-                                                                <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e15') }}</th>
-                                                                <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e20') }}</th>
-                                                                <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e25') }}</th>
-                                                                <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e30') }}</th>
+                                                                    <th colspan="2" id="th_price_text" scope="col"><strong>{{ __('countries.' . $country->name) }}</strong> </th>
+                                                                    <th colspan="6" style="text-align:center" id="th_gasoline_text" scope="col">{{ __('dynamic.content.component-tab.increased-octane-number') }}</th>
+                                                                </tr>
+                                                                <tr class="table-titles ">
+                                                                    <th scope="col">{{ __('dynamic.content.component-tab.prices') }}</th>
+                                                                    <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline') }}</th>
+                                                                    <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e0') }}</th>
+                                                                    <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e10') }}</th>
+                                                                    <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e15') }}</th>
+                                                                    <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e20') }}</th>
+                                                                    <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e25') }}</th>
+                                                                    <th scope="col">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-e30') }}</th>
                                                                 </tr>
                                                             </thead>
                                                             
@@ -295,17 +307,28 @@
                                                         </table>
                                                     </div>
 
+
+
+
                                                 </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+
+                                                <div class="d-flex justify-content-between align-items-center w-100">
+                                                    <p> </p>
+                                                    <button class="btn btn-primary px-4 oswald" data-bs-target="#modalGasolineEthanolBlending" data-bs-toggle="modal">{{ __('dynamic.content.component-tab.modal-price-update-go-back') }}</button>
+                                                    <button id="modal-price-update-download" type="submit" class="btn btn-primary px-4 oswald">{{ __('dynamic.content.profile-tab.download-button') }}</button>
+                                                    <button class="btn btn-primary px-4 oswald" data-bs-dismiss="modal">{{ __('dynamic.content.component-tab.modal-price-update-close') }}</button>
+                                                    </br>
+                                                </div>
+
+                                                {{-- <div class="modal-footer">
+                                                    <button class="btn btn-primary" data-bs-dismiss="modal">Close</button>
                                                     <button class="btn btn-primary" data-bs-target="#modalGasolineEthanolBlending" data-bs-toggle="modal">Regresar</button>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>
 
                                 </div>
-
 
 
 
