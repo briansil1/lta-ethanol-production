@@ -42,7 +42,7 @@ return [
             'instructions-2' => 'The average content of the available components used to produce gasoline, and their average prices in 2019 are as follows:',
             'instructions-3' => 'Possible optimizations of the blending components for gasoline production can also be plotted, incorporating different levels of ethanol.',
             'instructions-4' => 'By placing the mouse cursor over the bars in the chart, you can see the percentages of the components in the gasoline for the selected countries, pointing at the top of the chart the production costs of each level of ethanol blending.',
-            'instructions-5' => 'Prices vary by adjusting the gasoline components for blends with ethanol,  reaching the minimum octane number allowed by the country (constant octane number), or simply adding ethanol without limiting the octane number (increased octane number). Comparisons can be made with gasoline from several countries or from the same country.',
+            'instructions-5' => 'Prices vary by adjusting the gasoline components for blends with ethanol, reaching the minimum octane number allowed by the country (constant octane number), or simply adding ethanol without limiting the octane number (increased octane number). Increasing ethanol content in in the gasoline blend reduces the use of polluting and higher-priced components. The obtained blendstocks meet the minimum octane requirements of each country. Prices correspond to average reference market 2024 prices. Prices can be updated using the following link:',
             'select-gasoline' => 'Select gasoline',
             'clean' => 'Clear',
             'compare' => 'Compare',
@@ -55,7 +55,7 @@ return [
             'select-quality' => 'Quality restriction',
             'compare-select-quality' => 'Select quality restriction',
             'compare-select-gasoline' => 'Select gasoline',
-            'benefits-4' => 'Increasing ethanol content in in the gasoline blend reduces the use of polluting and higher-priced components. The obtained blendstocks meet the minimum octane requirements of each country.',
+            'benefits-4' => 'Comparisons can be made with gasoline from several countries or from the same country. Download the full country database using the following link:',
             'components-notes' => 'Note. In the first iteration (Increased octane number), the addition of ethanol raises the octane rating to levels higher than the minimum required in each country.',
             'premium' => 'Premium',
             'regular' => 'Regular',
@@ -135,7 +135,8 @@ return [
             'modal-price-update-report-text' => 'Price Update Report',
             'modal-price-update-go-back' => 'Go back',
             'modal-price-update-close' => 'Close',
-            'modal-price-update-text' => 'Price update'
+            'modal-price-update-text' => 'Price update',
+            'download-full-database-button' => 'Full Database'
         ],
         'impact-tab' => [
             'model-reference' => 'The model used in this analysis takes as a reference the',
