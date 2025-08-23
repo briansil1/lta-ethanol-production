@@ -137,7 +137,9 @@ class ComponentController extends Controller {
                     ];
                 }
 
-                $gasoline_type_rows[$gasoline_type] = [
+                $var_gasoline = __('dynamic.content.component-tab.' . $gasoline_type);
+
+                $gasoline_type_rows[$var_gasoline] = [
                         'blendstok_constant' => $blendstoks_constant_octane_rows
                     ];
             }

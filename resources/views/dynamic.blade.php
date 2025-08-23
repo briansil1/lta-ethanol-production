@@ -62,7 +62,7 @@
         var _getProfilePDFUrl = () => '{{ route(__('routes.profile-pdf')) }}';
         var _getComponentsFileUrl = () => '{{ route(__('routes.components-file')) }}';
         var _getImpactFileUrl = () => '{{ route(__('routes.emission-file')) }}';
-        var _getPriceUpdateResultsURL = (country, gasolineRegular, gasolinePremium, normalButane, ethanol, emtbe, btxWeighted) => '{{ route('price-update-get-results') }}/' + country + (gasolineRegular ? '/' + gasolineRegular : '') + (gasolinePremium ? '/' + gasolinePremium : '') + (normalButane ? '/' + normalButane : '') + (ethanol ? '/' + ethanol : '') + (emtbe ? '/' + emtbe : '') + (btxWeighted ? '/' + btxWeighted : '');
+        var _getPriceUpdateResultsURL = (country, gasolineRegular, gasolinePremium, normalButane, ethanol, emtbe, btxWeighted) => '{{ route(__('routes.price-update-results')) }}/' + country + (gasolineRegular ? '/' + gasolineRegular : '') + (gasolinePremium ? '/' + gasolinePremium : '') + (normalButane ? '/' + normalButane : '') + (ethanol ? '/' + ethanol : '') + (emtbe ? '/' + emtbe : '') + (btxWeighted ? '/' + btxWeighted : '');
     </script>
 @endsection
 
@@ -165,6 +165,8 @@
                                 <li class="nav-item col-4" role="presentation">
 
                                 <div id="content" class="site-content">
+                                    <input type="hidden" class="form-control" id="user_locale_hidden" aria-label="user_locale_hidden" aria-describedby="user_locale_hidden" value="{{ app()->getLocale() }}">
+                                                   
                                     <div class="modal fade" id="modalGasolineEthanolBlending" data-keyboard="false" tabindex="-1" aria-labelledby="modalGasolineEthanolBlendingLabel">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
@@ -174,9 +176,9 @@
                                                 </div>
                                                 <div class="modal-body">
                                                     <p> {{ __('dynamic.content.component-tab.modal-price-update') }}</p>
-                                                    
-                                                    <form id="price-update-form" method="post" onsubmit="return validatePriceUpdateInput()" action="{{ route('price-update-get-results') }}" >
-                                                        <input type="hidden" name="user_locale" value="{{ app()->getLocale() }}" />
+                                                        
+                                                    <form id="price-update-form" method="post" action="{{ route('price-update-get-results') }}" >
+                                                                     
 
                                                         <div class="form-group row">
                                                             <span class="col-sm-8 col-input-group-text" id="basic-addon1">{{ __('dynamic.content.component-tab.modal-price-update-fuel-component') }}</span>
@@ -193,35 +195,35 @@
                                                         <div class="form-group row">
                                                             <label for="price_gasoline_premium" class="col-sm-8 col-form-label">{{ __('dynamic.content.component-tab.modal-price-update-gasoline-premium') }}</label>
                                                             <div class="col-sm-4">
-                                                                <input type="text" class="form-control" id="price_gasoline_premium" aria-label="price_gasoline_premium" aria-describedby="price_gasoline_premium">
+                                                                <input type="text" class="form-control" id="price_gasoline_premium" aria-label="price_gasoline_premium" aria-describedby="price_gasoline_premium" required="True">
                                                             </div>
                                                         </div>
                                                         
                                                         <div class="form-group row">
                                                             <label for="price_normal_butane" class="col-sm-8 col-form-label">{{ __('dynamic.content.component-tab.modal-price-update-normal-butane') }}</label>
                                                             <div class="col-sm-4">
-                                                                <input type="text" class="form-control" id="price_normal_butane" aria-label="price_normal_butane" aria-describedby="price_normal_butane">
+                                                                <input type="text" class="form-control" id="price_normal_butane" aria-label="price_normal_butane" aria-describedby="price_normal_butane" required="True">
                                                             </div>
                                                         </div>
                                                         
                                                         <div class="form-group row">
                                                             <label for="price_ethanol" class="col-sm-8 col-form-label">{{ __('dynamic.content.component-tab.modal-price-update-ethanol') }}</label>
                                                             <div class="col-sm-4">
-                                                                <input type="text" class="form-control" id="price_ethanol" aria-label="price_ethanol" aria-describedby="price_ethanol">
+                                                                <input type="text" class="form-control" id="price_ethanol" aria-label="price_ethanol" aria-describedby="price_ethanol" required="True">
                                                             </div>
                                                         </div>
                                                         
                                                         <div class="form-group row">
                                                             <label for="price_mtbe" class="col-sm-8 col-form-label">{{ __('dynamic.content.component-tab.modal-price-update-mtbe') }}</label>
                                                             <div class="col-sm-4">
-                                                                <input type="text" class="form-control" id="price_mtbe" aria-label="price_mtbe" aria-describedby="price_mtbe">
+                                                                <input type="text" class="form-control" id="price_mtbe" aria-label="price_mtbe" aria-describedby="price_mtbe" required="True">
                                                             </div>
                                                         </div>
                                                         
                                                         <div class="form-group row">
                                                             <label for="price_btx_weighted" class="col-sm-8 col-form-label">{{ __('dynamic.content.component-tab.modal-price-update-btx-weighted') }}</label>
                                                             <div class="col-sm-4">
-                                                                <input type="text" class="form-control" id="price_btx_weighted" aria-label="price_btx_weighted" aria-describedby="price_btx_weighted">
+                                                                <input type="text" class="form-control" id="price_btx_weighted" aria-label="price_btx_weighted" aria-describedby="price_btx_weighted" required="True">
                                                             </div>
                                                         </div>
 
@@ -259,7 +261,7 @@
                                                         <table class="table-bordered" border="1" cellpadding="0" cellspacing="0">
                                                             <thead >
                                                                 <tr class="table-titles ">
-                                                                    <th colspan="2" id="th_price_text" scope="col">{{ __('countries.' . $country->name) }} </th>
+                                                                    <th colspan="2" id="th_country_text" scope="col">{{ __('countries.' . $country->name) }} </th>
                                                                     <th colspan="6" style="text-align:center" id="th_gasoline_text" scope="col">{{ __('dynamic.content.component-tab.constant-octane-number') }}</th>
                                                                 </tr>
                                                                 <tr class="table-titles ">
@@ -286,7 +288,7 @@
                                                         <table class="table-bordered" border="1" cellpadding="0" cellspacing="0">
                                                             <thead >
                                                                 <tr class="table-titles ">
-                                                                    <th colspan="2" id="th_price_text" scope="col"><strong>{{ __('countries.' . $country->name) }}</strong> </th>
+                                                                    <th colspan="2" scope="col">{{ __('countries.' . $country->name) }} </th>
                                                                     <th colspan="6" style="text-align:center" id="th_gasoline_text" scope="col">{{ __('dynamic.content.component-tab.increased-octane-number') }}</th>
                                                                 </tr>
                                                                 <tr class="table-titles ">
@@ -329,9 +331,6 @@
                                     </div>
 
                                 </div>
-
-
-
 
                                     <span class="nav-link-3 @if($tab == '2') active @endif oswald" id="tab-2" data-bs-toggle="tab" data-bs-target="#tab2" type="span" role="tab" aria-controls="profile" aria-selected="{{ $tab == '2' ? 'true' : 'false'}}">
                                         {{ __('dynamic.content.components') }}

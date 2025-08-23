@@ -1,3 +1,43 @@
+let lang_json= {};
+
+function GetLanguageJson(lang) {
+
+  switch (lang) {
+    case 'en_US':
+      lang_json = getEnglishJson();
+      break;
+    case 'es_MX':
+      lang_json = getSpanishJson();
+    break;
+    default:
+      lang_json = getEnglishJson();
+  }
+
+  return lang_json;
+}
+
+function getEnglishJson() {
+    return {
+                'octane_number': 'Octane Type',
+                'updated': 'Updated',
+                'file': 'File.csv',
+                'ordinary': 'Regular',
+                'superior': 'Superior',
+                'missing_field': 'Please fill all the fields'
+            }
+}
+
+function getSpanishJson() {
+    return {
+                'octane_number': 'Tipo Octanaje',
+                'updated': 'Actualizacion',
+                'file': 'Archivo.csv',
+                'ordinary': 'Regular',
+                'superior': 'Superior',
+                'missing_field': 'Favor de capturar todos los campos para el cálculo'
+            }
+}
+
 let componentCharts = [];
 let components_array = {
     'catalytic_gasoline': '#006680',
@@ -96,14 +136,21 @@ $( function() {
 
    $('#modal-price-update-continue').on('click', evt => {
         evt.preventDefault();
-        // alert("Anda en click");
 
-        // if(validatePriceUpdateInput()){
+        const inputHiddenLanguage = $('#user_locale_hidden').val(); //document.getElementById('user_locale_hidden');
+        let lang = "";
 
+        if (inputHiddenLanguage) {
+            lang = inputHiddenLanguage;
+        }
+        else{
+            lang = 'en_US';
+        }
+
+        lang_json = GetLanguageJson(lang);
         
         var x = document.getElementById('price-update-form').checkValidity();
         if (x) {
-        // alert("Paso las validaciones");
 
             let gasoline_regular = $('#price_gasoline_regular').val() != '' ? $('#price_gasoline_regular').val() : 6;
             let gasoline_premium = $('#price_gasoline_premium').val()
@@ -115,10 +162,22 @@ $( function() {
             
             //determinePriceUpdate(country_id, 2.427, 2.737, 1.02622916666667, 1.665, 3.022, 3.8894)
                     determinePriceUpdate(country_id, gasoline_regular, gasoline_premium, normal_butane, ethanol, emtbe, btx_weighted)
+
+            const modalGasolineEthanolBlending = document.getElementById('modalGasolineEthanolBlending');
+            
+            // Select all input and textarea elements within the modal
+            const inputs = modalGasolineEthanolBlending.querySelectorAll('input, textarea');
+
+            // Iterate through each input and clear its value
+            inputs.forEach(input => {
+                input.value = '';
+            });
+            
+            
         } else {
             console.log('Not Valid')
             
-                alert("Falta capturar un dato");
+            alert(lang_json.missing_field);
         }        
     });
 
@@ -153,9 +212,7 @@ $( function() {
                     const csvData =  json2csv.parse(result);
                     console.log(result);
 
-
-                    downloadCSV("Archivo.csv", csvData);
-
+                    downloadCSV([lang_json.file], csvData);
 
                 }
             },
@@ -167,32 +224,10 @@ $( function() {
 
     });
 
-
-    // $('#modalGasolineEthanolBlending_2 ').on('hidden.bs.modal', function () {
-    //     $('body').removeClass('modal-open');
-    // });
-
-
-
-    $('#modal-price-update-continue').on('click', evt => {
-        evt.preventDefault();
-        
-        const modalGasolineEthanolBlending = document.getElementById('modalGasolineEthanolBlending');
-        
-            
-        // Select all input and textarea elements within the modal
-        const inputs = modalGasolineEthanolBlending.querySelectorAll('input, textarea');
-
-        // Iterate through each input and clear its value
-        inputs.forEach(input => {
-            input.value = '';
-        });
-    });
-
-
 });
 
 function generateExcel(response, json_data, octane_number, type_of_data){
+    let t_country =  document.getElementById('th_country_text');
     let t_prices =  document.getElementById('th_price_text');
     let t_gasoline =  document.getElementById('th_gasoline_text');
     let t_gasoline_e0 =  document.getElementById('th_gasoline_e0_text');
@@ -202,9 +237,8 @@ function generateExcel(response, json_data, octane_number, type_of_data){
     let t_gasoline_e25 =  document.getElementById('th_gasoline_e25_text');
     let t_gasoline_e30 =  document.getElementById('th_gasoline_e30_text');
 
-    let Octane = t_prices.innerHTML == 'Price' ? 'Octane Type' : 'Tipo Octanaje';
-    let price_row = t_prices.innerHTML == 'Price' ? 'Updated' : 'Actualizacion';
-    //let octane_number = [t_prices.innerHTML] = 'Price' ? 'Updated' : 'Actualizacion';
+    let Octane = lang_json.octane_number;
+    let price_row = lang_json.updated;
     
     for(const gasoline_quality in response.data.gasoline_quality_rows) {
         if(gasoline_quality == octane_number){
@@ -213,13 +247,13 @@ function generateExcel(response, json_data, octane_number, type_of_data){
                 const gas_type = gas_quality.gasoline_type_rows[gasoline_type];
 
                 if(type_of_data == "hystoric"){
-                    json_data.push({ [t_prices.innerHTML]: 2024, ' ': gasoline_type, [Octane]: octane_number, [t_gasoline_e0.innerHTML]: gas_type.blendstok_constant.equivalent_gasoline_e0.price, [t_gasoline_e10.innerHTML]: gas_type.blendstok_constant.gasoline_e10.price, [t_gasoline_e15.innerHTML]: gas_type.blendstok_constant.gasoline_e15.price, [t_gasoline_e20.innerHTML]: gas_type.blendstok_constant.gasoline_e20.price, [t_gasoline_e25.innerHTML]: gas_type.blendstok_constant.gasoline_e25.price, [t_gasoline_e30.innerHTML]: gas_type.blendstok_constant.gasoline_e30.price});
+                    json_data.push({ [t_country.innerHTML]: 2024, ' ': gasoline_type, [Octane]: octane_number, [t_gasoline_e0.innerHTML]: gas_type.blendstok_constant.equivalent_gasoline_e0.price, [t_gasoline_e10.innerHTML]: gas_type.blendstok_constant.gasoline_e10.price, [t_gasoline_e15.innerHTML]: gas_type.blendstok_constant.gasoline_e15.price, [t_gasoline_e20.innerHTML]: gas_type.blendstok_constant.gasoline_e20.price, [t_gasoline_e25.innerHTML]: gas_type.blendstok_constant.gasoline_e25.price, [t_gasoline_e30.innerHTML]: gas_type.blendstok_constant.gasoline_e30.price});
                 }
                 else if(type_of_data == "estimate"){
-                    json_data.push({ [t_prices.innerHTML]: price_row, ' ': gasoline_type, [Octane]: octane_number, [t_gasoline_e0.innerHTML]: gas_type.blendstok_constant.equivalent_gasoline_e0.estimate_price, [t_gasoline_e10.innerHTML]: gas_type.blendstok_constant.gasoline_e10.estimate_price, [t_gasoline_e15.innerHTML]: gas_type.blendstok_constant.gasoline_e15.estimate_price, [t_gasoline_e20.innerHTML]: gas_type.blendstok_constant.gasoline_e20.estimate_price, [t_gasoline_e25.innerHTML]: gas_type.blendstok_constant.gasoline_e25.estimate_price, [t_gasoline_e30.innerHTML]: gas_type.blendstok_constant.gasoline_e30.estimate_price});
+                    json_data.push({ [t_country.innerHTML]: price_row, ' ': gasoline_type, [Octane]: octane_number, [t_gasoline_e0.innerHTML]: gas_type.blendstok_constant.equivalent_gasoline_e0.estimate_price, [t_gasoline_e10.innerHTML]: gas_type.blendstok_constant.gasoline_e10.estimate_price, [t_gasoline_e15.innerHTML]: gas_type.blendstok_constant.gasoline_e15.estimate_price, [t_gasoline_e20.innerHTML]: gas_type.blendstok_constant.gasoline_e20.estimate_price, [t_gasoline_e25.innerHTML]: gas_type.blendstok_constant.gasoline_e25.estimate_price, [t_gasoline_e30.innerHTML]: gas_type.blendstok_constant.gasoline_e30.estimate_price});
                 }
                 else if(type_of_data == "blank"){ 
-                    json_data.push({ [t_prices.innerHTML]: '', ' ': '', [Octane]: '', [t_gasoline_e0.innerHTML]: '', [t_gasoline_e10.innerHTML]: '', [t_gasoline_e15.innerHTML]: '', [t_gasoline_e20.innerHTML]: '', [t_gasoline_e25.innerHTML]: '', [t_gasoline_e30.innerHTML]: ''});
+                    json_data.push({ [t_country.innerHTML]: '', ' ': '', [Octane]: '', [t_gasoline_e0.innerHTML]: '', [t_gasoline_e10.innerHTML]: '', [t_gasoline_e15.innerHTML]: '', [t_gasoline_e20.innerHTML]: '', [t_gasoline_e25.innerHTML]: '', [t_gasoline_e30.innerHTML]: ''});
                 }
             };
         }
@@ -235,48 +269,6 @@ function downloadCSV(filename, csvData){
 
     document.body.appendChild(element);
     element.click();
-}
-
-
-function validatePriceUpdateInput() {
-        alert("Anda en el validate");
-
-    if (document.getElementById('price_gasoline_regular') == null || document.getElementById('price_gasoline_regular')=="") {
-            alert("Field Gasoline (Regular) cannot be empty.");
-            return false;
-    }
-    if (document.getElementById('price_gasoline_premium') == null || document.getElementById('price_gasoline_premium')=="") {
-            alert("Field Gasoline (Premium) cannot be empty.");
-            return false;
-    }
-    if (document.getElementById('price_normal_butane') == null || document.getElementById('price_normal_butane')=="") {
-            alert("Field Normal Butane cannot be empty.");
-            return false;
-    }
-    if (document.getElementById('price_ethanol') == null || document.getElementById('price_ethanol')=="") {
-            alert("Field Ethanol cannot be empty.");
-            return false;
-    }
-    if (document.getElementById('price_mtbe') == null || document.getElementById('price_mtbe')=="") {
-            alert("Field MBTE cannot be empty.");
-            return false;
-    }
-    if (document.getElementById('price_btx_weighted') == null || document.getElementById('price_btx_weighted')=="") {
-            alert("Field BTX Weighted Average cannot be empty.");
-            return false;
-    }
-
-    let gasoline_regular = $('#price_gasoline_regular').val() != '' ? $('#price_gasoline_regular').val() : 6;
-    let gasoline_premium = $('#price_gasoline_premium').val()
-    let normal_butane = $('#price_normal_butane').val()
-    let ethanol = $('#price_ethanol').val()
-    let emtbe = $('#price_emtbe').val()
-    let btx_weighted = $('#price_btx_weighted').val()
-    country_id = $('#country-select').val();
-    
-//             //determinePriceUpdate(country_id, 2.427, 2.737, 1.02622916666667, 1.665, 3.022, 3.8894)
-    determinePriceUpdate(country_id, gasoline_regular, gasoline_premium, normal_butane, ethanol, emtbe, btx_weighted)
-
 }
 
 function determinePriceUpdate(country_id, gasolineRegular, gasolinePremium, normalButane, ethanol, emtbe, btxWeighted) {

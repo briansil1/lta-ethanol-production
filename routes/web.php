@@ -23,6 +23,7 @@ Route::group(['prefix' => 'en', 'middleware' => 'translate'], function() {
     Route::get('/download-profile-report', '\App\Http\Controllers\MainController@downloadProfile')->name('profile-pdf-en');
     Route::get('/download-emission-report', '\App\Http\Controllers\MainController@downloadEmission')->name('emission-file-en');
     Route::get('/download-components-report', '\App\Http\Controllers\MainController@downloadComponents')->name('components-file-en');
+    Route::get('component/price-update/{country?}/{gasolineRegular?}/{gasolinePremium?}/{normalButane?}/{ethanol?}/{emtbe?}/{btxWeighted?}', '\App\Http\Controllers\ComponentController@getPriceUpdateResults')->middleware(['auth', 'verified'])->name('price-update-get-results');
 });
 
 // Front-end Routes(Home, User login, sing-in, dynamic tools, and downloadable files routes spanish versión
@@ -34,6 +35,7 @@ Route::group(['prefix' => 'es', 'middleware' => 'translate'], function() {
     Route::get('/descargar-perfil-reporte', '\App\Http\Controllers\MainController@downloadProfile')->name('profile-pdf-es');
     Route::get('/descargar-emision-reporte', '\App\Http\Controllers\MainController@downloadEmission')->name('emission-file-es');
     Route::get('/descargar-componentes-reporte', '\App\Http\Controllers\MainController@downloadComponents')->name('components-file-es');
+    Route::get('actualizacion-precio-componente/{country?}/{gasolineRegular?}/{gasolinePremium?}/{normalButane?}/{ethanol?}/{emtbe?}/{btxWeighted?}', '\App\Http\Controllers\ComponentController@getPriceUpdateResults')->middleware(['auth', 'verified'])->name('precio-actualizacion-obtener-resultados');
 });
 
 // Routes for emissions Tab
@@ -49,8 +51,6 @@ Route::get('emissions/r/{region}/{emission}/r/{compare?}', '\App\Http\Controller
 Route::get('component/c/{country?}/{gasoline?}/{grade?}', '\App\Http\Controllers\ComponentController@getComponentsByCountry')->middleware(['auth', 'verified'])->name('get-components-by-country');
 Route::get('component/c/{country}/{gasoline}/{grade}/c/{compare?}', '\App\Http\Controllers\ComponentController@getComponentsByCountry')->middleware(['auth', 'verified']);
 
-// Routes Gasolin/ethanol blendings components ///BAMS TODO
-Route::get('component/price-update/{country?}/{gasolineRegular?}/{gasolinePremium?}/{normalButane?}/{ethanol?}/{emtbe?}/{btxWeighted?}', '\App\Http\Controllers\ComponentController@getPriceUpdateResults')->middleware(['auth', 'verified'])->name('price-update-get-results');
 
 // Admin Section
 Route::get('admin/c4js2', '\App\Http\Controllers\AdminController@home')->name('admin-home');
