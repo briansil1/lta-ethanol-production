@@ -38,4 +38,8 @@ class Country extends Model
     public function dynamicToolsTexts(): HasMany {
         return $this->hasMany(DynamicToolsText::class);
     }
+
+    public function lifeCycleGhg(): HasMany {
+        return $this->hasMany(LifeCycleGhg::class);
+    }
 }

@@ -421,6 +421,10 @@ label {
     position: relative;
 }
 
+#v-ghg-tab {
+    position: relative;
+}
+
 a#v-pills-co2-tab.active, a#v-pills-thc-tab.active, a#v-pills-co-tab.active, a#v-pills-pm-tab.active, a#v-pills-nox-tab.active, a#v-pills-btx-tab.active {
     background: #002f60 !important;
     color: #fff;
@@ -491,6 +495,35 @@ a#v-pills-btx-tab.active:after {
     position: absolute;
     left: 100%;
     top: 368px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #002f60;
+}
+
+a#v-ghg-redii-tab.active, a#v-ghg-greet-tab.active{
+    background: #002f60 !important;
+    color: #fff;
+}
+
+a#v-ghg-redii-tab.active:after {
+    content: '';
+    position: absolute;
+    left: 100%;
+    top: 23px;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #002f60;
+}
+
+a#v-ghg-greet-tab.active:after {
+    content: '';
+    position: absolute;
+    left: 100%;
+    top: 90px;
     width: 0;
     height: 0;
     border-top: 10px solid transparent;

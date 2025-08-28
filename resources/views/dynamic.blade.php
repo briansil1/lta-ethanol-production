@@ -18,6 +18,7 @@
         var country_profile_compare_id = {{ $tab == 1 ? isset($compareCountry) && $compareCountry ? $compareCountry->id : '0' : '0' }};
         var country_component_compare_id = {{ $tab == 2 ? isset($compareCountry) && $compareCountry ? $compareCountry->id : '0' : '0' }};
         var country_impact_compare_id = {{ $tab == 3 ? isset($compareCountry) && $compareCountry ? $compareCountry->id : '0' : '0' }};
+        var country_impact_ghg_compare_id = {{ $tab == 4 ? isset($compareCountry) && $compareCountry ? $compareCountry->id : '0' : '0' }};
 
         var country_compare_name = @if(isset($compareCountry) && $compareCountry) '{{ __('countries.' . $compareCountry->name) }}' @else {{ 'null' }} @endif;
         var _emission_titles = {
@@ -26,7 +27,9 @@
             'co': '{{ __('dynamic.content.impact-tab.graph-title-co') }}',
             'pm': '{{ __('dynamic.content.impact-tab.graph-title-pm') }}',
             'nox': '{{ __('dynamic.content.impact-tab.graph-title-nox') }}',
-            'btx': '{{ __('dynamic.content.impact-tab.graph-title-btx') }}'
+            'btx': '{{ __('dynamic.content.impact-tab.graph-title-btx') }}',
+            'redii': '{{ __('dynamic.content.ghg-tab.graph-title-redii') }}',
+            'greet': '{{ __('dynamic.content.ghg-tab.graph-title-greet') }}'
         };
         var _emissions_euro = '{{ __('dynamic.content.impact-tab.graph-euro-emissions') }}';
         var _emissions_usa = '{{ __('dynamic.content.impact-tab.graph-usa-emissions') }}';
@@ -63,6 +66,7 @@
         var _getComponentsFileUrl = () => '{{ route(__('routes.components-file')) }}';
         var _getImpactFileUrl = () => '{{ route(__('routes.emission-file')) }}';
         var _getPriceUpdateResultsURL = (country, gasolineRegular, gasolinePremium, normalButane, ethanol, emtbe, btxWeighted) => '{{ route(__('routes.price-update-results')) }}/' + country + (gasolineRegular ? '/' + gasolineRegular : '') + (gasolinePremium ? '/' + gasolinePremium : '') + (normalButane ? '/' + normalButane : '') + (ethanol ? '/' + ethanol : '') + (emtbe ? '/' + emtbe : '') + (btxWeighted ? '/' + btxWeighted : '');
+        var _getGhgByCountryURL = (country, methodology, cComparing) => '{{ route('get-ghg-by-country') }}/' + country + (methodology ? '/' + methodology : '') + (cComparing ? '/c/' + cComparing : '');
     </script>
 @endsection
 
@@ -71,6 +75,7 @@
     <script src="{{ asset('js/dynamic.js') }}"></script>
     <script src="{{ asset('js/component-chart.js') }}"></script>
     <script src="{{ asset('js/impact-graphs.js') }}"></script>
+    <script src="{{ asset('js/ghg-graphs.js') }}"></script>
     
     <script src="https://cdn.jsdelivr.net/npm/json2csv"></script>
 
@@ -153,16 +158,28 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+                                    <a href="#" class="accordion-button @if($tab == '4') show active @else collapsed @endif" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="@if($tab == '4') true @else false @endif" aria-controls="panelsStayOpen-collapseFour">
+                                        {{ __('dynamic.content.ghg') }}
+                                    </a>
+                                </h2>
+                                <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse @if($tab == '4') show @endif" aria-labelledby="panelsStayOpen-headingFour">
+                                    <div class="accordion-body">
+                                        @include('component.tab-pane-ghg', ['chart_id' => 'chart-accordion'])
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <!---tabs-->
                         <div class="d-none d-sm-none d-md-none d-lg-none d-xl-block d-xxl-block">
                             <ul class="nav nav-tabs d-flex " id="myTab" role="tablist">
-                                <li class="nav-item col-4" role="presentation">
+                                <li class="nav-item col-3" role="presentation">
                                     <span class="nav-link-3 @if($tab == '1') active @endif oswald" id="tab-1" data-bs-toggle="tab" data-bs-target="#tab1" type="span" role="tab" aria-controls="profile" aria-selected="{{ $tab == '1' ? 'true' : 'false'}}">
                                         {{ __('dynamic.content.profile') }}
                                     </span>
                                 </li>
-                                <li class="nav-item col-4" role="presentation">
+                                <li class="nav-item col-3" role="presentation">
 
                                 <div id="content" class="site-content">
                                     <input type="hidden" class="form-control" id="user_locale_hidden" aria-label="user_locale_hidden" aria-describedby="user_locale_hidden" value="{{ app()->getLocale() }}">
@@ -331,14 +348,18 @@
                                     </div>
 
                                 </div>
-
                                     <span class="nav-link-3 @if($tab == '2') active @endif oswald" id="tab-2" data-bs-toggle="tab" data-bs-target="#tab2" type="span" role="tab" aria-controls="profile" aria-selected="{{ $tab == '2' ? 'true' : 'false'}}">
                                         {{ __('dynamic.content.components') }}
                                     </span>
                                 </li>
-                                <li class="nav-item col-4" role="presentation">
+                                <li class="nav-item col-3" role="presentation">
                                     <span class="nav-link-3 @if($tab == '3') active @endif oswald" id="tab-3" data-bs-toggle="tab" data-bs-target="#tab3" type="span" role="tab" aria-controls="profile" aria-selected="{{ $tab == '3' ? 'true' : 'false'}}">
                                         {{ __('dynamic.content.impact') }}
+                                    </span>
+                                </li>
+                                <li class="nav-item col-3" role="presentation">
+                                    <span class="nav-link-3 @if($tab == '4') active @endif oswald" id="tab-4" data-bs-toggle="tab" data-bs-target="#tab4" type="span" role="tab" aria-controls="profile" aria-selected="{{ $tab == '4' ? 'true' : 'false'}}">
+                                        {{ __('dynamic.content.ghg') }}
                                     </span>
                                 </li>
                             </ul>
@@ -353,6 +374,9 @@
                                 </div>
                                 <div class="tab-pane fade @if($tab == '3') show active @endif" id="tab3" role="tabpanel" aria-labelledby="tab-3">
                                     @include('component.tab-pane-impact', ['chart_id' => 'chart-tab'])
+                                </div>
+                                <div class="tab-pane fade @if($tab == '4') show active @endif" id="tab4" role="tabpanel" aria-labelledby="tab-4">
+                                    @include('component.tab-pane-ghg', ['chart_id' => 'chart-tab'])
                                 </div>
                             </div>
                             <!---contenedor tabs-->

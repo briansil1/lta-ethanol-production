@@ -130,6 +130,22 @@ $( function() {
     $('#chart-tab-download-component-db').on('click', () => window.open(_getComponentsFileUrl(), '_blank'));
     $('#chart-accordion-download-component-db').on('click', () => window.open(_getComponentsFileUrl(), '_blank'));
 
+
+    $('#modal-price-update-open').on('click', evt => {
+        evt.preventDefault();
+        const modalGasolineEthanolBlending = document.getElementById('modalGasolineEthanolBlending');
+
+        // Select all input and textarea elements within the modal
+        const inputs = modalGasolineEthanolBlending.querySelectorAll('input, textarea');
+
+        //Iterate through each input and clear its value
+        inputs.forEach(input => {
+            input.value = '';
+        });
+
+    });
+
+
     /// Modified by: Brian Munoz
     //  Date: July 2025
     //  Adding functionality to estimate fuel cost with components cost inputs
@@ -163,15 +179,15 @@ $( function() {
             //determinePriceUpdate(country_id, 2.427, 2.737, 1.02622916666667, 1.665, 3.022, 3.8894)
                     determinePriceUpdate(country_id, gasoline_regular, gasoline_premium, normal_butane, ethanol, emtbe, btx_weighted)
 
-            const modalGasolineEthanolBlending = document.getElementById('modalGasolineEthanolBlending');
+            // const modalGasolineEthanolBlending = document.getElementById('modalGasolineEthanolBlending');
             
-            // Select all input and textarea elements within the modal
-            const inputs = modalGasolineEthanolBlending.querySelectorAll('input, textarea');
+            // // Select all input and textarea elements within the modal
+            // const inputs = modalGasolineEthanolBlending.querySelectorAll('input, textarea');
 
-            // Iterate through each input and clear its value
-            inputs.forEach(input => {
-                input.value = '';
-            });
+            // // Iterate through each input and clear its value
+            // inputs.forEach(input => {
+            //     input.value = '';
+            // });
             
             
         } else {
@@ -251,9 +267,6 @@ function generateExcel(response, json_data, octane_number, type_of_data){
                 }
                 else if(type_of_data == "estimate"){
                     json_data.push({ [t_country.innerHTML]: price_row, ' ': gasoline_type, [Octane]: octane_number, [t_gasoline_e0.innerHTML]: gas_type.blendstok_constant.equivalent_gasoline_e0.estimate_price, [t_gasoline_e10.innerHTML]: gas_type.blendstok_constant.gasoline_e10.estimate_price, [t_gasoline_e15.innerHTML]: gas_type.blendstok_constant.gasoline_e15.estimate_price, [t_gasoline_e20.innerHTML]: gas_type.blendstok_constant.gasoline_e20.estimate_price, [t_gasoline_e25.innerHTML]: gas_type.blendstok_constant.gasoline_e25.estimate_price, [t_gasoline_e30.innerHTML]: gas_type.blendstok_constant.gasoline_e30.estimate_price});
-                }
-                else if(type_of_data == "blank"){ 
-                    json_data.push({ [t_country.innerHTML]: '', ' ': '', [Octane]: '', [t_gasoline_e0.innerHTML]: '', [t_gasoline_e10.innerHTML]: '', [t_gasoline_e15.innerHTML]: '', [t_gasoline_e20.innerHTML]: '', [t_gasoline_e25.innerHTML]: '', [t_gasoline_e30.innerHTML]: ''});
                 }
             };
         }

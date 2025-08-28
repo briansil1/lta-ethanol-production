@@ -11,6 +11,7 @@ return [
         'profile' => 'Perfil',
         'components' => 'Componentes de mezclado de gasolina con etanol',
         'impact' => 'Impacto del etanol en las emisiones',
+        'ghg' => 'Emisiones Ciclo de Vida GEI',
         'profile-tab' => [
             'profile-title' => 'Oferta / Demanda de gasolinas',
             'profile-text' => 'La producción total de gasolina en Colombia se ha mantenido entre 4.000 y 5.000 millones de litros anuales, con una participación de mercado de aproximadamente 5% de gasolina extra (AKI 87) y 95% de la gasolina regular (AKI 81). La demanda es mayor por lo que es necesario importar gasolinas, siendo Estados Unidos el principal origen de las importaciones.',
@@ -171,6 +172,20 @@ return [
             'graph-euro-emissions' => 'Estándar emisiones Euro 6',
             'vehicles-stop-circulating' => 'La reducción de emisiones es equivalente a que los siguientes miles de vehículos dejen de circular diariamente:'
         ],
+        'ghg-tab' => [
+            'first-paragraph' => 'La Agenda Global en Acción Climática llama a paises, ciudades y regiones, empresas y miembros de la sociedad civil en todo el mundo para lograr economías climáticame resilientes y de bajo carbono en apoyo al Acuerdo de París. El transporte por carretera representa el 15% del total de emisiones de gases de efecto invernadero - GEI (IPCC,2023).',
+            'second-paragraph' => 'Las mezclas de etanol con gasoline son una práctica internacional reconocidad que ofrece beneficios en la reducción de emisiones en el corto plazo. Al implementarse, estas mezclas reducen las emisiones de gases de efecto invernadero, mejora la Calidad del aire y tiene ventajas económicas para los consumidores.  El etanol, al ser un combustible removable, reduce nuestra dependencia en el petróleo. Su alto contenido de octano y bajo contenido de azufre permite mejorar la calidad de combustible mezclado, lo que contribuye a ciudades con aire mas limpio. Los biocombustibles son importantes en la solución para alcanzar las metas de reducción en el sector transporte.',
+            'third-paragraph' => 'La reducción de GEI para cada país se calculan utilizando la metodologías de emisiones de ciclo de vida RED II y GREET  y se comparan con las metas vigentes.',
+            'compare-select' => 'Seleccionar',
+            'ghg-note' => 'Escenario para metas Sustentables y políticas ambientales del IPCC, 2023.',
+            'graph-title-ghg' => 'Life Cycle GHG Gasoline Vehicle Emissions',
+            'ghg_redii' => 'Ciclo de Vida Emisiones RED II',
+            'ghg_greet' => 'Ciclo de Vida Emisiones GREET',
+            'graph-title-redii' => 'Ciclo de Vida Emisiones RED II',
+            'graph-title-greet' => 'Ciclo de Vida Emisiones GREET',
+            'circular-graph-title-greet' => 'Global GHG Emissions for 2023/ Emisiones Globales GEI de 2023',
+            'ipcc-graph-title-greet' => 'IPCC Transport Sector Sustainable Development Goals and climate policies Scenario, 2023',
+        ],
     ],
     'table-texts' => [
         'header-name' => 'Regulación vigente',
@@ -208,6 +223,8 @@ return [
         'component_blending' => 'grafica_componentes_esp.png',
         'component_benefits' => 'beneficios_componentes_esp.png',
         'component_comparison' => 'componentes-comparacion.png',
+        'life_cycle_emmision' => 'ghg-grafica-circular-espaniol.png',
+        'ghg_fuels_per_year' => 'fuels_per_year.png'
     ],
     'pdf-files' => [
         'profile-pdf-filename' => 'perfiles_descarga.xlsx',

@@ -99,6 +99,11 @@ span.impact-vehicles-compare {
     font-size: 15px;
 }
 
+#v-ghg-tab {
+    position: relative;
+    min-width: 215px;
+}
+
 .mw-50 {
     width: 50%;
 }

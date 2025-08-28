@@ -51,6 +51,9 @@ Route::get('emissions/r/{region}/{emission}/r/{compare?}', '\App\Http\Controller
 Route::get('component/c/{country?}/{gasoline?}/{grade?}', '\App\Http\Controllers\ComponentController@getComponentsByCountry')->middleware(['auth', 'verified'])->name('get-components-by-country');
 Route::get('component/c/{country}/{gasoline}/{grade}/c/{compare?}', '\App\Http\Controllers\ComponentController@getComponentsByCountry')->middleware(['auth', 'verified']);
 
+// Routes for Ghg Tab
+Route::get('ghg/c/{country?}/{methodology?}', '\App\Http\Controllers\GhgController@getGhgByCountry')->middleware(['auth', 'verified'])->name('get-ghg-by-country');
+Route::get('ghg/c/{country}/{methodology}/c/{compare?}', '\App\Http\Controllers\GhgController@getGhgByCountry')->middleware(['auth', 'verified'])->name('get-ghg-by-country-compare');
 
 // Admin Section
 Route::get('admin/c4js2', '\App\Http\Controllers\AdminController@home')->name('admin-home');

@@ -11,6 +11,7 @@ return [
         'profile' => 'Profile',
         'components' => 'Gasoline/ethanol blending components',
         'impact' => 'Ethanol impact on emissions',
+        'ghg' => 'Life Cycle GHG Emissions',
         'profile-tab' => [
             'profile-title' => 'Gasoline supply/demand',
             'profile-text' => 'La producción total de gasolina en Colombia se ha mantenido entre 4.000 y 5.000 millones de litros anuales, con una participación de mercado de aproximadamente 5% de gasolina extra (AKI 87) y 95% de la gasolina regular (AKI 81). La demanda es mayor por lo que es necesario importar gasolinas, siendo Estados Unidos el principal origen de las importaciones.',
@@ -171,6 +172,19 @@ return [
             'graph-euro-emissions' => 'Euro 6 Standard',
             'vehicles-stop-circulating' => 'The emission reduction is equivalent to the following thousands of vehicles ceasing to circulate daily:'
         ],
+        'ghg-tab' => [
+            'first-paragraph' => 'The Global Agenda for Climate Action calls for countries, cities and regions, businesses, and members of civil society around the world to to acheive a low-carbon and climate-resilient economies in support of the Paris Agreement. Road Transportation accounts for 15% of total GHG emissions (IPCC,2023).',
+            'second-paragraph' => 'Ethanol gasoline blends are an internationally adopted practice that offer significant short-term benefits. When implemented, these blends can lead to reduced green-house gas emissions, improved air quality, and economic advantages for consumers. As a renewable fuel, ethanol decreases our reliance on oil. Its high-octane content also substantially enhances the quality of blended fuel, contributing to cleaner cities and lower pollutant emissions. Biofuels are an important solution to achieve reduction targets in the transportation sector.',
+            'third-paragraph' => 'The GHG emission reduction for each country is calculated using the GREET and the RED II life cycle GHG emission methodologies and compared to current Target.',
+            'compare-select' => 'Select',
+            'graph-title-ghg' => 'Life Cycle GHG Gasoline Vehicle Emissions',
+            'ghg_redii' => 'Life cycle Emissions RED II',
+            'ghg_greet' => 'Life cycle Emissions GREET',
+            'graph-title-redii' => 'Life cycle Emissions RED II',
+            'graph-title-greet' => 'Life cycle Emissions GREET',
+            'circular-graph-title-greet' => 'Global GHG Emissions for 2023/ Emisiones Globales GEI de 2023',
+            'ipcc-graph-title-greet' => 'IPCC Transport Sector Sustainable Development Goals and climate policies Scenario, 2023',
+        ],
     ],
     'table-texts' => [
         'header-name' => 'Current Regulation',
@@ -208,6 +222,8 @@ return [
         'component_blending' => 'graph_components_eng.png',
         'component_benefits' => 'benefits_components_eng.png',
         'component_comparison' => 'components-comparison.png',
+        'life_cycle_emmision' => 'ghg-grafica-circular-ingles.png',
+        'ghg_fuels_per_year' => 'fuels_per_year.png'
     ],
     'pdf-files' => [
         'profile-pdf-filename' => 'profiles_download.xlsx',
