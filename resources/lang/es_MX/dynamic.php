@@ -178,13 +178,13 @@ return [
             'third-paragraph' => 'La reducción de GEI para cada país se calculan utilizando la metodologías de emisiones de ciclo de vida RED II y GREET  y se comparan con las metas vigentes.',
             'compare-select' => 'Seleccionar',
             'ghg-note' => 'Escenario para metas Sustentables y políticas ambientales del IPCC, 2023.',
-            'graph-title-ghg' => 'Life Cycle GHG Gasoline Vehicle Emissions',
             'ghg_redii' => 'Ciclo de Vida Emisiones RED II',
             'ghg_greet' => 'Ciclo de Vida Emisiones GREET',
             'graph-title-redii' => 'Ciclo de Vida Emisiones RED II',
             'graph-title-greet' => 'Ciclo de Vida Emisiones GREET',
-            'circular-graph-title-greet' => 'Global GHG Emissions for 2023/ Emisiones Globales GEI de 2023',
-            'ipcc-graph-title-greet' => 'IPCC Transport Sector Sustainable Development Goals and climate policies Scenario, 2023',
+            'circular-graph-title-greet' => 'Emisiones Globales GEI de 2023',
+            'ipcc-graph-title-greet' => 'IPCC Escenario de Desarrollo Sustentable del Sector Transporte, 2023',
+            'graph-source' => 'Fuente: IPCC, 2023'
         ],
     ],
     'table-texts' => [

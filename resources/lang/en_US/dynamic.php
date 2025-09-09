@@ -173,17 +173,17 @@ return [
             'vehicles-stop-circulating' => 'The emission reduction is equivalent to the following thousands of vehicles ceasing to circulate daily:'
         ],
         'ghg-tab' => [
-            'first-paragraph' => 'The Global Agenda for Climate Action calls for countries, cities and regions, businesses, and members of civil society around the world to to acheive a low-carbon and climate-resilient economies in support of the Paris Agreement. Road Transportation accounts for 15% of total GHG emissions (IPCC,2023).',
+            'first-paragraph' => 'The Global Agenda for Climate Action calls for countries, cities and regions, businesses, and members of civil society around the world to to achieve a low-carbon and climate-resilient economies in support of the Paris Agreement. Road Transportation accounts for 15% of total GHG emissions (IPCC,2023).',
             'second-paragraph' => 'Ethanol gasoline blends are an internationally adopted practice that offer significant short-term benefits. When implemented, these blends can lead to reduced green-house gas emissions, improved air quality, and economic advantages for consumers. As a renewable fuel, ethanol decreases our reliance on oil. Its high-octane content also substantially enhances the quality of blended fuel, contributing to cleaner cities and lower pollutant emissions. Biofuels are an important solution to achieve reduction targets in the transportation sector.',
             'third-paragraph' => 'The GHG emission reduction for each country is calculated using the GREET and the RED II life cycle GHG emission methodologies and compared to current Target.',
             'compare-select' => 'Select',
-            'graph-title-ghg' => 'Life Cycle GHG Gasoline Vehicle Emissions',
             'ghg_redii' => 'Life cycle Emissions RED II',
             'ghg_greet' => 'Life cycle Emissions GREET',
             'graph-title-redii' => 'Life cycle Emissions RED II',
             'graph-title-greet' => 'Life cycle Emissions GREET',
-            'circular-graph-title-greet' => 'Global GHG Emissions for 2023/ Emisiones Globales GEI de 2023',
-            'ipcc-graph-title-greet' => 'IPCC Transport Sector Sustainable Development Goals and climate policies Scenario, 2023',
+            'circular-graph-title-greet' => 'Global GHG Emissions for 2023',
+            'ipcc-graph-title-greet' => 'IPCC Transport Sector Sustainable Sector Scenario, 2023',
+            'graph-source' => 'Source: IPCC, 2023'
         ],
     ],
     'table-texts' => [

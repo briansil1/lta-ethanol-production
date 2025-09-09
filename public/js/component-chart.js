@@ -172,23 +172,17 @@ $( function() {
             let gasoline_premium = $('#price_gasoline_premium').val()
             let normal_butane = $('#price_normal_butane').val()
             let ethanol = $('#price_ethanol').val()
-            let emtbe = $('#price_emtbe').val()
+            let emtbe = $('#price_mtbe').val()
             let btx_weighted = $('#price_btx_weighted').val()
             country_id = $('#country-select').val();
             
             //determinePriceUpdate(country_id, 2.427, 2.737, 1.02622916666667, 1.665, 3.022, 3.8894)
                     determinePriceUpdate(country_id, gasoline_regular, gasoline_premium, normal_butane, ethanol, emtbe, btx_weighted)
 
-            // const modalGasolineEthanolBlending = document.getElementById('modalGasolineEthanolBlending');
+            const modalGasolineEthanolBlending = document.getElementById('modalGasolineEthanolBlending');
             
-            // // Select all input and textarea elements within the modal
-            // const inputs = modalGasolineEthanolBlending.querySelectorAll('input, textarea');
-
-            // // Iterate through each input and clear its value
-            // inputs.forEach(input => {
-            //     input.value = '';
-            // });
-            
+            // Select all input and textarea elements within the modal
+            const inputs = modalGasolineEthanolBlending.querySelectorAll('input, textarea');
             
         } else {
             console.log('Not Valid')
@@ -206,7 +200,7 @@ $( function() {
         let gasolinePremium = $('#price_gasoline_premium').val();
         let normalButane = $('#price_normal_butane').val();
         let ethanol = $('#price_ethanol').val();
-        let emtbe = $('#price_emtbe').val();
+        let emtbe = $('#price_mtbe').val();
         let btxWeighted = $('#price_btx_weighted').val();
         country_id = $('#country-select').val();
 

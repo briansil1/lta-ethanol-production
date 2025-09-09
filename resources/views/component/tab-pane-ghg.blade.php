@@ -25,6 +25,10 @@
             </div>
         </div>
     </div>
+    <br>
+    <small>
+        <i>{{ __('dynamic.content.ghg-tab.graph-source') }}</i>
+    </small>
 </div>
 
 
