@@ -53,7 +53,6 @@ Route::get('component/c/{country}/{gasoline}/{grade}/c/{compare?}', '\App\Http\C
 
 // Routes for Ghg Tab
 Route::get('ghg/c/{country?}/{methodology?}', '\App\Http\Controllers\GhgController@getGhgByCountry')->middleware(['auth', 'verified'])->name('get-ghg-by-country');
-Route::get('ghg/c/{country}/{methodology}/c/{compare?}', '\App\Http\Controllers\GhgController@getGhgByCountry')->middleware(['auth', 'verified'])->name('get-ghg-by-country-compare');
 
 // Admin Section
 Route::get('admin/c4js2', '\App\Http\Controllers\AdminController@home')->name('admin-home');

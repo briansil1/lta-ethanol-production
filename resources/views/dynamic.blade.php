@@ -28,8 +28,8 @@
             'pm': '{{ __('dynamic.content.impact-tab.graph-title-pm') }}',
             'nox': '{{ __('dynamic.content.impact-tab.graph-title-nox') }}',
             'btx': '{{ __('dynamic.content.impact-tab.graph-title-btx') }}',
-            'redii': '{{ __('dynamic.content.ghg-tab.graph-title-redii') }}',
-            'greet': '{{ __('dynamic.content.ghg-tab.graph-title-greet') }}'
+            'redii': '{{ isset($country->id) && $country ? __('countries.' . $country->name) : '' }}',
+            'greet': '{{ isset($country->id) && $country ? __('countries.' . $country->name) : '' }}'
         };
         var _emissions_euro = '{{ __('dynamic.content.impact-tab.graph-euro-emissions') }}';
         var _emissions_usa = '{{ __('dynamic.content.impact-tab.graph-usa-emissions') }}';
@@ -66,7 +66,7 @@
         var _getComponentsFileUrl = () => '{{ route(__('routes.components-file')) }}';
         var _getImpactFileUrl = () => '{{ route(__('routes.emission-file')) }}';
         var _getPriceUpdateResultsURL = (country, gasolineRegular, gasolinePremium, normalButane, ethanol, emtbe, btxWeighted) => '{{ route(__('routes.price-update-results')) }}/' + country + (gasolineRegular ? '/' + gasolineRegular : '') + (gasolinePremium ? '/' + gasolinePremium : '') + (normalButane ? '/' + normalButane : '') + (ethanol ? '/' + ethanol : '') + (emtbe ? '/' + emtbe : '') + (btxWeighted ? '/' + btxWeighted : '');
-        var _getGhgByCountryURL = (country, methodology, cComparing) => '{{ route('get-ghg-by-country') }}/' + country + (methodology ? '/' + methodology : '') + (cComparing ? '/c/' + cComparing : '');
+        var _getGhgByCountryURL = (country) => '{{ route('get-ghg-by-country') }}/' + country;
     </script>
 @endsection
 

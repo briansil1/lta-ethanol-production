@@ -10,51 +10,52 @@ use Illuminate\Http\Request;
 class GhgController extends Controller
 {
     //
-    public function getGhgByCountry(Country $country, $methodology = 'co', Country $compare = null) {
+    public function getGhgByCountry(Country $country) {
         // if ($emission === 'btx') {
         //     $emission = 'benzene';
         // }
         $emissions_type = ['ghg', 'ghg_redvsbase', 'ghgredvstarget'];
-        if($methodology === 'redii')
-            $methodology = 'RED_II';
-        if($methodology === 'greet')
-            $methodology = 'GREET';
 
-        $emissions = $country->lifeCycleGhg()->where('methodology', $methodology)->get();
+        $red_iis = $country->lifeCycleGhg()->where('methodology', 'RED_II')->get();
 
-        foreach ($emissions as $emission) {
-            if("ghg" == $emission->emission)
-                $emission_ghg = $emission;
-            if("ghg_redvsbase" == $emission->emission)
-                $emission_ghg_redvsbase = $emission;
-            if("ghgredvstarget" == $emission->emission)
-                $emission_ghg_redvstarget = $emission;
+        foreach ($red_iis as $red_ii) {
+            if("ghg" == $red_ii->emission)
+                $ghg_red_ii = $red_ii;
+            if("ghg_redvsbase" == $red_ii->emission)
+                $ghg_red_ii_redvsbase = $red_ii;
+            if("ghgredvstarget" == $red_ii->emission)
+                $ghg_red_ii_redvstarget = $red_ii;
         }
         
         $response = [
             'error' => false,
             'data' => [
-                'ghg_emission' => $emission_ghg ? $emission_ghg->toArray() : [],
-                'redvsbase_emission' => $emission_ghg_redvsbase ? $emission_ghg_redvsbase->toArray() : [],
-                'redvstarget_emission' => $emission_ghg_redvstarget ? $emission_ghg_redvstarget->toArray() : [],
+                'ghg_redii' => $ghg_red_ii ? $ghg_red_ii->toArray() : [],
+                'redvsbase_redii' => $ghg_red_ii_redvsbase ? $ghg_red_ii_redvsbase->toArray() : [],
+                'redvstarget_redii' => $ghg_red_ii_redvstarget ? $ghg_red_ii_redvstarget->toArray() : [],
             ]
         ];
-        if ($compare) {
-            $compare_emissions = $compare->lifeCycleGhg()->where('methodology', $methodology)->get();
-            
-            foreach ($compare_emissions as $compare_emission) {
-                if("ghg" == $compare_emission->emission)
-                    $compare_emission_ghg = $compare_emission;
-                if("ghg_redvsbase" == $compare_emission->emission)
-                    $compare_emission_ghg_redvsbase = $compare_emission;
-                if("ghgredvstarget" == $compare_emission->emission)
-                    $compare_emission_ghg_redvstarget = $compare_emission;
-            }
 
-            $response['data']['compare_emission_ghg'] = $compare_emission_ghg ? $compare_emission_ghg->toArray() : [];
-            $response['data']['compare_emission_ghg_redvsbase'] = $compare_emission_ghg_redvsbase ? $compare_emission_ghg_redvsbase->toArray() : [];
-            $response['data']['compare_emission_ghg_redvstarget'] = $compare_emission_ghg_redvstarget ? $compare_emission_ghg_redvstarget->toArray() : [];
+
+
+        $greets = $country->lifeCycleGhg()->where('methodology', 'GREET')->get();
+        
+        foreach ($greets as $greet) {
+            if("ghg" == $greet->emission)
+                $ghg_greet = $greet;
+            if("ghg_redvsbase" == $greet->emission)
+                $ghg_greet_redvsbase = $greet;
+            if("ghgredvstarget" == $greet->emission)
+                $ghg_greet_redvstarget = $greet;
         }
+
+        $response['data']['ghg_greet'] = $ghg_greet ? $ghg_greet->toArray() : [];
+        $response['data']['redvsbase_greet'] = $ghg_greet_redvsbase ? $ghg_greet_redvsbase->toArray() : [];
+        $response['data']['redvstarget_greet'] = $ghg_greet_redvstarget ? $ghg_greet_redvstarget->toArray() : [];
+    
+
+
+        
         return response()->json($response);
     }
 }

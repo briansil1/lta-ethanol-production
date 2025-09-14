@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Country;
 use Illuminate\Http\Request;
 
-
 class ComponentController extends Controller {
 
     public $components = [
@@ -98,9 +97,11 @@ class ComponentController extends Controller {
         ]);
     }
 
-   public function getPriceUpdateResults(Country $country, $gasoline_regular = 1, $gasoline_premium = 1, $normal_butane = 1, $ethanol = 1, $emtbe = 1, $btx_weighted = 1) {
 
-    //Step 2
+
+    public function getPriceUpdateResults(Country $country, $gasoline_regular = 1, $gasoline_premium = 1, $normal_butane = 1, $ethanol = 1, $emtbe = 1, $btx_weighted = 1) {
+
+        //Step 2
         $octane_difference = 93-87;
         $octane_adjust = ($gasoline_premium - $gasoline_regular) / $octane_difference;
         $var = pow(9,1.25);
@@ -118,9 +119,9 @@ class ComponentController extends Controller {
                 $blendstoks_constant_octane = $country->gasolineComponents()->select('id', 'blendstoks', 'bno_on', 'bno_rvp', 'logistica', 'price', 'mtbe', 'aromatics', 'ethanol')
                 ->where('gasoline_type', $gasoline_type)->where('quality_restriction', $quality_restriction)->get();
 
-                foreach ($blendstoks_constant_octane as $blendstok_constant_octane) { 
+                foreach ($blendstoks_constant_octane as $blendstok_constant_octane) {
                     //Step 4
-                    $bno = ( $gasoline_regular + ($blendstok_constant_octane->bno_on - 87) * $octane_adjust ) + ((pow($blendstok_constant_octane->bno_rvp,1.25) - pow(9,1.25)) * $rvp_adjust );
+                    $bno =  ( $gasoline_regular + ($blendstok_constant_octane->bno_on - 92) * $octane_adjust ) + ((pow($blendstok_constant_octane->bno_rvp,1.25) - pow(9,1.25)) * $rvp_adjust );
                     $db_mtbe = $blendstok_constant_octane->mtbe == 'NULL' ? 0 : str_replace('%','', $blendstok_constant_octane->mtbe);
                     $db_mtbe = $db_mtbe == 0 ? 0 : $db_mtbe / 100;
                     $db_btx = $blendstok_constant_octane->aromatics == 'NULL' ? 0 : str_replace('%','', $blendstok_constant_octane->aromatics);
@@ -136,6 +137,11 @@ class ComponentController extends Controller {
                         'estimate_price' => round( (((1-$db_mtbe - $db_btx - $db_ethanol) * $bno ) + $db_mtbe * $emtbe + $db_btx * $btx_weighted + $db_ethanol * $ethanol + $blendstok_constant_octane->logistica),2)
                     ];
                 }
+
+                // $locale = App::currentLocale();
+
+                // $json_language = __('dynamic.content.component-tab');  // $dic[$gasoline_type];
+                // $var_gasoline = $json_language[$gasoline_type];
 
                 $var_gasoline = __('dynamic.content.component-tab.' . $gasoline_type);
 
@@ -157,6 +163,6 @@ class ComponentController extends Controller {
             ]
         ];
         return response()->json($response);
-
+ 
     }
 }
