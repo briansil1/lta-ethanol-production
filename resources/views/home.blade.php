@@ -35,13 +35,58 @@
             <div id="primary" class="content-area mg-banded-secondary-lightest mg-noise">
                 <main id="main" role="main" class="site-main">
                     <div class="mg-banded-primary-darkest text-white white-links antialiased">
+                        <input type="hidden" class="form-control" id="user_locale_hidden" aria-label="user_locale_hidden" aria-describedby="user_locale_hidden" value="{{ app()->getLocale() }}">
+                        <input type="hidden" class="form-control" id="continent_hidden" aria-label="continent_hidden" aria-describedby="continent_hidden" value="0">
                     </div>
                     <div class="back-blue text-center">
                         <h2 class="h1 uppercase text-2xl md:text-5xl text-white container oswald">{{ __('main.content.profiles') }} <br> {{ __('main.content.profiles-2') }}</h2>
-                        <h3 class="text-white mt-0 pt-0 oswald">{{ __('main.content.america') }}</h3>
+                        <h3 class="text-white mt-0 pt-0 oswald">
+                            <label id="tool_continent"  class="text-white mt-0 pt-0 oswald" aria-label="tool_continent" aria-describedby="tool_continent"></label>
+                        </h3>{{--  {{ __('main.content.america') }} --}}
                         <p class="text-white text-center">
                             {{ __('main.content.detail') }}
                         </p>
+                        
+                        <div class="dynamic-flex-area md:flex flex-wrap justify-center text-shadow">
+                            <a href="#" id="switch_continent_america" class="flex-1 mg-button mg-button--larger mg-button--tertiary mx-4 p-3 flex  items-center text-base md:text-lg lg:text-3xl " style="flex-direction: column;">
+                                <div class="mx-auto w-100">
+                                    <img src="{{ asset('images/map.png') }}" alt="" class="hero-sec-img">
+                                
+                                </div>
+                                <p class="card-p">
+                                    {{ __('main.content.america') }}
+                                </p>
+                            </a>
+                            <a href="#" id="switch_continent_asia_africa" class="flex-1 mg-button mg-button--larger mg-button--tertiary mx-4 p-3 flex  items-center text-base md:text-lg lg:text-3xl " style="flex-direction: column;">
+                                <div class="mx-auto w-100">
+                                    <img src="{{ asset('images/map.png') }}" alt="" class="hero-sec-img">
+                                
+                                </div>
+                                <p class="card-p">
+                                    {{ __('main.content.asia-africa') }}
+                                </p>
+                            </a>
+                            <a href="#" id="switch_continent_europe" class="flex-1 mg-button mg-button--larger mg-button--tertiary mx-4 p-3 flex  items-center text-base md:text-lg lg:text-3xl " style="flex-direction: column;">
+                                <div class="mx-auto w-100">
+                                    <img src="{{ asset('images/map.png') }}" alt="" class="hero-sec-img">
+                                
+                                </div>
+                                <p class="card-p">
+                                    {{ __('main.content.europe') }}
+                                </p>
+                            </a>
+                            <a href="#" id="switch_continent_global" class="flex-1 mg-button mg-button--larger mg-button--tertiary mx-4 p-3 flex  items-center text-base md:text-lg lg:text-3xl " style="flex-direction: column;">
+                                <div class="mx-auto w-100">
+                                    <img src="{{ asset('images/map.png') }}" alt="" class="hero-sec-img">
+                                
+                                </div>
+                                <p class="card-p">
+                                    {{ __('main.content.global') }}
+                                </p>
+                            </a>
+                        </div>
+
+
                     </div>
                     <div class="header-img">
                         <div class="w-full mg-wrap mx-auto px-6 box-sizing-content flex flex-col items-center justify-center py-14 relative z-10">

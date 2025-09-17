@@ -1,5 +1,35 @@
 let allGraphsGHG = [];
 
+function GetLanguageJson(lang) {
+
+  switch (lang) {
+    case 'en_US':
+      lang_json = getEnglishJson();
+      break;
+    case 'es_MX':
+      lang_json = getSpanishJson();
+    break;
+    default:
+      lang_json = getEnglishJson();
+  }
+
+  return lang_json;
+}
+
+function getEnglishJson() {
+    return {
+                'reduction': 'Reduction(%)= ',
+                'target_participation': 'Target Participation(%)= '
+            }
+}
+
+function getSpanishJson() {
+    return {
+                'reduction': 'Reducción(%)= ',
+                'target_participation': 'Participación Objetivo(%)= '
+            }
+}
+
 $( function() {
     $('#tab-4').on('click', function (evt) {
         if (!('redii' in allGraphsGHG)) {
@@ -9,15 +39,6 @@ $( function() {
 
     $('#v-ghg-tab > a').each(function(i) {
         $(this).off().on('click', changeGraphTabGhg);
-    });
-
-    $('#chart-accordion-ghg-country-compare-impact').off().on('change', function (evt) {
-        evt.preventDefault();
-        country_impact_ghg_compare_id = $('#chart-accordion-ghg-country-compare-impact').val();
-        country_compare_ghg_name = $( "#chart-accordion-ghg-country-compare-impact option:selected" ).text();
-        if (country_impact_ghg_compare_id > 0){
-            window.location.replace(_getCountryUrl(country_id, country_impact_ghg_compare_id));
-        }
     });
 
     $('.download-impact').off().on('click', function (evt) {
@@ -57,14 +78,27 @@ function changeGraphTabGhg() {
                             type: 'bar'
                         }]
                     };
-                    let e0_reduction = '<span class="impact-vehicles">' + 'Reduction(%)= ' + ('e0' in redvsbase_redii && redvsbase_redii['e0'] ? redvsbase_redii['e0']+'%' : '-') + '</span>'
+
+                    const inputHiddenLanguage = $('#user_locale_hidden').val();
+                    let lang = "";
+
+                    if (inputHiddenLanguage) {
+                        lang = inputHiddenLanguage;
+                    }
+                    else{
+                        lang = 'en_US';
+                    }
+
+                    lang_json = GetLanguageJson(lang);
+
+                    let e0_reduction = '<span class="impact-vehicles">' + lang_json.reduction + ('e0' in redvsbase_redii && redvsbase_redii['e0'] ? redvsbase_redii['e0']+'%' : '-') + '</span>'
                     let e10_reduction = '<span class="impact-vehicles">' + ('e10' in redvsbase_redii ? redvsbase_redii['e10']+'%' : '-') + '</span>';
                     let e15_reduction = '<span class="impact-vehicles">' + ('e15' in redvsbase_redii ? redvsbase_redii['e15']+'%' : '-') + '</span>';
                     let e20_reduction = '<span class="impact-vehicles">' + ('e20' in redvsbase_redii ? redvsbase_redii['e20']+'%' : '-') + '</span>';
                     let e25_reduction = '<span class="impact-vehicles">' + ('e25' in redvsbase_redii ? redvsbase_redii['e25']+'%' : '-') + '</span>';
                     let e30_reduction = '<span class="impact-vehicles">' + ('e30' in redvsbase_redii ? redvsbase_redii['e30']+'%' : '-') + '</span>';
                     
-                    let e0_target = '<span class="impact-vehicles">' + 'Target Participation(%)= ' + ('e0' in redvstarget_redii && redvstarget_redii['e0'] ? redvstarget_redii['e0']+'%' : '-') + '</span>'
+                    let e0_target = '<span class="impact-vehicles">' + lang_json.target_participation + ('e0' in redvstarget_redii && redvstarget_redii['e0'] ? redvstarget_redii['e0']+'%' : '-') + '</span>'
                     let e10_target = '<span class="impact-vehicles">' + ('e10' in redvstarget_redii ? redvstarget_redii['e10']+'%' : '-') + '</span>';
                     let e15_target = '<span class="impact-vehicles">' + ('e15' in redvstarget_redii ? redvstarget_redii['e15']+'%' : '-') + '</span>';
                     let e20_target = '<span class="impact-vehicles">' + ('e20' in redvstarget_redii ? redvstarget_redii['e20']+'%' : '-') + '</span>';

@@ -1,5 +1,78 @@
 var current_action = 'go';
+let continent_json = {};
+
+function GetLanguageJson(lang) {
+
+  switch (lang) {
+    case 'en_US':
+      continent_json = getEnglishJson();
+      break;
+    case 'es_MX':
+      continent_json = getSpanishJson();
+    break;
+    default:
+      continent_json = getEnglishJson();
+  }
+
+  return continent_json;
+}
+
+function getEnglishJson() {
+    return {
+                'america': 'LATIN AMERICA',
+                'asia_africa': 'ASIA-AFRICA',
+                'europa': 'EUROPE',
+                'global': 'GLOBAL'
+            }
+}
+
+function getSpanishJson() {
+    return {
+                'america': 'AMÉRICA LATINA',
+                'asia_africa': 'ASIA-AFRICA',
+                'europa': 'EUROPA',
+                'global': 'GLOBAL'
+            }
+}
+
 $(function () {
+
+    const inputHiddenLanguage = $('#user_locale_hidden').val();
+    let lang = "";
+
+    if (inputHiddenLanguage) {
+        lang = inputHiddenLanguage;
+    }
+    else{
+        lang = 'en_US';
+    }
+
+    continent_json = GetLanguageJson(lang);
+
+    const continent_label = document.getElementById('tool_continent');
+    continent_label.innerHTML = continent_json.america;
+  
+    $('#switch_continent_america').on('click', evt => {
+        evt.preventDefault();
+        continent_label.innerHTML = continent_json.america;
+    });
+
+    $('#switch_continent_asia_africa').on('click', evt => {
+        evt.preventDefault();
+        continent_label.innerHTML = continent_json.asia_africa;
+    });
+
+    $('#switch_continent_europe').on('click', evt => {
+        evt.preventDefault();
+        continent_label.innerHTML = continent_json.europa;
+    });
+
+    $('#switch_continent_global').on('click', evt => {
+        evt.preventDefault();
+        continent_label.innerHTML = continent_json.global;
+    });
+
+
     _auth_modal = new bootstrap.Modal(document.querySelector("#exampleModal"))
     _tools_modal = new bootstrap.Modal(document.querySelector("#exampleModal2"))
     _reset_pass_modal = new bootstrap.Modal(document.querySelector("#request-reset"))

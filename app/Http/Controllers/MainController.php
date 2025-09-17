@@ -26,7 +26,7 @@ class MainController extends Controller
         return view('home', [
             'reports' => $reports,
             'token' => $token
-        ]);
+        ]); 
     }
 
     public function tools(Request $request, $tab = '1', Country $country = null, Country $compareCountry = null) {

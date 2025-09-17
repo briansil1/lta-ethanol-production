@@ -22,7 +22,7 @@ Route::group(['prefix' => 'en', 'middleware' => 'translate'], function() {
     Route::get('/get-components-options/{country?}', '\App\Http\Controllers\ComponentController@getComponentsList')->middleware(['auth', 'verified'])->name('get-components-list');
     Route::get('/download-profile-report', '\App\Http\Controllers\MainController@downloadProfile')->name('profile-pdf-en');
     Route::get('/download-emission-report', '\App\Http\Controllers\MainController@downloadEmission')->name('emission-file-en');
-    Route::get('/download-components-report', '\App\Http\Controllers\MainController@downloadComponents')->name('components-file-en');
+    Route::get('/download-components-report', '\App\Http\Controllers\MainController@downloadComponents')->name('components-file-en'); 
     Route::get('component/price-update/{country?}/{gasolineRegular?}/{gasolinePremium?}/{normalButane?}/{ethanol?}/{emtbe?}/{btxWeighted?}', '\App\Http\Controllers\ComponentController@getPriceUpdateResults')->middleware(['auth', 'verified'])->name('price-update-get-results');
 });
 
