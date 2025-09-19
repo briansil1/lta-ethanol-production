@@ -20,8 +20,11 @@ function GetLanguageJson(lang) {
 function getEnglishJson() {
     return {
                 'america': 'LATIN AMERICA',
+                'america_id': '1',
                 'asia_africa': 'ASIA-AFRICA',
+                'asia_africa_id': '3',
                 'europa': 'EUROPE',
+                'europa_id': '2',
                 'global': 'GLOBAL'
             }
 }
@@ -29,8 +32,11 @@ function getEnglishJson() {
 function getSpanishJson() {
     return {
                 'america': 'AMÉRICA LATINA',
+                'america_id': '1',
                 'asia_africa': 'ASIA-AFRICA',
+                'asia_africa_id': '3',
                 'europa': 'EUROPA',
+                'europa_id': '2',
                 'global': 'GLOBAL'
             }
 }
@@ -51,20 +57,26 @@ $(function () {
 
     const continent_label = document.getElementById('tool_continent');
     continent_label.innerHTML = continent_json.america;
+
+    const continent_id = document.getElementById('continent_hidden');
+    continent_id.innerHTML = continent_json.america_id;
   
     $('#switch_continent_america').on('click', evt => {
         evt.preventDefault();
         continent_label.innerHTML = continent_json.america;
+        continent_id.value = continent_json.america_id;
     });
 
     $('#switch_continent_asia_africa').on('click', evt => {
         evt.preventDefault();
         continent_label.innerHTML = continent_json.asia_africa;
+        continent_id.value = continent_json.asia_africa_id;
     });
 
     $('#switch_continent_europe').on('click', evt => {
         evt.preventDefault();
         continent_label.innerHTML = continent_json.europa;
+        continent_id.value = continent_json.europa_id;
     });
 
     $('#switch_continent_global').on('click', evt => {

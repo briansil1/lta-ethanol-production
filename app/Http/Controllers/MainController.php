@@ -34,6 +34,16 @@ class MainController extends Controller
             return redirect(route(__('routes.home')));
         }
 
+        // if (!session('continent_iddsd')) {
+        //     return redirect(route(__('routes.home')));
+        // }
+
+        // if (!session('continent_iddsd')) {
+        //     return redirect(route(__('routes.home')));
+        // }
+       
+        $continent_id = session('continent_id');
+
         $locale = app()->getLocale();
         $base_l = explode('_', $locale)[0];
         $locale = Locale::where('code', $locale)->first();
@@ -41,8 +51,14 @@ class MainController extends Controller
             $locale = Locale::where('code', $base_l)->first();
         }
 
-        $country_profiles = Profile::select('country_id')->where('country_id', '<>', env('APP_EUROPE_ID'))->groupBy('country_id')->get();
+        // $country_profiles = Profile::select('country_id')->where('country_id', '<>', env('APP_EUROPE_ID'))->groupBy('country_id')->get();
+        $country_profiles = Profile::join('countries', 'countries.id', '=', 'profiles.country_id')
+            ->join('regions', 'regions.id', '=', 'countries.region_id')
+            ->join('continents', 'continents.id', '=', 'regions.continent_id')
+            ->where('continents.id', $continent_id)
+            ->select('country_id')->where('country_id', '<>', env('APP_EUROPE_ID'))->groupBy('country_id')->get();
         $c_ids = [];
+
         foreach ($country_profiles as $profile) {
             $c_ids[] = $profile->country_id;
         }

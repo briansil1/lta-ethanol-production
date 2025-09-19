@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Session;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -35,6 +36,7 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request)
     {
         app()->setLocale($request->user_locale);
+        Session::put('continent_id', $request->continent_hidden);
 
         $request->authenticate();
 

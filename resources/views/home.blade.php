@@ -36,8 +36,7 @@
                 <main id="main" role="main" class="site-main">
                     <div class="mg-banded-primary-darkest text-white white-links antialiased">
                         <input type="hidden" class="form-control" id="user_locale_hidden" aria-label="user_locale_hidden" aria-describedby="user_locale_hidden" value="{{ app()->getLocale() }}">
-                        <input type="hidden" class="form-control" id="continent_hidden" aria-label="continent_hidden" aria-describedby="continent_hidden" value="0">
-                    </div>
+                       </div>
                     <div class="back-blue text-center">
                         <h2 class="h1 uppercase text-2xl md:text-5xl text-white container oswald">{{ __('main.content.profiles') }} <br> {{ __('main.content.profiles-2') }}</h2>
                         <h3 class="text-white mt-0 pt-0 oswald">
@@ -210,6 +209,7 @@
                                 <div class="d-flex justify-content-center pb-5 mb-5">
                                     <form id="login-form" method="post" action="{{ route('login') }}" class="px-3 py-5 col-lg-8 col-12 pb-5">
                                         <input type="hidden" name="user_locale" value="{{ app()->getLocale() }}" />
+                                        <input type="hidden" class="form-control" name="continent_hidden" id="continent_hidden" aria-label="continent_hidden" aria-describedby="continent_hidden" value="1">
                                         <div class="login-errors-container mb-3 d-none">
                                             <label for="" class="form-label login-errors"></label>
                                         </div>
