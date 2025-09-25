@@ -67,6 +67,8 @@
         var _getImpactFileUrl = () => '{{ route(__('routes.emission-file')) }}';
         var _getPriceUpdateResultsURL = (country, gasolineRegular, gasolinePremium, normalButane, ethanol, emtbe, btxWeighted) => '{{ route(__('routes.price-update-results')) }}/' + country + (gasolineRegular ? '/' + gasolineRegular : '') + (gasolinePremium ? '/' + gasolinePremium : '') + (normalButane ? '/' + normalButane : '') + (ethanol ? '/' + ethanol : '') + (emtbe ? '/' + emtbe : '') + (btxWeighted ? '/' + btxWeighted : '');
         var _getGhgByCountryURL = (country) => '{{ route('get-ghg-by-country') }}/' + country;
+        var _get_change_continent = (continent_id) => '{{ route(__('routes.tools-continent')) }}/' + continent_id;
+
     </script>
 @endsection
 
@@ -93,9 +95,55 @@
                     <div class="mg-banded-primary-darkest text-white white-links antialiased">
                     </div>
                     <div class="back-blue text-center">
+
+                        <input type="hidden" class="form-control" id="user_locale_hidden" aria-label="user_locale_hidden" aria-describedby="user_locale_hidden" value="{{ app()->getLocale() }}">
+                        
                         <h2 class="h1 uppercase text-2xl md:text-5xl container oswald"><a href="{{ route(__('routes.home')) }}" class="text-white">{{ __('dynamic.content.profiles') }}</a></h2>
-                        <h3 class="text-white mt-0 pt-0 oswald">{{ __('dynamic.content.america') }}</h3>
+                        
+                        <label id="tool_continent"  class="text-white mt-0 pt-0 oswald" aria-label="tool_continent" aria-describedby="tool_continent">@if (isset($continent_text)) {{ $continent_text }} @endif</label>
                         <h3 class="text-white mt-0 pt-0 oswald">{{ __('dynamic.content.dynamic-tool') }}</h3>
+
+
+                        <div class="dynamic-flex-area md:flex flex-wrap justify-center text-shadow">
+                            <a href="#" id="switch_continent_america" class="flex-1 mg-button mg-button--larger mg-button--tertiary mx-4 p-3 flex  items-center text-base md:text-lg lg:text-3xl " style="flex-direction: column;">
+                                <div class="mx-auto w-100">
+                                    <img src="{{ asset('images/map.png') }}" alt="" class="hero-sec-img">
+                                
+                                </div>
+                                <p class="card-p">
+                                    {{ __('main.content.america') }}
+                                </p>
+                            </a>
+                            <a href="#" id="switch_continent_asia_africa" class="flex-1 mg-button mg-button--larger mg-button--tertiary mx-4 p-3 flex  items-center text-base md:text-lg lg:text-3xl " style="flex-direction: column;">
+                                <div class="mx-auto w-100">
+                                    <img src="{{ asset('images/map.png') }}" alt="" class="hero-sec-img">
+                                
+                                </div>
+                                <p class="card-p">
+                                    {{ __('main.content.asia-africa') }}
+                                </p>
+                            </a>
+                            <a href="#" id="switch_continent_europe" class="flex-1 mg-button mg-button--larger mg-button--tertiary mx-4 p-3 flex  items-center text-base md:text-lg lg:text-3xl " style="flex-direction: column;">
+                                <div class="mx-auto w-100">
+                                    <img src="{{ asset('images/map.png') }}" alt="" class="hero-sec-img">
+                                
+                                </div>
+                                <p class="card-p">
+                                    {{ __('main.content.europe') }}
+                                </p>
+                            </a>
+                            <!-- <a href="#" id="switch_continent_global" class="flex-1 mg-button mg-button--larger mg-button--tertiary mx-4 p-3 flex  items-center text-base md:text-lg lg:text-3xl " style="flex-direction: column;">
+                                <div class="mx-auto w-100">
+                                    <img src="{{ asset('images/map.png') }}" alt="" class="hero-sec-img">
+                                
+                                </div>
+                                <p class="card-p">
+                                    {{ __('main.content.global') }}
+                                </p>
+                            </a> -->
+                        </div>
+
+
                     </div>
                 </main>
             </div>

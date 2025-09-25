@@ -60,23 +60,29 @@ $(function () {
 
     const continent_id = document.getElementById('continent_hidden');
     continent_id.innerHTML = continent_json.america_id;
+
+    const continent_text = document.getElementById('continent_text_hidden');
+    continent_text.value = continent_json.america;
   
     $('#switch_continent_america').on('click', evt => {
         evt.preventDefault();
         continent_label.innerHTML = continent_json.america;
         continent_id.value = continent_json.america_id;
+        continent_text.value = continent_json.america;
     });
 
     $('#switch_continent_asia_africa').on('click', evt => {
         evt.preventDefault();
         continent_label.innerHTML = continent_json.asia_africa;
         continent_id.value = continent_json.asia_africa_id;
+        continent_text.value = continent_json.asia_africa;
     });
 
     $('#switch_continent_europe').on('click', evt => {
         evt.preventDefault();
         continent_label.innerHTML = continent_json.europa;
         continent_id.value = continent_json.europa_id;
+        continent_text.value = continent_json.europa;
     });
 
     $('#switch_continent_global').on('click', evt => {

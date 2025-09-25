@@ -31,8 +31,16 @@ class CreateTableRegions extends Migration
             [ 'continent_id' => '1', 'name' => 'north-america', 'code' => 'NORAM'],
             [ 'continent_id' => '1', 'name' => 'latin-america', 'code' => 'LATAM'],
             [ 'continent_id' => '2', 'name' => 'europe', 'code' => 'EURO'],
-            [ 'continent_id' => '3', 'name' => 'asia', 'code' => 'ASIA'],
-            [ 'continent_id' => '3', 'name' => 'africa', 'code' => 'AFRI'],
+            [ 'continent_id' => '2', 'name' => 'europa27', 'code' => 'EU27'],
+            [ 'continent_id' => '2', 'name' => 'north-europe', 'code' => 'NORE'],
+            [ 'continent_id' => '2', 'name' => 'west-europe', 'code' => 'WESE'],
+            [ 'continent_id' => '2', 'name' => 'east-europe', 'code' => 'EASE'],
+            [ 'continent_id' => '2', 'name' => 'central-europe', 'code' => 'CENE'],
+            [ 'continent_id' => '2', 'name' => 'south-europe', 'code' => 'SOUE'],
+            [ 'continent_id' => '2', 'name' => 'british-isles', 'code' => 'BRITI'],
+            [ 'continent_id' => '3', 'name' => 'eastern-asia', 'code' => 'EASTAS'],
+            [ 'continent_id' => '3', 'name' => 'southeast-asia', 'code' => 'SOUTAS'],
+            [ 'continent_id' => '3', 'name' => 'africa', 'code' => 'AFR'],
             [ 'continent_id' => '4', 'name' => 'general', 'code' => 'GEN'],
         ]);
     }

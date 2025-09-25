@@ -1,4 +1,81 @@
+let continent_names_json = {};
+
+function GetLanguageJsonn(lang) {
+
+  switch (lang) {
+    case 'en_US':
+      continent_names_json = getEnglishJsonn();
+      break;
+    case 'es_MX':
+      continent_names_json = getSpanishJsonn();
+    break;
+    default:
+      continent_names_json = getEnglishJsonn();
+  }
+
+  return continent_names_json;
+}
+
+function getEnglishJsonn() {
+    return {
+                'america': 'LATIN AMERICA',
+                'america_id': '1',
+                'asia_africa': 'ASIA-AFRICA',
+                'asia_africa_id': '3',
+                'europa': 'EUROPE',
+                'europa_id': '2',
+                'global': 'GLOBAL'
+            }
+}
+
+function getSpanishJsonn() {
+    return {
+                'america': 'AMÉRICA LATINA',
+                'america_id': '1',
+                'asia_africa': 'ASIA-AFRICA',
+                'asia_africa_id': '3',
+                'europa': 'EUROPA',
+                'europa_id': '2',
+                'global': 'GLOBAL'
+            }
+}
+
+
 $(function () {
+
+    const inputHiddenLanguage = $('#user_locale_hidden').val();
+    let lang = "";
+
+    if (inputHiddenLanguage) {
+        lang = inputHiddenLanguage;
+    }
+    else{
+        lang = 'en_US';
+    }
+
+    continent_names_json = GetLanguageJsonn(lang);
+
+    const continent_label = document.getElementById('tool_continent');
+    // continent_label.innerHTML = continent_names_json.america;
+  
+    $('#switch_continent_america').on('click', evt => {
+        evt.preventDefault();
+        continent_label.innerHTML = continent_names_json.america;
+        window.location.href = _get_change_continent(1);
+    });
+
+    $('#switch_continent_asia_africa').on('click', evt => {
+        evt.preventDefault();
+        continent_label.innerHTML = continent_names_json.asia_africa;
+        window.location.href = _get_change_continent(3);
+    });
+
+    $('#switch_continent_europe').on('click', evt => {
+        evt.preventDefault();
+        continent_label.innerHTML = continent_names_json.europa;
+        window.location.href = _get_change_continent(2);
+    });
+
     $('.lang-select').off('change').on('change', function (evt) {
         window.location.replace(this.value);
     });
@@ -19,6 +96,7 @@ $(function () {
            new_url[5] = _current_tab;
            this.value = (new_url.join('/'));
        });
+       
 
     });
 

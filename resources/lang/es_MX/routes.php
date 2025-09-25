@@ -11,5 +11,6 @@ return [
     'components-file' => 'components-file-es',
     'components-list' => 'obtener-lista-componentes',
     'price-update-results' => 'precio-actualizacion-obtener-resultados',
+    'tools-continent' => 'herramientas-dinamicas-continente',
 ];
 

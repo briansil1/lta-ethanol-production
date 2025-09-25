@@ -3,9 +3,14 @@
         {{ __('dynamic.content.component-tab.first-paragraph') }}
     </p>
     <div class="off-white-2 border-radius-5 p-1">
-        <img src="{{ asset('images/' . __('dynamic.images.component_blending')) }}" class="img-fluid">
+
+        @if ($continent_id == '1')
+            <img src="{{ asset('images/' . __('dynamic.images.component_blending')) }}" class="img-fluid">
+        @endif
+        
     </div>
 </div>
+
 <div class="row p-4">
     <div class="col-md-4">
         <img src="{{ asset('images/'  . __('dynamic.images.component_benefits')) }}" class="img-fluid">
