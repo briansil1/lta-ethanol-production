@@ -20,7 +20,7 @@ class CreateTableRegions extends Migration
             $table->id();
             $table->integer('continent_id');
             $table->string('name', 150);
-            $table->string('code', 5);
+            $table->string('code', 10);
             $table->timestamps();  
         });
 
