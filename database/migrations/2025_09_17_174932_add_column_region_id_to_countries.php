@@ -92,13 +92,13 @@ class AddColumnRegionIdToCountries extends Migration
             ['region_id' => '6', 'name' => 'Spain', 'code' => 'sp'],
             ['region_id' => '6', 'name' => 'Sweden', 'code' => 'sw'],
             ['region_id' => '6', 'name' => 'UK', 'code' => 'uk'],
-            ['region_id' => '7', 'name' => 'Vietnam', 'code' => 'vm'],
-            ['region_id' => '7', 'name' => 'Malaysia', 'code' => 'my'],
-            ['region_id' => '7', 'name' => 'Thailand', 'code' => 'th'],
-            ['region_id' => '7', 'name' => 'Taiwan', 'code' => 'tw'],
-            ['region_id' => '7', 'name' => 'Japan', 'code' => 'ja'],
-            ['region_id' => '7', 'name' => 'South Korea', 'code' => 'ks'],
-            ['region_id' => '8', 'name' => 'Nigeria', 'code' => 'ni']            
+            ['region_id' => '14', 'name' => 'Vietnam', 'code' => 'vm'],
+            ['region_id' => '14', 'name' => 'Malaysia', 'code' => 'my'],
+            ['region_id' => '14', 'name' => 'Thailand', 'code' => 'th'],
+            ['region_id' => '14', 'name' => 'Taiwan', 'code' => 'tw'],
+            ['region_id' => '14', 'name' => 'Japan', 'code' => 'ja'],
+            ['region_id' => '14', 'name' => 'South Korea', 'code' => 'ks'],
+            ['region_id' => '16', 'name' => 'Nigeria', 'code' => 'ni']            
         ]);
 
     }
