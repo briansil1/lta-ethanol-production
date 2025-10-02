@@ -40,7 +40,7 @@ return [
             'benefits-3' => 'Through iterations, the model obtains the %v/v of the components to be blended with 10%, 15%, 20%, 25% and 30% of ethanol, in such a way that the final blend complies with the required properties of a finished gasoline by country.',
             'comparative-section' => 'Comparative section',
             'instructions-1' => 'In this section you can graphically compare the available blending components for the different types of gasolines in the selected countries.',
-            'instructions-2' => 'The average content of the available components used to produce gasoline, and their average prices in 2019 are as follows:',
+            'instructions-2' => 'The average content of the available components used to produce gasoline, and their average prices in 2024 are as follows:',
             'instructions-3' => 'Possible optimizations of the blending components for gasoline production can also be plotted, incorporating different levels of ethanol.',
             'instructions-4' => 'By placing the mouse cursor over the bars in the chart, you can see the percentages of the components in the gasoline for the selected countries, pointing at the top of the chart the production costs of each level of ethanol blending.',
             'instructions-5' => 'Prices vary by adjusting the gasoline components for blends with ethanol,  reaching the minimum octane number allowed by the country (constant octane number), or simply adding ethanol without limiting the octane number (increased octane number). Comparisons can be made with gasoline from several countries or from the same country.',
