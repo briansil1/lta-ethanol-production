@@ -11,8 +11,9 @@
                 <h4 class="m-0">{{ __('dynamic.content.ghg-tab.circular-graph-title-greet') }}</h4>
             </div>
             <div class="p-2 bd-highlight">
-                <img src="{{ asset('images/' . $country->name . '/' . __('dynamic.images.life_cycle_emmision')) }}" class="img-fluid" onerror="if (this.src != '/images/{{ __('dynamic.images.imports_default') }}') this.src = '/images/{{ __('dynamic.images.imports_default') }}';">
+                <img src="{{ asset('images/'  . __('dynamic.images.life_cycle_emmision')) }}" class="img-fluid">
             </div>
+            
         </div>
     </div>
     <div class="col-md-6">
@@ -21,7 +22,7 @@
                 <h4 class="m-0">{{ __('dynamic.content.ghg-tab.ipcc-graph-title-greet') }}</h4>
             </div>
             <div class="p-2 bd-highlight">
-                <img src="{{ asset('images/' . $country->name . '/' . __('dynamic.images.ghg_fuels_per_year')) }}" class="img-fluid">
+                <img src="{{ asset('images/'  . __('dynamic.images.ghg_fuels_per_year')) }}" class="img-fluid">
             </div>
         </div>
     </div>
@@ -50,7 +51,7 @@
         <h4>{{ __('countries.' . $country->name) }}</h4>
     </div>
     <div class="col-md-6 align-self-end text-right">
-        <button class="btn btn-primary download-impact mb-3">{{ __('dynamic.content.profile-tab.download-button') }}</button>
+        <button class="btn btn-primary download-ghg mb-3">{{ __('dynamic.content.profile-tab.download-button') }}</button>
     </div>
     <div class="col-12 text-left">
         <p class="italic">

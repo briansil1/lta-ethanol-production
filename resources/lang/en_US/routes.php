@@ -12,4 +12,5 @@ return [
     'components-list' => 'get-components-list',
     'price-update-results' => 'price-update-get-results',
     'tools-continent' => 'dynamic-tools-continent',
+    'ghg-file' => 'ghg-file-en',
 ];

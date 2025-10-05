@@ -175,12 +175,12 @@ return [
         'ghg-tab' => [
             'first-paragraph' => 'La Agenda Global en Acción Climática llama a paises, ciudades y regiones, empresas y miembros de la sociedad civil en todo el mundo para lograr economías climáticame resilientes y de bajo carbono en apoyo al Acuerdo de París. El transporte por carretera representa el 15% del total de emisiones de gases de efecto invernadero - GEI (IPCC,2023).',
             'second-paragraph' => 'Las mezclas de etanol con gasoline son una práctica internacional reconocidad que ofrece beneficios en la reducción de emisiones en el corto plazo. Al implementarse, estas mezclas reducen las emisiones de gases de efecto invernadero, mejora la Calidad del aire y tiene ventajas económicas para los consumidores.  El etanol, al ser un combustible removable, reduce nuestra dependencia en el petróleo. Su alto contenido de octano y bajo contenido de azufre permite mejorar la calidad de combustible mezclado, lo que contribuye a ciudades con aire mas limpio. Los biocombustibles son importantes en la solución para alcanzar las metas de reducción en el sector transporte.',
-            'third-paragraph' => 'La reducción de GEI para cada país se calculan utilizando la metodologías de emisiones de ciclo de vida RED II y GREET  y se comparan con las metas vigentes.',
+            'third-paragraph' => 'La reducción de GEI para cada país se calculan utilizando la metodologías de emisiones de ciclo de vida RED III y GREET  y se comparan con las metas vigentes.',
             'compare-select' => 'Seleccionar',
             'ghg-note' => 'Escenario para metas Sustentables y políticas ambientales del IPCC, 2023.',
-            'ghg_redii' => 'Ciclo de Vida Emisiones RED II',
+            'ghg_redii' => 'Ciclo de Vida Emisiones RED III',
             'ghg_greet' => 'Ciclo de Vida Emisiones GREET',
-            'graph-title-redii' => 'Ciclo de Vida Emisiones RED II',
+            'graph-title-redii' => 'Ciclo de Vida Emisiones RED III',
             'graph-title-greet' => 'Ciclo de Vida Emisiones GREET',
             'circular-graph-title-greet' => 'Emisiones Globales GEI de 2023',
             'ipcc-graph-title-greet' => 'IPCC Escenario de Desarrollo Sustentable del Sector Transporte, 2023',
@@ -229,6 +229,7 @@ return [
     'pdf-files' => [
         'profile-pdf-filename' => 'perfiles_descarga.xlsx',
         'emission-filename' => 'emisiones_descarga.xlsx',
-        'component-pdf-filename' => 'mezcla_componentes.xlsx'
+        'component-pdf-filename' => 'mezcla_componentes.xlsx',
+        'ghg-filename' => 'ghg_descarga.xlsx'
     ],
 ];

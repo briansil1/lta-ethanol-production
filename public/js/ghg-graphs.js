@@ -41,8 +41,8 @@ $( function() {
         $(this).off().on('click', changeGraphTabGhg);
     });
 
-    $('.download-impact').off().on('click', function (evt) {
-        window.open(_getImpactFileUrl(), '_blank');
+    $('.download-ghg').off().on('click', function (evt) {
+        window.open(_getGhgFileUrl(), '_blank');
     })
 
     if (country_id > 0 && _current_tab == '4') {
@@ -71,7 +71,7 @@ function changeGraphTabGhg() {
                     const graphDataGhg = {
                         labels: ['E0', 'E10', 'E15', 'E20', 'E25', 'E30'],
                         datasets: [{
-                            label: 'RED II',
+                            label: 'RED III',
                             data: [ghg_redii['e0'], ghg_redii['e10'], ghg_redii['e15'], ghg_redii['e20'], ghg_redii['e25'], ghg_redii['e30']],
                             backgroundColor: '#0A5D74',
                             borderColor: '#0A5D74',

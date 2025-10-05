@@ -68,6 +68,7 @@
         var _getPriceUpdateResultsURL = (country, gasolineRegular, gasolinePremium, normalButane, ethanol, emtbe, btxWeighted) => '{{ route(__('routes.price-update-results')) }}/' + country + (gasolineRegular ? '/' + gasolineRegular : '') + (gasolinePremium ? '/' + gasolinePremium : '') + (normalButane ? '/' + normalButane : '') + (ethanol ? '/' + ethanol : '') + (emtbe ? '/' + emtbe : '') + (btxWeighted ? '/' + btxWeighted : '');
         var _getGhgByCountryURL = (country) => '{{ route('get-ghg-by-country') }}/' + country;
         var _get_change_continent = (continent_id) => '{{ route(__('routes.tools-continent')) }}/' + continent_id;
+        var _getGhgFileUrl = () => '{{ route(__('routes.ghg-file')) }}';
 
     </script>
 @endsection

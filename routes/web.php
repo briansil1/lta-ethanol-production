@@ -22,6 +22,7 @@ Route::group(['prefix' => 'en', 'middleware' => 'translate'], function() {
     Route::get('/get-components-options/{country?}', '\App\Http\Controllers\ComponentController@getComponentsList')->middleware(['auth', 'verified'])->name('get-components-list');
     Route::get('/download-profile-report', '\App\Http\Controllers\MainController@downloadProfile')->name('profile-pdf-en');
     Route::get('/download-emission-report', '\App\Http\Controllers\MainController@downloadEmission')->name('emission-file-en');
+    Route::get('/download-ghg-report', '\App\Http\Controllers\MainController@downloadGhg')->name('ghg-file-en');
     Route::get('/download-components-report', '\App\Http\Controllers\MainController@downloadComponents')->name('components-file-en'); 
     Route::get('component/price-update/{country?}/{gasolineRegular?}/{gasolinePremium?}/{normalButane?}/{ethanol?}/{emtbe?}/{btxWeighted?}', '\App\Http\Controllers\ComponentController@getPriceUpdateResults')->middleware(['auth', 'verified'])->name('price-update-get-results');
     Route::get('/dynamic-tools-continent/{tab?}/{country?}/{compareCountry?}', '\App\Http\Controllers\MainController@toolsContinent')->name('dynamic-tools-continent');
@@ -35,6 +36,7 @@ Route::group(['prefix' => 'es', 'middleware' => 'translate'], function() {
     Route::get('/obtener-lista-components/{country?}', '\App\Http\Controllers\ComponentController@getComponentsList')->middleware(['auth', 'verified'])->name('obtener-lista-componentes');
     Route::get('/descargar-perfil-reporte', '\App\Http\Controllers\MainController@downloadProfile')->name('profile-pdf-es');
     Route::get('/descargar-emision-reporte', '\App\Http\Controllers\MainController@downloadEmission')->name('emission-file-es');
+    Route::get('/descargar-ghg-reporte', '\App\Http\Controllers\MainController@downloadGhg')->name('ghg-file-es');
     Route::get('/descargar-componentes-reporte', '\App\Http\Controllers\MainController@downloadComponents')->name('components-file-es');
     Route::get('actualizacion-precio-componente/{country?}/{gasolineRegular?}/{gasolinePremium?}/{normalButane?}/{ethanol?}/{emtbe?}/{btxWeighted?}', '\App\Http\Controllers\ComponentController@getPriceUpdateResults')->middleware(['auth', 'verified'])->name('precio-actualizacion-obtener-resultados');
     Route::get('/herramientas-dinamicas-continente/{tab?}/{country?}/{compareCountry?}', '\App\Http\Controllers\MainController@toolsContinent')->name('herramientas-dinamicas-continente');

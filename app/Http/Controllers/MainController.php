@@ -189,6 +189,17 @@ class MainController extends Controller
         }
     }
 
+    public function downloadGhg() {
+        if (!Auth::check()) {
+            throw new AuthenticationException();
+        }
+        if (file_exists(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.ghg-filename')))) {
+            return response()->download(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.ghg-filename')));
+        } else {
+            throw new FileNotFoundException('storage/app/pdfs/' . __('dynamic.pdf-files.ghg-filename'));
+        }
+    }
+
     
 
     public function toolsContinent($continent_id = null) {

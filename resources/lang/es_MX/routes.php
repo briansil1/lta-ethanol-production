@@ -12,5 +12,6 @@ return [
     'components-list' => 'obtener-lista-componentes',
     'price-update-results' => 'precio-actualizacion-obtener-resultados',
     'tools-continent' => 'herramientas-dinamicas-continente',
+    'ghg-file' => 'ghg-file-es',
 ];
 

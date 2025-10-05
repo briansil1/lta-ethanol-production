@@ -40,7 +40,7 @@ return [
             'benefits-3' => 'Mediante iteraciones el modelo obtiene el % v/v de los componentes a ser mezclados con 10%, 15% 20%, 25% y 30% de etanol, de tal manera que cumpla con las propiedades establecidas de una gasolina terminada.',
             'comparative-section' => 'Sección comparativa',
             'instructions-1' => 'En esta sección se pueden comparar gráficamente los componentes disponibles de mezcla para los distintos tipos de gasolina en el/los países seleccionados.',
-            'instructions-2' => 'El contenido promedio de los componentes disponibles utilizados para producir gasolina, y sus precios promedio a 2019 son los siguientes:',
+            'instructions-2' => 'El contenido promedio de los componentes disponibles utilizados para producir gasolina, y sus precios promedio a 2024 son los siguientes:',
             'instructions-3' => 'También se pueden graficar posibles optimizaciones de los componentes de mezcla para la producción de gasolina, incorporando diferentes niveles de etanol',
             'instructions-4' => 'Al pasar el cursor por encima de las barras en la gráfica se puede observar lo porcentajes de los componentes de la gasolina de los países seleccionados, notando en la parte superior los costos de producción que corresponden a cada nivel de mezcla con etanol.',
             'instructions-5' => 'Se puede ver cómo varían los precios al ajustar los componentes de la gasolina para las mezclas con etanol y llegar al octanaje mínimo permitido por el país (octanaje constante), o simplemente adicionar el etanol sin limitar el octanaje (aumento de número de octano). El incremento de etanol en la mezcla reduce el uso de componentes contaminantes y de mayor precio, permitiendo además cumplir con las requerimientos mínimos de octanaje de cada país. Los precios corresponden a un promedio de precios del mercado de referencia de 2024. Los precios se pueden actualizar utilizando el siguiente:',
@@ -175,11 +175,11 @@ return [
         'ghg-tab' => [
             'first-paragraph' => 'La Agenda Global en Acción Climática llama a paises, ciudades y regiones, empresas y miembros de la sociedad civil en todo el mundo para lograr economías climáticame resilientes y de bajo carbono en apoyo al Acuerdo de París. El transporte por carretera representa el 15% del total de emisiones de gases de efecto invernadero - GEI (IPCC,2023).',
             'second-paragraph' => 'Las mezclas de etanol con gasoline son una práctica internacional reconocidad que ofrece beneficios en la reducción de emisiones en el corto plazo. Al implementarse, estas mezclas reducen las emisiones de gases de efecto invernadero, mejora la Calidad del aire y tiene ventajas económicas para los consumidores.  El etanol, al ser un combustible removable, reduce nuestra dependencia en el petróleo. Su alto contenido de octano y bajo contenido de azufre permite mejorar la calidad de combustible mezclado, lo que contribuye a ciudades con aire mas limpio. Los biocombustibles son importantes en la solución para alcanzar las metas de reducción en el sector transporte.',
-            'third-paragraph' => 'La reducción de GEI para cada país se calculan utilizando la metodologías de emisiones de ciclo de vida RED II y GREET  y se comparan con las metas vigentes.',
+            'third-paragraph' => 'La reducción de GEI para cada país se calculan utilizando la metodologías de emisiones de ciclo de vida RED III y GREET  y se comparan con las metas vigentes.',
             'compare-select' => 'Seleccionar',
             'ghg-note' => 'Escenario para metas Sustentables y políticas ambientales del IPCC, 2023.',
             'ghg' => 'GHG',
-            'graph-title-redii' => 'Ciclo de Vida Emisiones RED II',
+            'graph-title-redii' => 'Ciclo de Vida Emisiones RED III',
             'graph-title-greet' => 'Ciclo de Vida Emisiones GREET',
             'circular-graph-title-greet' => 'Emisiones Globales GEI de 2023',
             'ipcc-graph-title-greet' => 'IPCC Escenario de Desarrollo Sustentable del Sector Transporte, 2023',
@@ -228,6 +228,7 @@ return [
     'pdf-files' => [
         'profile-pdf-filename' => 'perfiles_descarga.xlsx',
         'emission-filename' => 'emisiones_descarga.xlsx',
-        'component-pdf-filename' => 'mezcla_componentes.xlsx'
+        'component-pdf-filename' => 'mezcla_componentes.xlsx',
+        'ghg-filename' => 'ghg_descarga.xlsx'
     ],
 ];

@@ -118,6 +118,7 @@
                 </main>
             </div>
         </div>
+
         <div id="reports-container" class="off-white pb-5">
             <div class="container">
                 <div class="user-info text-right brown-line @auth() @else hidden @endauth logout-container">
@@ -125,7 +126,9 @@
                 </div>
                 <div class="row mx-0 pt-3">
                     <div class="col-lg-6">
-                        <h3 class="mb-0">{{ __('main.content.america') }}</h3>
+                        <h3 class="mb-0"><label id="tool_continent_2"  class="mb-0" aria-label="tool_continent_2" aria-describedby="tool_continent_2"></label></h3>
+                        
+                        
                         <p>{{ __('main.content.report-section.description') }}</p>
                         <strong>{{ __('main.content.report-section.sections') }}</strong>
                         <div class="ps-lg-4 pt-2">
@@ -164,8 +167,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <img src="{{ asset(__('main.content.report-section.image-url')) }}" class="img-fluid" alt="">
+                    
+                    <div id="mapa_continente_americano" style="display: none;" class="col-lg-6">
+                        <img id="" src="{{ asset(__('main.content.report-section.image-url')) }}" class="img-fluid" alt="">
+                    </div>
+                    <div id="mapa_continente_asia" style="display: none;" class="col-lg-6">
+                        <img id="" src="{{ asset(__('main.content.report-section.image-url')) }}" class="img-fluid" alt="">
+                    </div>
+                    <div id="mapa_continente_europa" style="display: none;" class="col-lg-6">
+                        <img id="" src="{{ asset(__('main.content.report-section.image-url')) }}" class="img-fluid" alt="">
                     </div>
                 </div>
             </div>

@@ -175,10 +175,10 @@ return [
         'ghg-tab' => [
             'first-paragraph' => 'The Global Agenda for Climate Action calls for countries, cities and regions, businesses, and members of civil society around the world to to achieve a low-carbon and climate-resilient economies in support of the Paris Agreement. Road Transportation accounts for 15% of total GHG emissions (IPCC,2023).',
             'second-paragraph' => 'Ethanol gasoline blends are an internationally adopted practice that offer significant short-term benefits. When implemented, these blends can lead to reduced green-house gas emissions, improved air quality, and economic advantages for consumers. As a renewable fuel, ethanol decreases our reliance on oil. Its high-octane content also substantially enhances the quality of blended fuel, contributing to cleaner cities and lower pollutant emissions. Biofuels are an important solution to achieve reduction targets in the transportation sector.',
-            'third-paragraph' => 'The GHG emission reduction for each country is calculated using the GREET and the RED II life cycle GHG emission methodologies and compared to current Target.',
+            'third-paragraph' => 'The GHG emission reduction for each country is calculated using the GREET and the RED III life cycle GHG emission methodologies and compared to current Target.',
             'compare-select' => 'Select',
             'ghg' => 'GHG',
-            'graph-title-redii' => 'Life cycle Emissions RED II',
+            'graph-title-redii' => 'Life cycle Emissions RED III',
             'graph-title-greet' => 'Life cycle Emissions GREET',
             'circular-graph-title-greet' => 'Global GHG Emissions for 2023',
             'ipcc-graph-title-greet' => 'IPCC Transport Sector Sustainable Sector Scenario, 2023',
@@ -227,6 +227,7 @@ return [
     'pdf-files' => [
         'profile-pdf-filename' => 'profiles_download.xlsx',
         'emission-filename' => 'emissions_download.xlsx',
-        'component-pdf-filename' => 'blending_components.xlsx'
+        'component-pdf-filename' => 'blending_components.xlsx',
+        'ghg-filename' => 'ghg_download.xlsx'
     ],
 ];
