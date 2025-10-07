@@ -26,6 +26,7 @@ Route::group(['prefix' => 'en', 'middleware' => 'translate'], function() {
     Route::get('/download-components-report', '\App\Http\Controllers\MainController@downloadComponents')->name('components-file-en'); 
     Route::get('component/price-update/{country?}/{gasolineRegular?}/{gasolinePremium?}/{normalButane?}/{ethanol?}/{emtbe?}/{btxWeighted?}', '\App\Http\Controllers\ComponentController@getPriceUpdateResults')->middleware(['auth', 'verified'])->name('price-update-get-results');
     Route::get('/dynamic-tools-continent/{tab?}/{country?}/{compareCountry?}', '\App\Http\Controllers\MainController@toolsContinent')->name('dynamic-tools-continent');
+    Route::get('/static-home-continent/{continentId?}', '\App\Http\Controllers\MainController@homeContinent')->name('home-continent');
 });
 
 // Front-end Routes(Home, User login, sing-in, dynamic tools, and downloadable files routes spanish versión
@@ -40,6 +41,7 @@ Route::group(['prefix' => 'es', 'middleware' => 'translate'], function() {
     Route::get('/descargar-componentes-reporte', '\App\Http\Controllers\MainController@downloadComponents')->name('components-file-es');
     Route::get('actualizacion-precio-componente/{country?}/{gasolineRegular?}/{gasolinePremium?}/{normalButane?}/{ethanol?}/{emtbe?}/{btxWeighted?}', '\App\Http\Controllers\ComponentController@getPriceUpdateResults')->middleware(['auth', 'verified'])->name('precio-actualizacion-obtener-resultados');
     Route::get('/herramientas-dinamicas-continente/{tab?}/{country?}/{compareCountry?}', '\App\Http\Controllers\MainController@toolsContinent')->name('herramientas-dinamicas-continente');
+    Route::get('/static-hogar-continente/{continentId?}', '\App\Http\Controllers\MainController@homeContinent')->name('hogar-continente');
 });
 
 // Routes for emissions Tab

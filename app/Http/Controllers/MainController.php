@@ -18,6 +18,9 @@ use App\Models\Continent;
 class MainController extends Controller
 {
     public function home(Request $request, $token = false) {
+
+        $continent_name = __('main.content.america');
+
         $locale = app()->getLocale();
         $base_l = explode('_', $locale)[0];
         $locale = Locale::where('code', $locale)->first();
@@ -27,7 +30,40 @@ class MainController extends Controller
         $reports = $locale->reports()->where('active', 1)->orderBy('order', 'asc')->get();
         return view('home', [
             'reports' => $reports,
-            'token' => $token
+            'token' => $token,
+            'continent_id' => 1,
+            'continent_name' => $continent_name,
+        ]); 
+    }
+
+    public function homeContinent($continent_id = null, $token = false) {
+
+        switch ($continent_id) {
+            case 1:
+                $continent_name = __('main.content.america');
+                break;
+            case 2:
+                $continent_name = __('main.content.europe');
+                break;
+            case 3:
+                $continent_name = __('main.content.asia-africa');
+                break;
+            default:
+                $continent_name = __('main.content.america');
+        }
+
+        $locale = app()->getLocale();
+        $base_l = explode('_', $locale)[0];
+        $locale = Locale::where('code', $locale)->first();
+        if (empty($locale)) {
+            $locale = Locale::where('code', $base_l)->first();
+        }
+        $reports = $locale->reports()->where('active', 1)->orderBy('order', 'desc')->get();
+        return view('home', [
+            'reports' => $reports,
+            'token' => $token,
+            'continent_id' => $continent_id,
+            'continent_name' => $continent_name,
         ]); 
     }
 

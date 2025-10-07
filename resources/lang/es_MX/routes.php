@@ -13,5 +13,6 @@ return [
     'price-update-results' => 'precio-actualizacion-obtener-resultados',
     'tools-continent' => 'herramientas-dinamicas-continente',
     'ghg-file' => 'ghg-file-es',
+    'home-continent' => 'hogar-continente',
 ];
 

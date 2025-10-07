@@ -56,59 +56,20 @@ $(function () {
     }
 
     continent_json = GetLanguageJson(lang);
-
-    const continent_label = document.getElementById('tool_continent');
-    continent_label.innerHTML = continent_json.america;
-
-    const continent_label_2 = document.getElementById('tool_continent_2');
-    continent_label_2.innerHTML = continent_json.america;
-
-    const continent_id = document.getElementById('continent_hidden');
-    continent_id.innerHTML = continent_json.america_id;
-
-    const continent_text = document.getElementById('continent_text_hidden');
-    continent_text.value = continent_json.america;
-
-    const div_cont_america = document.getElementById('mapa_continente_americano');
-    div_cont_america.style.display = "block";
-
-    const div_cont_asia = document.getElementById('mapa_continente_asia');
-    div_cont_asia.style.display = "none";
-
-    const div_cont_europa = document.getElementById('mapa_continente_europa');
-    div_cont_europa.style.display = "none";
   
     $('#switch_continent_america').on('click', evt => {
         evt.preventDefault();
-        continent_label.innerHTML = continent_json.america;
-        continent_label_2.innerHTML = continent_json.america;
-        continent_id.value = continent_json.america_id;
-        continent_text.value = continent_json.america;
-        div_cont_europa.style.display = "none";
-        div_cont_asia.style.display = "none";
-        div_cont_america.style.display = "block";
+        window.location.href = _get_change_continent(1);
     });
 
     $('#switch_continent_asia_africa').on('click', evt => {
         evt.preventDefault();
-        continent_label.innerHTML = continent_json.asia_africa;
-        continent_label_2.innerHTML = continent_json.asia_africa;
-        continent_id.value = continent_json.asia_africa_id;
-        continent_text.value = continent_json.asia_africa;
-        div_cont_america.style.display = "none";
-        div_cont_europa.style.display = "none";
-        div_cont_asia.style.display = "block";
+        window.location.href = _get_change_continent(3);
     });
 
     $('#switch_continent_europe').on('click', evt => {
         evt.preventDefault();
-        continent_label.innerHTML = continent_json.europa;
-        continent_label_2.innerHTML = continent_json.europa;
-        continent_id.value = continent_json.europa_id;
-        continent_text.value = continent_json.europa;
-        div_cont_america.style.display = "none";
-        div_cont_asia.style.display = "none";
-        div_cont_europa.style.display = "block";
+        window.location.href = _get_change_continent(2);
     });
 
     $('#switch_continent_global').on('click', evt => {

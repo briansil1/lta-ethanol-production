@@ -11,9 +11,6 @@ class GhgController extends Controller
 {
     //
     public function getGhgByCountry(Country $country) {
-        // if ($emission === 'btx') {
-        //     $emission = 'benzene';
-        // }
         $emissions_type = ['ghg', 'ghg_redvsbase', 'ghgredvstarget'];
 
         $red_iis = $country->lifeCycleGhg()->where('methodology', 'RED II')->get();
@@ -36,8 +33,6 @@ class GhgController extends Controller
             ]
         ];
 
-
-
         $greets = $country->lifeCycleGhg()->where('methodology', 'GREET')->get();
         
         foreach ($greets as $greet) {
@@ -52,9 +47,6 @@ class GhgController extends Controller
         $response['data']['ghg_greet'] = $ghg_greet ? $ghg_greet->toArray() : [];
         $response['data']['redvsbase_greet'] = $ghg_greet_redvsbase ? $ghg_greet_redvsbase->toArray() : [];
         $response['data']['redvstarget_greet'] = $ghg_greet_redvstarget ? $ghg_greet_redvstarget->toArray() : [];
-    
-
-
         
         return response()->json($response);
     }

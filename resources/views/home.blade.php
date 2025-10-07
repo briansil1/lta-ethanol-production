@@ -22,6 +22,8 @@
         var _getPDFUrl = function (id) {
             return '{{ route('get-PDF') }}' + '/' + id;
         };
+
+        var _get_change_continent = (continent_id) => '{{ route(__('routes.home-continent')) }}/' + continent_id;
     </script>
 @endsection
 
@@ -40,8 +42,8 @@
                     <div class="back-blue text-center">
                         <h2 class="h1 uppercase text-2xl md:text-5xl text-white container oswald">{{ __('main.content.profiles') }} <br> {{ __('main.content.profiles-2') }}</h2>
                         <h3 class="text-white mt-0 pt-0 oswald">
-                            <label id="tool_continent"  class="text-white mt-0 pt-0 oswald" aria-label="tool_continent" aria-describedby="tool_continent"></label>
-                        </h3>{{--  {{ __('main.content.america') }} --}}
+                            <label id="tool_continent"  class="text-white mt-0 pt-0 oswald" aria-label="tool_continent" aria-describedby="tool_continent">{{ $continent_name }}</label>
+                        </h3>
                         <p class="text-white text-center">
                             {{ __('main.content.detail') }}
                         </p>
@@ -126,7 +128,7 @@
                 </div>
                 <div class="row mx-0 pt-3">
                     <div class="col-lg-6">
-                        <h3 class="mb-0"><label id="tool_continent_2"  class="mb-0" aria-label="tool_continent_2" aria-describedby="tool_continent_2"></label></h3>
+                        <h3 class="mb-0"><label id="tool_continent_2"  class="mb-0" aria-label="tool_continent_2" aria-describedby="tool_continent_2">{{ $continent_name }}</label></h3>
                         
                         
                         <p>{{ __('main.content.report-section.description') }}</p>
@@ -168,13 +170,13 @@
                         </div>
                     </div>
                     
-                    <div id="mapa_continente_americano" style="display: none;" class="col-lg-6">
+                    <div id="continent_america" style="display: @if( $continent_id != 1 ) none @endif" class="col-lg-6">
                         <img id="" src="{{ asset(__('main.content.report-section.image-url')) }}" class="img-fluid" alt="">
                     </div>
-                    <div id="mapa_continente_asia" style="display: none;" class="col-lg-6">
+                    <div id="continent_asia" style="display: @if( $continent_id != 3 ) none @endif" class="col-lg-6">
                         <img id="" src="{{ asset(__('main.content.report-section.image-url')) }}" class="img-fluid" alt="">
                     </div>
-                    <div id="mapa_continente_europa" style="display: none;" class="col-lg-6">
+                    <div id="continent_europe" style="display: @if( $continent_id != 2 ) none @endif" class="col-lg-6">
                         <img id="" src="{{ asset(__('main.content.report-section.image-url')) }}" class="img-fluid" alt="">
                     </div>
                 </div>
@@ -219,8 +221,8 @@
                                 <div class="d-flex justify-content-center pb-5 mb-5">
                                     <form id="login-form" method="post" action="{{ route('login') }}" class="px-3 py-5 col-lg-8 col-12 pb-5">
                                         <input type="hidden" name="user_locale" value="{{ app()->getLocale() }}" />
-                                        <input type="hidden" class="form-control" name="continent_hidden" id="continent_hidden" aria-label="continent_hidden" aria-describedby="continent_hidden" value="1">
-                                        <input type="hidden" class="form-control" name="continent_text_hidden" id="continent_text_hidden" aria-label="continent_text_hidden" aria-describedby="continent_text_hidden" value="{{ __('main.content.america') }}">
+                                        <input type="hidden" class="form-control" name="continent_hidden" id="continent_hidden" aria-label="continent_hidden" aria-describedby="continent_hidden" value="{{ $continent_id }}">
+                                        <input type="hidden" class="form-control" name="continent_text_hidden" id="continent_text_hidden" aria-label="continent_text_hidden" aria-describedby="continent_text_hidden" value="{{ $continent_name}}">
                                         <div class="login-errors-container mb-3 d-none">
                                             <label for="" class="form-label login-errors"></label>
                                         </div>
