@@ -130,6 +130,8 @@ return [
         'dynamic-tool-detail' => 'Usa nuestra herramienta para generar gráficas y cuadros comparativos sobre los parámetros, componentes y emisiones de la gasolina bajo diferentes niveles de mezcla de etanol en diferentes países de la región.',
         'report-section' => [
             'image-url' => 'images/map-sp.png',
+            'image-url-europe' => 'images/map-europe-sp.jpg',
+            'image-url-asia-africa' => 'images/map-asia-africa-sp.jpg',
             'description' => 'Perfiles de gasolina e impacto de las mezclas con etanol',
             'sections' => 'Secciones del estudio:',
             'sections-options-1' => 'Perfiles de gasolina por país.',

@@ -128,6 +128,8 @@ return [
         'dynamic-tool-detail' => 'Use our tool to create comparative graphs and tables with the parameters, components and gasoline emissions data for different ethanol blend levels in different countries in the region.',
         'report-section' => [
             'image-url' => 'images/map-en.png',
+            'image-url-europe' => 'images/map-europe-en.jpg',
+            'image-url-asia-africa' => 'images/map-asia-africa-en.jpg',
             'description' => 'Gasoline profiles and impact of ethanol blending.',
             'sections' => 'Report sections:',
             'sections-options-1' => 'Gasoline profile by country.',

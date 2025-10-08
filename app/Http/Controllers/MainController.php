@@ -58,7 +58,7 @@ class MainController extends Controller
         if (empty($locale)) {
             $locale = Locale::where('code', $base_l)->first();
         }
-        $reports = $locale->reports()->where('active', 1)->orderBy('order', 'desc')->get();
+        $reports = $locale->reports()->where('active', 1)->where('continent_id', $continent_id)->orderBy('order', 'asc')->get();
         return view('home', [
             'reports' => $reports,
             'token' => $token,

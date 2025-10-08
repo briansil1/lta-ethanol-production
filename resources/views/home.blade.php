@@ -174,10 +174,10 @@
                         <img id="" src="{{ asset(__('main.content.report-section.image-url')) }}" class="img-fluid" alt="">
                     </div>
                     <div id="continent_asia" style="display: @if( $continent_id != 3 ) none @endif" class="col-lg-6">
-                        <img id="" src="{{ asset(__('main.content.report-section.image-url')) }}" class="img-fluid" alt="">
+                        <img id="" src="{{ asset(__('main.content.report-section.image-url-asia-africa')) }}" class="img-fluid" alt="">
                     </div>
                     <div id="continent_europe" style="display: @if( $continent_id != 2 ) none @endif" class="col-lg-6">
-                        <img id="" src="{{ asset(__('main.content.report-section.image-url')) }}" class="img-fluid" alt="">
+                        <img id="" src="{{ asset(__('main.content.report-section.image-url-europe')) }}" class="img-fluid" alt="">
                     </div>
                 </div>
             </div>
