@@ -131,7 +131,7 @@ class ComponentController extends Controller {
                     $db_ethanol = $blendstok_constant_octane->ethanol == 'NULL' ? 0 : str_replace('%','', $blendstok_constant_octane->ethanol);
                     $db_ethanol = $db_ethanol == 0 ? 0 : $db_ethanol / 100;
                     $blendstoks_constant_octane_rows[str_replace('-', '_', $blendstok_constant_octane->blendstoks)] = [
-                        'price' => $blendstok_constant_octane->price,
+                        'price' => round( $blendstok_constant_octane->price, 2),
                         'bno_on' => $blendstok_constant_octane->bno_on,
                         'bno_rvp' => $blendstok_constant_octane->bno_rvp,
                         'logistica' => $blendstok_constant_octane->logistica,
