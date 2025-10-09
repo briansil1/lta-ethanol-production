@@ -24,11 +24,20 @@
     <div class="col-md-6">
         <div class="d-flex align-items-start flex-column bd-highlight mb-3 off-white-2 border-radius-5 p-1 min-height-350">
             <div class="mb-auto p-2 bd-highlight text-center w-100">
-                <h4 class="m-0">{{ __('dynamic.content.profile-tab.gasoline-components-title') }}</h4>
-                <p class="m-0 text-left">{{ __('dynamic.content.profile-tab.gasoline-components-text') }}</p>
+
+                @if ($continent_id == '1')
+                    <h4 class="m-0">{{ __('dynamic.content.profile-tab.gasoline-components-title') }}</h4>
+                    <p class="m-0 text-left">{{ __('dynamic.content.profile-tab.gasoline-components-text') }}</p>
+                @else
+                    <h4 class="m-0">{{ __('dynamic.content.profile-tab.demand-title') }}</h4>
+                @endif
             </div>
             <div class="p-2 bd-highlight">
-                <img src="{{ asset('images/' . $country->name . '/' . __('dynamic.images.components')) }}" class="img-fluid">
+                @if ($continent_id == '1')
+                    <img src="{{ asset('images/' . $country->name . '/' . __('dynamic.images.components')) }}" class="img-fluid">
+                @else
+                    <img src="{{ asset('images/' . $country->name . '/' . __('dynamic.images.demand')) }}" class="img-fluid">
+                @endif
             </div>
         </div>
     </div>
@@ -47,10 +56,18 @@
     <div class="col-md-6">
         <div class="d-flex align-items-start flex-column bd-highlight mb-3 off-white-2 border-radius-5 p-1 min-height-350">
             <div class="mb-auto p-2 bd-highlight text-center w-100">
-                <h4 class="m-0">{{ __('dynamic.content.profile-tab.demand-title') }}</h4>
+                @if ($continent_id == '1')
+                    <h4 class="m-0">{{ __('dynamic.content.profile-tab.demand-title') }}</h4>
+                @else
+                    <h4 class="m-0">{{ __('dynamic.content.profile-tab.exports-title') }}</h4>
+                @endif
             </div>
             <div class="p-2 bd-highlight">
-                <img src="{{ asset('images/' . $country->name . '/' . __('dynamic.images.demand')) }}" class="img-fluid">
+                @if ($continent_id == '1')
+                    <img src="{{ asset('images/' . $country->name . '/' . __('dynamic.images.demand')) }}" class="img-fluid">
+                @else
+                    <img src="{{ asset('images/' . $country->name . '/' . __('dynamic.images.export')) }}" class="img-fluid">
+                @endif
             </div>
         </div>
     </div>
@@ -93,6 +110,7 @@
                 <button class="btn btn-primary download-profile">{{ __('dynamic.content.profile-tab.download-button') }}</button>
             </div>
         </div>
+
         <div class="table-responsive">
             <table width="100%" border="1" cellpadding="0" cellspacing="0">
                 <tbody>

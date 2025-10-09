@@ -60,6 +60,6 @@ class AddColumnToReportsTable extends Migration
     public function down()
     {
         
-        DB::table('reports')->where('id', '>', 39)->delete();
+        DB::table('reports')->where('country_id', '>', 26)->delete();
     }
 }

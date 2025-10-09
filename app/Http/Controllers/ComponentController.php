@@ -28,6 +28,8 @@ class ComponentController extends Controller {
         'hydrocracked_gasoline' => '#F9EDB9',
         'low_octane_blendstock' => '#003e6a',
         'ethanol' => '#6ba53a',
+        'etbe' => '#5b6770',
+        'tame' => '#003e6a',
     ];
 
     public function getComponentsByCountry(Country $country, $gasoline = 'co', $grade = 1, Country $compare = null) {

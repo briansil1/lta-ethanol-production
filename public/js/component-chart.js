@@ -63,6 +63,8 @@ let components_array = {
     'hydrocracked_gasoline': '#F9EDB9',
     'low_octane_blendstock': '#003e6a',
     'ethanol': '#6ba53a',
+    'etbe': '#5b6770',
+    'tame': '#003e6a',
 };
 let currentChart = [];
 
@@ -354,7 +356,6 @@ function determinePriceUpdate(country_id, gasolineRegular, gasolinePremium, norm
             console.log(response);
         }
     });
-    
 
 }
 

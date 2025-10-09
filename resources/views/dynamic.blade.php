@@ -56,6 +56,8 @@
             'aromatics': '{{ __('dynamic.content.component-tab.legends.aromatics') }}',
             'raffinate': '{{ __('dynamic.content.component-tab.legends.raffinate') }}',
             'ethanol': '{{ __('dynamic.content.component-tab.legends.ethanol') }}',
+            'etbe': '{{ __('dynamic.content.component-tab.legends.etbe') }}',
+            'tame': '{{ __('dynamic.content.component-tab.legends.tame') }}',
         };
         var _getComponentImageURL = (country_name, rel) => (rel ? rel : '/') + 'images/' + country_name + '/{{ __('dynamic.images.component_comparison') }}';
         var _getComponentsListURL = (country) => '{{ route(__('routes.components-list')) }}/' + country;

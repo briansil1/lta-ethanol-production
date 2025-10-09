@@ -184,6 +184,6 @@ class LatamGhg extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('life_cycle_ghgs');
     }
 }
