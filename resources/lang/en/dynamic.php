@@ -93,6 +93,8 @@ return [
             'ron-95' => 'RON 95',
             'constant-octane-number' => 'Constant octane number',
             'increased-octane-number' => 'Increased octane number',
+            'gasoline-95' => 'Gasoline 95',
+            'gasoline-98' => 'Gasoline 98',
             'legends' => [
                 'catalytic_gasoline' => 'Catalytic gasoline',
                 'reformate' => 'Reformate',
@@ -112,7 +114,9 @@ return [
                 'ethanol' => 'Ethanol',
                 'hydrocracked_gasoline' => 'Hydrocracked gasoline',
                 'normal_pentane' => 'Normal pentane',
-                'low_octane_blendstock' => 'Low octane blendstock'
+                'low_octane_blendstock' => 'Low octane blendstock',
+                'etbe' => 'ETBE',
+                'tame' => 'TAME'
             ],
             'modal-price-update' => 'Please input the new prices. Prices should be spot reference prices in US dollars per gallon from the same period in time and place (e.g. US Gulf Coast).  If needed, prices can be obtained from the US Grains\’s “Ethanol Market and Price Data” Report.',
             'modal-price-update-fuel-component' => 'Fuel / Component',

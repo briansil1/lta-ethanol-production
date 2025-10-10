@@ -58,7 +58,7 @@ class MainController extends Controller
         if (empty($locale)) {
             $locale = Locale::where('code', $base_l)->first();
         }
-        $reports = $locale->reports()->where('active', 1)->where('continent_id', $continent_id)->orderBy('order', 'asc')->get();
+        $reports = $locale->reports()->where('active', 1)->where('continent_id', $continent_id)->get();
         return view('home', [
             'reports' => $reports,
             'token' => $token,
@@ -91,13 +91,13 @@ class MainController extends Controller
             ->join('regions', 'regions.id', '=', 'countries.region_id')
             ->join('continents', 'continents.id', '=', 'regions.continent_id')
             ->where('continents.id', $continent_id)
-            ->select('country_id')->where('country_id', '<>', env('APP_EUROPE_ID'))->groupBy('country_id')->get();
+            ->select('country_id')->where('country_id', '<>', env('APP_EUROPE_ID'))->groupBy('country_id')->orderBy('country_id', 'asc')->get();
         $c_ids = [];
 
         foreach ($country_profiles as $profile) {
             $c_ids[] = $profile->country_id;
         }
-        $countries = Country::whereIn('id', $c_ids)->get();
+        $countries = Country::whereIn('id', $c_ids)->orderBy('name', 'asc')->get();
 
         if (empty($country)) {
             return view('dynamic', [
@@ -273,7 +273,7 @@ class MainController extends Controller
         foreach ($country_profiles as $profile) {
             $c_ids[] = $profile->country_id;
         }
-        $countries = Country::whereIn('id', $c_ids)->get();
+        $countries = Country::whereIn('id', $c_ids)->orderBy('name', 'asc')->get();
 
         if (empty($country)) {
             return view('dynamic', [

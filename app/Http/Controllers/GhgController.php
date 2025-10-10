@@ -13,7 +13,7 @@ class GhgController extends Controller
     public function getGhgByCountry(Country $country) {
         $emissions_type = ['ghg', 'ghg_redvsbase', 'ghgredvstarget'];
 
-        $red_iis = $country->lifeCycleGhg()->where('methodology', 'RED II')->get();
+        $red_iis = $country->lifeCycleGhg()->where('methodology', 'RED III')->get();
 
         foreach ($red_iis as $red_ii) {
             if("ghg" == $red_ii->emission)

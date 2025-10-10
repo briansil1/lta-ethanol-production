@@ -542,38 +542,38 @@ function createGraph(idSel, country_id, gasoline, quality, showYAxis) {
                     });
                     switch (index) {
                         case 'equivalent-gasoline-e0':
-                            $(idSel === 'chart-tab-components' ? '#chart-tab-e0-price-data' : '#chart-tab-e0-price-data-compare').html(row.component['price']);
-                            $(idSel === 'chart-accordion-components' ? '#chart-accordion-e0-price-data' : '#chart-accordion-e0-price-data-compare').html(row.component['price']);
+                            $(idSel === 'chart-tab-components' ? '#chart-tab-e0-price-data' : '#chart-tab-e0-price-data-compare').html(parseFloat(row.component['price']).toFixed(2));
+                            $(idSel === 'chart-accordion-components' ? '#chart-accordion-e0-price-data' : '#chart-accordion-e0-price-data-compare').html(parseFloat(row.component['price']).toFixed(2));
                             $(idSel === 'chart-tab-components' ? '#chart-tab-e0-ron-data' : '#chart-tab-e0-ron-data-compare').html(row.component['ron']);
                             $(idSel === 'chart-accordion-components' ? '#chart-accordion-e0-ron-data' : '#chart-accordion-e0-ron-data-compare').html(row.component['ron']);
                             break;
                         case 'gasoline-e10':
-                            $(idSel === 'chart-tab-components' ? '#chart-tab-e10-price-data' : '#chart-tab-e10-price-data-compare').html(row.component['price']);
-                            $(idSel === 'chart-accordion-components' ? '#chart-accordion-e10-price-data' : '#chart-accordion-e10-price-data-compare').html(row.component['price']);
+                            $(idSel === 'chart-tab-components' ? '#chart-tab-e10-price-data' : '#chart-tab-e10-price-data-compare').html(parseFloat(row.component['price']).toFixed(2));
+                            $(idSel === 'chart-accordion-components' ? '#chart-accordion-e10-price-data' : '#chart-accordion-e10-price-data-compare').html(parseFloat(row.component['price']).toFixed(2));
                             $(idSel === 'chart-tab-components' ? '#chart-tab-e10-ron-data' : '#chart-tab-e10-ron-data-compare').html(row.component['ron']);
                             $(idSel === 'chart-accordion-components' ? '#chart-accordion-e10-ron-data' : '#chart-accordion-e10-ron-data-compare').html(row.component['ron']);
                             break;
                         case 'gasoline-e15':
-                            $(idSel === 'chart-tab-components' ? '#chart-tab-e15-price-data' : '#chart-tab-e15-price-data-compare').html(row.component['price']);
-                            $(idSel === 'chart-accordion-components' ? '#chart-accordion-e15-price-data' : '#chart-accordion-e15-price-data-compare').html(row.component['price']);
+                            $(idSel === 'chart-tab-components' ? '#chart-tab-e15-price-data' : '#chart-tab-e15-price-data-compare').html(parseFloat(row.component['price']).toFixed(2));
+                            $(idSel === 'chart-accordion-components' ? '#chart-accordion-e15-price-data' : '#chart-accordion-e15-price-data-compare').html(parseFloat(row.component['price']).toFixed(2));
                             $(idSel === 'chart-tab-components' ? '#chart-tab-e15-ron-data' : '#chart-tab-e15-ron-data-compare').html(row.component['ron']);
                             $(idSel === 'chart-accordion-components' ? '#chart-accordion-e15-ron-data' : '#chart-accordion-e15-ron-data-compare').html(row.component['ron']);
                             break;
                         case 'gasoline-e20':
-                            $(idSel === 'chart-tab-components' ? '#chart-tab-e20-price-data' : '#chart-tab-e20-price-data-compare').html(row.component['price']);
-                            $(idSel === 'chart-accordion-components' ? '#chart-accordion-e20-price-data' : '#chart-accordion-e20-price-data-compare').html(row.component['price']);
+                            $(idSel === 'chart-tab-components' ? '#chart-tab-e20-price-data' : '#chart-tab-e20-price-data-compare').html(parseFloat(row.component['price']).toFixed(2));
+                            $(idSel === 'chart-accordion-components' ? '#chart-accordion-e20-price-data' : '#chart-accordion-e20-price-data-compare').html(parseFloat(row.component['price']).toFixed(2));
                             $(idSel === 'chart-tab-components' ? '#chart-tab-e20-ron-data' : '#chart-tab-e20-ron-data-compare').html(row.component['ron']);
                             $(idSel === 'chart-accordion-components' ? '#chart-accordion-e20-ron-data' : '#chart-accordion-e20-ron-data-compare').html(row.component['ron']);
                             break;
                         case 'gasoline-e25':
-                            $(idSel === 'chart-tab-components' ? '#chart-tab-e25-price-data' : '#chart-tab-e25-price-data-compare').html(row.component['price']);
-                            $(idSel === 'chart-accordion-components' ? '#chart-accordion-e25-price-data' : '#chart-accordion-e25-price-data-compare').html(row.component['price']);
+                            $(idSel === 'chart-tab-components' ? '#chart-tab-e25-price-data' : '#chart-tab-e25-price-data-compare').html(parseFloat(row.component['price']).toFixed(2));
+                            $(idSel === 'chart-accordion-components' ? '#chart-accordion-e25-price-data' : '#chart-accordion-e25-price-data-compare').html(parseFloat(row.component['price']).toFixed(2));
                             $(idSel === 'chart-tab-components' ? '#chart-tab-e25-ron-data' : '#chart-tab-e25-ron-data-compare').html(row.component['ron']);
                             $(idSel === 'chart-accordion-components' ? '#chart-accordion-e25-ron-data' : '#chart-accordion-e25-ron-data-compare').html(row.component['ron']);
                             break;
                         case 'gasoline-e30':
-                            $(idSel === 'chart-tab-components' ? '#chart-tab-e30-price-data' : '#chart-tab-e30-price-data-compare').html(row.component['price']);
-                            $(idSel === 'chart-accordion-components' ? '#chart-accordion-e30-price-data' : '#chart-accordion-e30-price-data-compare').html(row.component['price']);
+                            $(idSel === 'chart-tab-components' ? '#chart-tab-e30-price-data' : '#chart-tab-e30-price-data-compare').html(parseFloat(row.component['price']).toFixed(2));
+                            $(idSel === 'chart-accordion-components' ? '#chart-accordion-e30-price-data' : '#chart-accordion-e30-price-data-compare').html(parseFloat(row.component['price']).toFixed(2));
                             $(idSel === 'chart-tab-components' ? '#chart-tab-e30-ron-data' : '#chart-tab-e30-ron-data-compare').html(row.component['ron']);
                             $(idSel === 'chart-accordion-components' ? '#chart-accordion-e30-ron-data' : '#chart-accordion-e30-ron-data-compare').html(row.component['ron']);
                             break;

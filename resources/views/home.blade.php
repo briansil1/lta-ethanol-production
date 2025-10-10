@@ -60,7 +60,8 @@
                             </a>
                             <a href="#" id="switch_continent_asia_africa" class="flex-1 mg-button mg-button--larger mg-button--tertiary mx-4 p-3 flex  items-center text-base md:text-lg lg:text-3xl " style="flex-direction: column;">
                                 <div class="mx-auto w-100">
-                                    <img src="{{ asset('images/map.png') }}" alt="" class="hero-sec-img">
+                                    <img src="{{ asset('images/map-asia-en.png') }}" alt="" class="hero-sec-img">
+                                    <img src="{{ asset('images/map-africa-en.png') }}" alt="" class="hero-sec-img">
                                 
                                 </div>
                                 <p class="card-p">
@@ -69,7 +70,7 @@
                             </a>
                             <a href="#" id="switch_continent_europe" class="flex-1 mg-button mg-button--larger mg-button--tertiary mx-4 p-3 flex  items-center text-base md:text-lg lg:text-3xl " style="flex-direction: column;">
                                 <div class="mx-auto w-100">
-                                    <img src="{{ asset('images/map.png') }}" alt="" class="hero-sec-img">
+                                    <img src="{{ asset('images/map-europe-en.png') }}" alt="" class="hero-sec-img">
                                 
                                 </div>
                                 <p class="card-p">
@@ -78,7 +79,7 @@
                             </a>
                             <a href="#" id="switch_continent_global" class="flex-1 mg-button mg-button--larger mg-button--tertiary mx-4 p-3 flex  items-center text-base md:text-lg lg:text-3xl " style="flex-direction: column;">
                                 <div class="mx-auto w-100">
-                                    <img src="{{ asset('images/map.png') }}" alt="" class="hero-sec-img">
+                                    <img src="{{ asset('images/map-global-en.jpg') }}" alt="" class="hero-sec-img">
                                 
                                 </div>
                                 <p class="card-p">

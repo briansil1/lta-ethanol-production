@@ -93,6 +93,8 @@ return [
             'ron-95' => 'RON 95',
             'constant-octane-number' => 'Número de octano constante',
             'increased-octane-number' => 'Aumento de número de octano',
+            'gasoline-95' => 'Gasoline 95',
+            'gasoline-98' => 'Gasoline 98',
             'legends' => [
                 'catalytic_gasoline' => 'Catalítica',
                 'reformate' => 'Reformado',
@@ -112,7 +114,9 @@ return [
                 'ethanol' => 'Etanol',
                 'hydrocracked_gasoline' => 'Gasolina hidrocraqueada',
                 'normal_pentane' => 'Pentano normal',
-                'low_octane_blendstock' => 'Mezcla de bajo octano'
+                'low_octane_blendstock' => 'Mezcla de bajo octano',
+                'etbe' => 'ETBE',
+                'tame' => 'TAME'
             ],
             'modal-price-update' => 'Lo mismo pero en español jejej',
             'modal-price-update-fuel-component' => 'Fuel / Component',
