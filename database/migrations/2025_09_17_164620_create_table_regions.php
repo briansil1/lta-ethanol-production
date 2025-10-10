@@ -42,6 +42,7 @@ class CreateTableRegions extends Migration
             [ 'continent_id' => '3', 'name' => 'southeast-asia', 'code' => 'SOUTAS'],
             [ 'continent_id' => '3', 'name' => 'africa', 'code' => 'AFR'],
             [ 'continent_id' => '4', 'name' => 'general', 'code' => 'GEN'],
+            [ 'continent_id' => '3', 'name' => 'asia', 'code' => 'ASI'],
         ]);
     }
 
