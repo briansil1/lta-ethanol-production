@@ -128,6 +128,9 @@ return false;
 
         $europeUnion = Country::find(env('APP_EUROPE_ID'));
 
+        var_dump($europeUnion);
+        return false;
+
         $profileData = $locale->profiles()->where('country_id', $country->id)->orderBy('order', 'asc')->get();
         $europeData = $locale->profiles()->where('country_id', env('APP_EUROPE_ID'))->orderBy('order', 'asc')->get();
 
