@@ -68,14 +68,6 @@ class MainController extends Controller
     }
 
     public function tools(Request $request, $tab = '1', Country $country = null, Country $compareCountry = null) {
-/*
-
-        echo "RTab: ".$tab."<br>";
-var_dump($country);
-echo "<hr>";
-var_dump($compareCountry);
-return false;
-*/
         if (!Auth::check()) {
             return redirect(route(__('routes.home')));
         }
@@ -126,13 +118,7 @@ return false;
         }
         $countriesE = Country::whereIn('id', $c_ids)->get();
 
-
-        var_dump(config('APP_EUROPE_ID'));
-
-        $europeUnion = Country::find(config('APP_EUROPE_ID'));
-
-        var_dump($europeUnion);
-        return false;
+        $europeUnion = Country::find(env('APP_EUROPE_ID'));
 
         $profileData = $locale->profiles()->where('country_id', $country->id)->orderBy('order', 'asc')->get();
         $europeData = $locale->profiles()->where('country_id', env('APP_EUROPE_ID'))->orderBy('order', 'asc')->get();
