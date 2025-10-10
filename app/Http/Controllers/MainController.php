@@ -127,9 +127,9 @@ return false;
         $countriesE = Country::whereIn('id', $c_ids)->get();
 
 
-        var_dump(env('APP_EUROPE_ID'));
+        var_dump(config('APP_EUROPE_ID'));
 
-        $europeUnion = Country::find(env('APP_EUROPE_ID'));
+        $europeUnion = Country::find(config('APP_EUROPE_ID'));
 
         var_dump($europeUnion);
         return false;

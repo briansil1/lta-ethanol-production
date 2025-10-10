@@ -64,25 +64,25 @@
         },
         {
             "name": "brick/math",
-            "version": "0.14.0",
+            "version": "0.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/brick/math.git",
-                "reference": "113a8ee2656b882d4c3164fa31aa6e12cbb7aaa2"
+                "reference": "fc7ed316430118cc7836bf45faff18d5dfc8de04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brick/math/zipball/113a8ee2656b882d4c3164fa31aa6e12cbb7aaa2",
-                "reference": "113a8ee2656b882d4c3164fa31aa6e12cbb7aaa2",
+                "url": "https://api.github.com/repos/brick/math/zipball/fc7ed316430118cc7836bf45faff18d5dfc8de04",
+                "reference": "fc7ed316430118cc7836bf45faff18d5dfc8de04",
                 "shasum": ""
             },
             "require": {
-                "php": "^8.2"
+                "php": "^8.1"
             },
             "require-dev": {
                 "php-coveralls/php-coveralls": "^2.2",
-                "phpstan/phpstan": "2.1.22",
-                "phpunit/phpunit": "^11.5"
+                "phpunit/phpunit": "^10.1",
+                "vimeo/psalm": "6.8.8"
             },
             "type": "library",
             "autoload": {
@@ -112,11 +112,7 @@
             ],
             "support": {
                 "issues": "https://github.com/brick/math/issues",
-<<<<<<< HEAD
-                "source": "https://github.com/brick/math/tree/0.14.0"
-=======
                 "source": "https://github.com/brick/math/tree/0.13.1"
->>>>>>> 8a2053eeb3b3daf6bbef4baa78b20fc62a79d385
             },
             "funding": [
                 {
@@ -124,11 +120,7 @@
                     "type": "github"
                 }
             ],
-<<<<<<< HEAD
-            "time": "2025-08-29T12:40:03+00:00"
-=======
             "time": "2025-03-29T13:50:30+00:00"
->>>>>>> 8a2053eeb3b3daf6bbef4baa78b20fc62a79d385
         },
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -432,16 +424,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "3.10.2",
+            "version": "3.10.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "c6c16cf787eaba3112203dfcd715fa2059c62282"
+                "reference": "65edaca19a752730f290ec2fb89d593cb40afb43"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/c6c16cf787eaba3112203dfcd715fa2059c62282",
-                "reference": "c6c16cf787eaba3112203dfcd715fa2059c62282",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/65edaca19a752730f290ec2fb89d593cb40afb43",
+                "reference": "65edaca19a752730f290ec2fb89d593cb40afb43",
                 "shasum": ""
             },
             "require": {
@@ -457,14 +449,14 @@
             },
             "require-dev": {
                 "doctrine/cache": "^1.11|^2.0",
-                "doctrine/coding-standard": "13.0.1",
+                "doctrine/coding-standard": "14.0.0",
                 "fig/log-test": "^1",
                 "jetbrains/phpstorm-stubs": "2023.1",
-                "phpstan/phpstan": "2.1.22",
+                "phpstan/phpstan": "2.1.30",
                 "phpstan/phpstan-strict-rules": "^2",
-                "phpunit/phpunit": "9.6.23",
-                "slevomat/coding-standard": "8.16.2",
-                "squizlabs/php_codesniffer": "3.13.1",
+                "phpunit/phpunit": "9.6.29",
+                "slevomat/coding-standard": "8.24.0",
+                "squizlabs/php_codesniffer": "4.0.0",
                 "symfony/cache": "^5.4|^6.0|^7.0",
                 "symfony/console": "^4.4|^5.4|^6.0|^7.0"
             },
@@ -526,7 +518,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/dbal/issues",
-                "source": "https://github.com/doctrine/dbal/tree/3.10.2"
+                "source": "https://github.com/doctrine/dbal/tree/3.10.3"
             },
             "funding": [
                 {
@@ -542,7 +534,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-09-04T23:51:27+00:00"
+            "time": "2025-10-09T09:05:12+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -2365,18 +2357,6 @@
         },
         {
             "name": "maennchen/zipstream-php",
-<<<<<<< HEAD
-            "version": "3.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/maennchen/ZipStream-PHP.git",
-                "reference": "9712d8fa4cdf9240380b01eb4be55ad8dcf71416"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/maennchen/ZipStream-PHP/zipball/9712d8fa4cdf9240380b01eb4be55ad8dcf71416",
-                "reference": "9712d8fa4cdf9240380b01eb4be55ad8dcf71416",
-=======
             "version": "3.1.1",
             "source": {
                 "type": "git",
@@ -2387,32 +2367,21 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/maennchen/ZipStream-PHP/zipball/6187e9cc4493da94b9b63eb2315821552015fca9",
                 "reference": "6187e9cc4493da94b9b63eb2315821552015fca9",
->>>>>>> 8a2053eeb3b3daf6bbef4baa78b20fc62a79d385
                 "shasum": ""
             },
             "require": {
                 "ext-mbstring": "*",
                 "ext-zlib": "*",
-<<<<<<< HEAD
-                "php-64bit": "^8.3"
-=======
                 "php-64bit": "^8.1"
->>>>>>> 8a2053eeb3b3daf6bbef4baa78b20fc62a79d385
             },
             "require-dev": {
-                "brianium/paratest": "^7.7",
                 "ext-zip": "*",
                 "friendsofphp/php-cs-fixer": "^3.16",
                 "guzzlehttp/guzzle": "^7.5",
                 "mikey179/vfsstream": "^1.6",
                 "php-coveralls/php-coveralls": "^2.5",
-<<<<<<< HEAD
-                "phpunit/phpunit": "^12.0",
-                "vimeo/psalm": "^6.0"
-=======
                 "phpunit/phpunit": "^10.0",
                 "vimeo/psalm": "^5.0"
->>>>>>> 8a2053eeb3b3daf6bbef4baa78b20fc62a79d385
             },
             "suggest": {
                 "guzzlehttp/psr7": "^2.4",
@@ -2453,11 +2422,7 @@
             ],
             "support": {
                 "issues": "https://github.com/maennchen/ZipStream-PHP/issues",
-<<<<<<< HEAD
-                "source": "https://github.com/maennchen/ZipStream-PHP/tree/3.2.0"
-=======
                 "source": "https://github.com/maennchen/ZipStream-PHP/tree/3.1.1"
->>>>>>> 8a2053eeb3b3daf6bbef4baa78b20fc62a79d385
             },
             "funding": [
                 {
@@ -2465,11 +2430,7 @@
                     "type": "github"
                 }
             ],
-<<<<<<< HEAD
-            "time": "2025-07-17T11:15:13+00:00"
-=======
             "time": "2024-10-10T12:33:01+00:00"
->>>>>>> 8a2053eeb3b3daf6bbef4baa78b20fc62a79d385
         },
         {
             "name": "markbaker/complex",
@@ -4151,22 +4112,6 @@
         },
         {
             "name": "symfony/css-selector",
-<<<<<<< HEAD
-            "version": "v7.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/css-selector.git",
-                "reference": "601a5ce9aaad7bf10797e3663faefce9e26c24e2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/css-selector/zipball/601a5ce9aaad7bf10797e3663faefce9e26c24e2",
-                "reference": "601a5ce9aaad7bf10797e3663faefce9e26c24e2",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.2"
-=======
             "version": "v6.4.24",
             "source": {
                 "type": "git",
@@ -4181,7 +4126,6 @@
             },
             "require": {
                 "php": ">=8.1"
->>>>>>> 8a2053eeb3b3daf6bbef4baa78b20fc62a79d385
             },
             "type": "library",
             "autoload": {
@@ -4213,11 +4157,7 @@
             "description": "Converts CSS selectors to XPath expressions",
             "homepage": "https://symfony.com",
             "support": {
-<<<<<<< HEAD
-                "source": "https://github.com/symfony/css-selector/tree/v7.3.0"
-=======
                 "source": "https://github.com/symfony/css-selector/tree/v6.4.24"
->>>>>>> 8a2053eeb3b3daf6bbef4baa78b20fc62a79d385
             },
             "funding": [
                 {
@@ -4237,11 +4177,7 @@
                     "type": "tidelift"
                 }
             ],
-<<<<<<< HEAD
-            "time": "2024-09-25T14:21:43+00:00"
-=======
             "time": "2025-07-10T08:14:14+00:00"
->>>>>>> 8a2053eeb3b3daf6bbef4baa78b20fc62a79d385
         },
         {
             "name": "symfony/deprecation-contracts",
@@ -8975,10 +8911,6 @@
     "platform": {
         "php": "^7.3|^8.0"
     },
-<<<<<<< HEAD
-    "platform-dev": [],
-=======
     "platform-dev": {},
->>>>>>> 8a2053eeb3b3daf6bbef4baa78b20fc62a79d385
     "plugin-api-version": "2.6.0"
 }
