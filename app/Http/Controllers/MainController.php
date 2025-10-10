@@ -68,6 +68,11 @@ class MainController extends Controller
     }
 
     public function tools(Request $request, $tab = '1', Country $country = null, Country $compareCountry = null) {
+echo "RTab: ".$tab."<br>";
+var_dump($country);
+var_dump($compareCountry);
+return false;
+
         if (!Auth::check()) {
             return redirect(route(__('routes.home')));
         }
