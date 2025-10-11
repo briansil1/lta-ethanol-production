@@ -45,6 +45,14 @@ $( function() {
         window.open(_getGhgFileUrl(), '_blank');
     })
 
+    $('.download-ghg-europe').off().on('click', function (evt) {
+        window.open(_getGhgEuropeFileUrl(), '_blank');
+    })
+
+    $('.download-ghg-asia-africa').off().on('click', function (evt) {
+        window.open(_getGhgAsiaAfricaFileUrl(), '_blank');
+    })
+
     if (country_id > 0 && _current_tab == '4') {
         $('#v-ghg-redii-tab').click();
     }

@@ -134,7 +134,16 @@ $( function() {
     $('#chart-tab-country-compare-component').off().on('change', changeCountry);
 
     $('#chart-tab-download-component-db').on('click', () => window.open(_getComponentsFileUrl(), '_blank'));
+
+    $('#chart-tab-download-component-europe-db').on('click', () => window.open(_getComponentsEuropeFileUrl(), '_blank'));
+
+    $('#chart-tab-download-component-asia-africa-db').on('click', () => window.open(_getComponentsAsiaAfricaFileUrl(), '_blank'));
+
     $('#chart-accordion-download-component-db').on('click', () => window.open(_getComponentsFileUrl(), '_blank'));
+
+    $('#chart-accordion-download-component-europe-db').on('click', () => window.open(_getComponentsEuropeFileUrl(), '_blank'));
+
+    $('#chart-accordion-download-component-asia-africa-db').on('click', () => window.open(_getComponentsAsiaAfricaFileUrl(), '_blank'));
 
     $('#modal-price-update-open').on('click', evt => {
         evt.preventDefault();
@@ -385,7 +394,7 @@ function retrieveGasoline() {
 
 function changeCountry(evt) {
     country_compare_id = parseInt(this.value);
-    country_compare_name = this.options[this.value].text;
+    country_compare_name = this.options[this.selectedIndex].text;
     if (country_compare_id !== 0) {
         $.get({
             url: _getComponentsListURL(country_compare_id),

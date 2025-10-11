@@ -235,6 +235,14 @@ return [
         'profile-pdf-filename' => 'profiles_download.xlsx',
         'emission-filename' => 'emissions_download.xlsx',
         'component-pdf-filename' => 'blending_components.xlsx',
-        'ghg-filename' => 'ghg_download.xlsx'
+        'ghg-filename' => 'ghg_download.xlsx',
+        'profile-europe-pdf-filename' => 'profiles_europe_download.xlsx',
+        'profile-asia-africa-pdf-filename' => 'profiles_asia_africa_download.xlsx',
+        'component-europe-pdf-filename' => 'blending_europe_components.xlsx',
+        'component-asia-africa-pdf-filename' => 'blending_asia_africa_components.xlsx',
+        'emission-europe-filename' => 'emissions_europe_download.xlsx',
+        'emission-asia-africa-filename' => 'emissions_asia_africa_download.xlsx',
+        'ghg-europe-filename' => 'ghg_europe_download.xlsx',
+        'ghg-asia-africa-filename' => 'ghg_asia_africa_download.xlsx',
     ],
 ];

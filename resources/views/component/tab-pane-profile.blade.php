@@ -107,7 +107,14 @@
                 </div>
             </div>
             <div class="col-md-6 text-right">
-                <button class="btn btn-primary download-profile">{{ __('dynamic.content.profile-tab.download-button') }}</button>
+
+                @if ($continent_id == '1')
+                    <button class="btn btn-primary download-profile">{{ __('dynamic.content.profile-tab.download-button') }}</button>
+                @elseif ($continent_id == '2')
+                    <button class="btn btn-primary download-profile-europe">{{ __('dynamic.content.profile-tab.download-button') }}</button>
+                @else
+                    <button class="btn btn-primary download-profile">{{ __('dynamic.content.profile-tab.download-button') }}</button>
+                @endif
             </div>
         </div>
 

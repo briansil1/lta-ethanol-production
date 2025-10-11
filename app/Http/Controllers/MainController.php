@@ -137,7 +137,7 @@ class MainController extends Controller
 
         $gasoline_types = $country->gasolineComponents()->select('gasoline_type')->groupBy('gasoline_type')->get();
         $gasoline_grades = $country->gasolineComponents()->select('quality_restriction')->groupBy('quality_restriction')->get();
-
+ 
         return view('dynamic', [
             'tab' => $tab,
             'country' => $country,
@@ -203,11 +203,71 @@ class MainController extends Controller
      * @throws AuthenticationException
      * @throws FileNotFoundException
      */
+    public function downloadProfileEurope() {
+        if (!Auth::check()) {
+            throw new AuthenticationException();
+        }
+        if (file_exists(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.profile-europe-pdf-filename')))) {
+            return response()->download(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.profile-europe-pdf-filename')));
+        } else {
+            throw new FileNotFoundException('storage/app/pdfs/' . __('dynamic.pdf-files.profile-europe-pdf-filename'));
+        }
+    }
+
+    /**
+     * @throws AuthenticationException
+     * @throws FileNotFoundException
+     */
+    public function downloadProfileAsiaAfrica() {
+        if (!Auth::check()) {
+            throw new AuthenticationException();
+        }
+        if (file_exists(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.profile-asia-africa-pdf-filename')))) {
+            return response()->download(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.profile-asia-africa-pdf-filename')));
+        } else {
+            throw new FileNotFoundException('storage/app/pdfs/' . __('dynamic.pdf-files.profile-asia-africa-pdf-filename'));
+        }
+    }
+
+    /**
+     * @throws AuthenticationException
+     * @throws FileNotFoundException
+     */
     public function downloadComponents() {
         if (!Auth::check()) {
             throw new AuthenticationException();
         }
         if (file_exists(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.component-pdf-filename')))) {
+            return response()->download(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.component-pdf-filename')));
+        } else {
+            throw new FileNotFoundException('storage/app/pdfs/' . __('dynamic.pdf-files.component-pdf-filename'));
+        }
+    }
+
+    /**
+     * @throws AuthenticationException
+     * @throws FileNotFoundException
+     */
+    public function downloadComponentsEurope() {
+        if (!Auth::check()) {
+            throw new AuthenticationException();
+        }
+        if (file_exists(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.component-europe-pdf-filename')))) { 
+            return response()->download(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.component-europe-pdf-filename')));
+        } else {
+            throw new FileNotFoundException('storage/app/pdfs/' . __('dynamic.pdf-files.component-europe-pdf-filename'));
+        }
+    }
+
+    /**
+     * @throws AuthenticationException
+     * @throws FileNotFoundException
+     */
+    public function downloadComponentsAsiaAfrica() {
+        if (!Auth::check()) {
+            throw new AuthenticationException();
+        }
+        if (file_exists(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.component-pdf-filename')))) { //component-asia-africa-pdf-filename
             return response()->download(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.component-pdf-filename')));
         } else {
             throw new FileNotFoundException('storage/app/pdfs/' . __('dynamic.pdf-files.component-pdf-filename'));
@@ -225,11 +285,55 @@ class MainController extends Controller
         }
     }
 
+    public function downloadEmissionEurope() {
+        if (!Auth::check()) {
+            throw new AuthenticationException();
+        }
+        if (file_exists(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.emission-europe-filename')))) { 
+            return response()->download(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.emission-europe-filename')));
+        } else {
+            throw new FileNotFoundException('storage/app/pdfs/' . __('dynamic.pdf-files.emission-europe-filename'));
+        }
+    }
+
+    public function downloadEmissionAsiaAfrica() {
+        if (!Auth::check()) {
+            throw new AuthenticationException();
+        }
+        if (file_exists(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.emission-filename')))) { //emission-asia-africa-filename
+            return response()->download(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.emission-filename')));
+        } else {
+            throw new FileNotFoundException('storage/app/pdfs/' . __('dynamic.pdf-files.emission-filename'));
+        }
+    }
+
     public function downloadGhg() {
         if (!Auth::check()) {
             throw new AuthenticationException();
         }
         if (file_exists(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.ghg-filename')))) {
+            return response()->download(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.ghg-filename')));
+        } else {
+            throw new FileNotFoundException('storage/app/pdfs/' . __('dynamic.pdf-files.ghg-filename'));
+        }
+    }
+
+    public function downloadGhgEurope() {
+        if (!Auth::check()) {
+            throw new AuthenticationException();
+        }
+        if (file_exists(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.ghg-europe-filename')))) { 
+            return response()->download(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.ghg-europe-filename')));
+        } else {
+            throw new FileNotFoundException('storage/app/pdfs/' . __('dynamic.pdf-files.ghg-europe-filename'));
+        }
+    }
+
+    public function downloadGhgAsiaAfrica() {
+        if (!Auth::check()) {
+            throw new AuthenticationException();
+        }
+        if (file_exists(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.ghg-filename')))) { //ghg-asia-africa-filename
             return response()->download(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.ghg-filename')));
         } else {
             throw new FileNotFoundException('storage/app/pdfs/' . __('dynamic.pdf-files.ghg-filename'));

@@ -123,4 +123,12 @@ $(function () {
     $('.download-profile').off().on('click', function (evt) {
         window.open(_getProfilePDFUrl(), '_blank');
     })
+
+    $('.download-profile-europe').off().on('click', function (evt) {
+        window.open(_getProfileEuropePDFUrl(), '_blank');
+    })
+
+    $('.download-profile-asia-africa').off().on('click', function (evt) {
+        window.open(_getProfileAsiaAfricaPDFUrl(), '_blank');
+    })
 })

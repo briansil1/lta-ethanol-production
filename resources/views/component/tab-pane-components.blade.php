@@ -12,7 +12,6 @@
         
     </div>
 </div>
-
 <div class="row p-4">
     <div class="col-md-4">
         <img src="{{ asset('images/'  . __('dynamic.images.component_benefits')) }}" class="img-fluid">
@@ -213,7 +212,16 @@
         {{ __('dynamic.content.component-tab.instructions-5') }}
     </div>
     <div class="col-12 mb-3 mt-2 text-center">
-        <button id="{{ isset($chart_id) ? $chart_id : 'chart' }}-download-component-db" class="btn btn-primary px-4 py-1">{{ __('dynamic.content.component-tab.download-full-database-button') }}</button>
+
+        @if ($continent_id == '1')
+            <button id="{{ isset($chart_id) ? $chart_id : 'chart' }}-download-component-db" class="btn btn-primary px-4 py-1">{{ __('dynamic.content.component-tab.download-full-database-button') }}</button>
+        @elseif ($continent_id == '2')
+            <button id="{{ isset($chart_id) ? $chart_id : 'chart' }}-download-component-europe-db" class="btn btn-primary px-4 py-1">{{ __('dynamic.content.component-tab.download-full-database-button') }}</button>
+        @else
+            <button id="{{ isset($chart_id) ? $chart_id : 'chart' }}-download-component-asia-africa-db" class="btn btn-primary px-4 py-1">{{ __('dynamic.content.component-tab.download-full-database-button') }}</button>
+        @endif
+        
+
     </div>
     <p>
         {{ __('dynamic.content.component-tab.benefits-4') }}

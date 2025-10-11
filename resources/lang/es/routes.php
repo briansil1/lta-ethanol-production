@@ -14,5 +14,13 @@ return [
     'tools-continent' => 'herramientas-dinamicas-continente',
     'ghg-file' => 'ghg-file-es',
     'home-continent' => 'hogar-continente',
+    'profile-europe-pdf' => 'profile-europe-pdf-en',
+    'profile-asia-africa-pdf' => 'profile-asia-africa-pdf-en',
+    'components-europe-file' => 'components-europe-file-en',
+    'components-asia-africa-file' => 'components-asia-africa-file-en',
+    'emission-europe-file' => 'emission-europe-file-en',
+    'emission-asia-africa-file' => 'emission-asia-africa-file-en',
+    'ghg-europe-file' => 'ghg-europe-file-en',
+    'ghg-asia-africa-file' => 'ghg-asia-africa-file-en',
 ];
 

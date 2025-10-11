@@ -71,6 +71,15 @@
         var _getGhgByCountryURL = (country) => '{{ route('get-ghg-by-country') }}/' + country;
         var _get_change_continent = (continent_id) => '{{ route(__('routes.tools-continent')) }}/' + continent_id;
         var _getGhgFileUrl = () => '{{ route(__('routes.ghg-file')) }}';
+        var _getProfileEuropePDFUrl = () => '{{ route(__('routes.profile-europe-pdf')) }}';
+        var _getProfileAsiaAfricaPDFUrl = () => '{{ route(__('routes.profile-asia-africa-pdf')) }}';
+        var _getComponentsEuropeFileUrl = () => '{{ route(__('routes.components-europe-file')) }}';
+        var _getComponentsAsiaAfricaFileUrl = () => '{{ route(__('routes.components-asia-africa-file')) }}';
+        var _getImpactEuropeFileUrl = () => '{{ route(__('routes.emission-europe-file')) }}';
+        var _getImpactAsiaAfricaFileUrl = () => '{{ route(__('routes.emission-asia-africa-file')) }}';
+        var _getGhgEuropeFileUrl = () => '{{ route(__('routes.ghg-europe-file')) }}';
+        var _getGhgAsiaAfricaFileUrl = () => '{{ route(__('routes.ghg-asia-africa-file')) }}';
+
 
     </script>
 @endsection

@@ -31,6 +31,14 @@ $( function() {
         window.open(_getImpactFileUrl(), '_blank');
     })
 
+    $('.download-impact-europe').off().on('click', function (evt) {
+        window.open(_getImpactEuropeFileUrl(), '_blank');
+    })
+
+    $('.download-impact-asia-africa').off().on('click', function (evt) {
+        window.open(_getImpactAsiaAfricaFileUrl(), '_blank');
+    })
+
     if (country_id > 0 && _current_tab == '3') {
         $('#v-pills-co2-tab').click();
     }
