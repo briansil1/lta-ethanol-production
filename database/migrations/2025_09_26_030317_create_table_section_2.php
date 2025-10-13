@@ -21,7 +21,7 @@ class CreateTableSection2 extends Migration
           $table->integer('region_id');
           $table->string('tipo', 1);
           $table->string('country', 30);
-          $table->string('emission_type', 20);
+          $table->string('emission_type', 30);
           $table->string('emission_component', 25);
           $table->float('e0', 25, 16)->nullable();
           $table->float('e10', 25, 16)->nullable();
