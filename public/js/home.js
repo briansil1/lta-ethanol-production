@@ -74,7 +74,7 @@ $(function () {
 
     $('#switch_continent_global').on('click', evt => {
         evt.preventDefault();
-        continent_label.innerHTML = continent_json.global;
+        window.location.href = 'https://globaltool.vision-it.com.mx/en/static-home'; // Navigates to Global Tool
     });
 
 

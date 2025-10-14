@@ -138,7 +138,7 @@
         <div class="off-white-2 border-radius-5 p-1 mb-3">
             <div class="row">
                 <div class="col-12 mt-1 mb-2 pl-5 text-center font-bold">
-                    {{ __('dynamic.content.component-tab.prices') }}
+                    {{ __('dynamic.content.component-tab.prices_usd') }}
                 </div>
                 <div class="{{ ($tab == 2 && isset($compareCountry) && $compareCountry) ? 'col-6' : 'col-12'}} single-country pl-4 mb-2" id="extra_price_data">
                     <div class="row pl-5">

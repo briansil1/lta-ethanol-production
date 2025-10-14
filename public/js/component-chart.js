@@ -2,44 +2,40 @@
 
 
 
-let lang_json= {};
+let lang_json = {};
 
-function GetLanguageJson(lang) {
-
-  switch (lang) {
-    case 'en_US':
-      lang_json = getEnglishJson();
-      break;
-    case 'es_MX':
-      lang_json = getSpanishJson();
-    break;
-    default:
-      lang_json = getEnglishJson();
-  }
-
-  return lang_json;
-}
-
-function getEnglishJson() {
-    return {
+let lang_json_english = {
                 'octane_number': 'Octane Type',
-                'updated': 'Updated',
+                'updated': 'updated prices',
                 'file': 'File.csv',
                 'ordinary': 'Regular',
                 'superior': 'Superior',
                 'missing_field': 'Please fill all the fields'
             }
-}
 
-function getSpanishJson() {
-    return {
+let lang_json_spanish = {
                 'octane_number': 'Tipo Octanaje',
-                'updated': 'Actualizacion',
+                'updated': 'precios actualizados',
                 'file': 'Archivo.csv',
                 'ordinary': 'Regular',
                 'superior': 'Superior',
                 'missing_field': 'Favor de capturar todos los campos para el cálculo'
             }
+
+function getLanguageJson(lang) {
+
+  switch (lang) {
+    case 'en_US':
+      lang_json = lang_json_english;
+      break;
+    case 'es_MX':
+      lang_json = lang_json_spanish();
+    break;
+    default:
+      lang_json = lang_json_english();
+  }
+
+  return lang_json;
 }
 
 let componentCharts = [];
@@ -173,7 +169,7 @@ $( function() {
             lang = 'en_US';
         }
 
-        lang_json = GetLanguageJson(lang);
+        lang_json = getLanguageJson(lang);
 
         
         var x = document.getElementById('price-update-form').checkValidity();
@@ -197,7 +193,6 @@ $( function() {
 
         } else {
             console.log('Not Valid')
-            
             alert(lang_json.missing_field);
         }        
 

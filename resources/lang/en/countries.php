@@ -20,7 +20,7 @@ return [
     'reg-caribe' => 'Region Caribe',
     'reg-centeramerica' => 'Region Centeramerica',
     'reg-southamerica' => 'Region Southamerica',
-    'full-report' => 'Previous Full Report',
+    'full-report' => 'Full Report',
     'SGS' => 'SGS Complete report',
     'european-union' => 'European Union',
     'impact-select' => [

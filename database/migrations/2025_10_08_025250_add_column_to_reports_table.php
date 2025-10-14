@@ -50,6 +50,9 @@ class AddColumnToReportsTable extends Migration
             ['continent_id' => '2', 'country_id' => '54', 'locale_id' => '2', 'report_url' => 'UNITED_KINGDOM_ENG.pdf', 'order' => '28', 'active' => '1'],
         ]);
 
+        DB::table('reports')->where(['country_id' => '21'])->update(['continent_id' => '1', 'report_url' => 'LATAM_ENG.pdf', 'order' => '1']);
+        DB::table('reports')->where(['country_id' => '21'])->update(['continent_id' => '1', 'report_url' => 'LATAM_ESP.pdf', 'order' => '1']);
+
     }
 
     /**

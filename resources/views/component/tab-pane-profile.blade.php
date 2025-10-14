@@ -175,19 +175,39 @@
                     @include('component.table-row', ['rowName' => 'header-ethanol', 'profileData' => $profileData, 'row' => 'ethanol', 'europeData' => $europeData, 'compareProfileData' => $compareProfileData])
                 </tr>
                 <tr>
-                    @include('component.table-row', ['rowName' => 'header-pvr-summer', 'profileData' => $profileData, 'row' => 'rvp_summer', 'europeData' => $europeData, 'compareProfileData' => $compareProfileData])
+                    @if ($continent_id == '2')
+                        @include('component.table-row', ['rowName' => 'header-rvp', 'profileData' => $profileData, 'row' => 'rvp_summer', 'europeData' => $europeData, 'compareProfileData' => $compareProfileData])
+                    @else
+                        @include('component.table-row', ['rowName' => 'header-pvr-summer', 'profileData' => $profileData, 'row' => 'rvp_summer', 'europeData' => $europeData, 'compareProfileData' => $compareProfileData])
+                    @endif
                 </tr>
                 <tr>
-                    @include('component.table-row', ['rowName' => 'header-pvr-winter', 'profileData' => $profileData, 'row' => 'rvp_winter', 'europeData' => $europeData, 'compareProfileData' => $compareProfileData])
+                    @if ($continent_id == '2')
+                        @include('component.table-row', ['rowName' => 'header-overall-biofuels', 'profileData' => $profileData, 'row' => 'rvp_winter', 'europeData' => $europeData, 'compareProfileData' => $compareProfileData])
+                    @else
+                        @include('component.table-row', ['rowName' => 'header-pvr-winter', 'profileData' => $profileData, 'row' => 'rvp_winter', 'europeData' => $europeData, 'compareProfileData' => $compareProfileData])
+                    @endif
                 </tr>
                 <tr>
-                    @include('component.table-row', ['rowName' => 'header-pvr-transition', 'profileData' => $profileData, 'row' => 'rvp_winter', 'europeData' => $europeData, 'compareProfileData' => $compareProfileData])
+                    @if ($continent_id == '2')
+                        @include('component.table-row', ['rowName' => 'header-advanced-biofuel-gasoline', 'profileData' => $profileData, 'row' => 'rvp_winter', 'europeData' => $europeData, 'compareProfileData' => $compareProfileData])
+                    @else
+                        @include('component.table-row', ['rowName' => 'header-pvr-transition', 'profileData' => $profileData, 'row' => 'rvp_winter', 'europeData' => $europeData, 'compareProfileData' => $compareProfileData])
+                    @endif
                 </tr>
                 <tr>
-                    @include('component.table-row', ['rowName' => 'header-mtbe', 'profileData' => $profileData, 'row' => 'mtbe', 'europeData' => $europeData, 'compareProfileData' => $compareProfileData])
+                    @if ($continent_id == '2')
+                        @include('component.table-row', ['rowName' => 'header-bioethanol-gasoline-sales', 'profileData' => $profileData, 'row' => 'mtbe', 'europeData' => $europeData, 'compareProfileData' => $compareProfileData])
+                    @else
+                        @include('component.table-row', ['rowName' => 'header-mtbe', 'profileData' => $profileData, 'row' => 'mtbe', 'europeData' => $europeData, 'compareProfileData' => $compareProfileData])
+                    @endif
                 </tr>
                 <tr>
-                    @include('component.table-row', ['rowName' => 'header-ether', 'profileData' => $profileData, 'row' => 'ethers', 'europeData' => $europeData, 'compareProfileData' => $compareProfileData])
+                    @if ($continent_id == '2')
+                        @include('component.table-row', ['rowName' => 'header-ghg-emission-reduction', 'profileData' => $profileData, 'row' => 'ethers', 'europeData' => $europeData, 'compareProfileData' => $compareProfileData])
+                    @else
+                        @include('component.table-row', ['rowName' => 'header-ether', 'profileData' => $profileData, 'row' => 'ethers', 'europeData' => $europeData, 'compareProfileData' => $compareProfileData])
+                    @endif
                 </tr>
                 </tbody>
             </table>
