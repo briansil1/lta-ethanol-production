@@ -71,7 +71,7 @@
                 <img src="{{ asset('images/icon-co2.png') }}"> {{ __('dynamic.content.impact-tab.co2') }}
             </a>
             <a href="#" style="margin-bottom: 5px; padding: 8px 5px;" class="off-white-2 btn oswald text-left" id="v-pills-thc-tab" data-bs-toggle="pill" data-bs-target="#v-pills-thc" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">
-                <img src="{{ asset('images/icon-thc.png') }}"> {{ __('dynamic.content.impact-tab.thc') }}
+                <img src="{{ asset('images/icon-voc.png') }}"> {{ __('dynamic.content.impact-tab.thc') }}
             </a>
             <a href="#" style="margin-bottom: 5px; padding: 8px 5px;" class="off-white-2 btn oswald text-left" id="v-pills-co-tab" data-bs-toggle="pill" data-bs-target="#v-pills-co" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">
                 <img src="{{ asset('images/icon-co.png') }}"> {{ __('dynamic.content.impact-tab.co') }}

@@ -163,7 +163,7 @@ return [
             'instructions-2' => 'En los Estados Unidos, 70% de los vehículos son vehículos ligeros, 22% camiones ligeros,3% motocicletas y 5% vehículos pesados. Algunos países de América Latina tienen menores emisiones de contaminantes en comparación con las de Estados Unidos. Esto se debe principalmente a las diferencias en la flota vehicular de estos países, donde puede haber  una mayor cantidad de motocicletas, automóviles y camiones, y una menor cantidad de camiones y vehículos pesados. Las  emisiones  también están determinadas por el tipo de vehículo, tecnología, antigüedad, estándares de emisión y cantidad de vehículos de cada país.',
             'compare-select' => 'Seleccionar',
             'co2' => 'DIÓXIDO DE CARBONO',
-            'thc' => 'HIDROCARBUROS TOTALES',
+            'thc' => 'COMPUESTOS ORGÁNICOS VOLÁTILES',
             'co' => 'MONÓXIDO DE CARBONO',
             'pm' => 'MATERIA PARTICULADA',
             'nox' => 'ÓXIDOS DE NITRÓGENO',
