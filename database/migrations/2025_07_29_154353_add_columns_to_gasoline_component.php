@@ -13,7 +13,7 @@ class AddColumnsToGasolineComponent extends Migration
      */
     public function up()
     {
-        Schema::table('gasoline_component', function (Blueprint $table) {
+        Schema::table('gasoline_components', function (Blueprint $table) {
             //
             $table->float('bno_on', 23, 20)->after('ron')->nullable();
             $table->float('bno_rvp', 23, 20)->after('bno_on')->nullable();
@@ -29,7 +29,7 @@ class AddColumnsToGasolineComponent extends Migration
      */
     public function down()
     {
-        Schema::table('gasoline_component', function (Blueprint $table) {
+        Schema::table('gasoline_components', function (Blueprint $table) {
             //
             $table->dropColumn('bno_on');
             $table->dropColumn('bno_rvp');
