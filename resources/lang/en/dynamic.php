@@ -6,7 +6,7 @@ return [
         'profiles' => 'GASOLINE PROFILES AND IMPACT OF ETHANOL BLENDING',
         'america' => 'LATIN AMERICA',
         'dynamic-tool' => 'Dynamic Tool',
-        'select-country-text' => 'Select the country you want to analyze. Once selected, it is posible to scroll through the three available tabs and observe the country-specific information and its comparison with other  countries or regions.',
+        'select-country-text' => 'Select the country you want to analyze. Once selected, it is posible to scroll through the four available tabs and observe the country-specific information and its comparison with other  countries or regions.',
         'select-country' => 'Select country',
         'profile' => 'Profile',
         'components' => 'Gasoline/ethanol blending components',

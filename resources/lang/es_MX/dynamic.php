@@ -6,7 +6,7 @@ return [
         'profiles' => 'PERFILES DE GASOLINA E IMPACTO DE LAS MEZCLAS CON ETANOL',
         'america' => 'AMÉRICA LATINA',
         'dynamic-tool' => 'Herramienta dinámica',
-        'select-country-text' => 'Seleccionar el país que se desea analizar. Una vez seleccionado, es posible desplazarse por las tres pestañas disponibles y observar la específica del país y su comparación con otros países o regiones.',
+        'select-country-text' => 'Seleccionar el país que se desea analizar. Una vez seleccionado, es posible desplazarse por las cuatro pestañas disponibles y observar la específica del país y su comparación con otros países o regiones.',
         'select-country' => 'Seleccionar país',
         'profile' => 'Perfil',
         'components' => 'Componentes de mezclado de gasolina con etanol',
