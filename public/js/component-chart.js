@@ -29,10 +29,10 @@ function getLanguageJson(lang) {
       lang_json = lang_json_english;
       break;
     case 'es_MX':
-      lang_json = lang_json_spanish();
+      lang_json = lang_json_spanish;
     break;
     default:
-      lang_json = lang_json_english();
+      lang_json = lang_json_english;
   }
 
   return lang_json;
