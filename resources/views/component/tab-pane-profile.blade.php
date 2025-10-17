@@ -127,7 +127,10 @@
                     @if($tab == 1 && $compareProfileData && count($compareProfileData) > 0)
                         <td colspan="{{ count($compareProfileData) }}">{{ __('countries.' . $compareCountry->name) }}</td>
                     @endif
-                    <td colspan="{{ count($europeData) }}">{{ __('countries.' . $europeUnion->name) }}</td>
+
+                    @if ($continent_id != '2')
+                        <td colspan="{{ count($europeData) }}">{{ __('countries.' . $europeUnion->name) }}</td>
+                    @endif
                 </tr>
                 <tr>
                     @include('component.table-row', ['rowName' => 'header-name', 'profileData' => $profileData, 'row' => 'name', 'europeData' => $europeData, 'compareProfileData' => $compareProfileData])

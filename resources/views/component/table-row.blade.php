@@ -29,6 +29,7 @@
     }
 @endphp
 
+
 <td class="description-col">{{ __('dynamic.table-texts.' . $rowName) }}</td>
 @foreach(getFormedData($profileData, $row) as $rowEl)
     <td class="data" colspan="{{ $rowEl['colspan'] }}">{{ $rowEl[$row] }}</td>
@@ -38,6 +39,8 @@
         <td class="data" colspan="{{ $rowElC['colspan'] }}">{{ $rowElC[$row] }}</td>
     @endforeach
 @endif
-@foreach(getFormedData($europeData, $row) as $rowElUE)
-    <td class="data" colspan="{{ $rowElUE['colspan'] }}">{{ $rowElUE[$row] }}</td>
-@endforeach
+@if ($continent_id != '2')
+    @foreach(getFormedData($europeData, $row) as $rowElUE)
+        <td class="data" colspan="{{ $rowElUE['colspan'] }}">{{ $rowElUE[$row] }}</td>
+    @endforeach
+@endif

@@ -1,7 +1,7 @@
 <div class="row p-2">
     <div class="col-md-6">
         <p>
-            {{ __('dynamic.content.impact-tab.model-reference') }} <span class="text-underline-blue"><a href="http://www.issrc.org/ive/" target="_blank">{{ __('dynamic.content.impact-tab.model-link-text') }}</a></span>
+            {{ __('dynamic.content.impact-tab.model-reference') }} <span class="text-underline-blue"><a href="http://www.issrc.org/ive/" target="_blank">{{ __('dynamic.content.impact-tab.model-link-text') }}</a></span> {{ __('dynamic.content.impact-tab.model-reference_2') }} 
         </p>
         <p>
             {{ __('dynamic.content.impact-tab.model-rates') }}
