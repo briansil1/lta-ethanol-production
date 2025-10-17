@@ -113,7 +113,7 @@
                 @elseif ($continent_id == '2')
                     <button class="btn btn-primary download-profile-europe">{{ __('dynamic.content.profile-tab.download-button') }}</button>
                 @else
-                    <button class="btn btn-primary download-profile">{{ __('dynamic.content.profile-tab.download-button') }}</button>
+                    <button class="btn btn-primary download-profile-asia-africa">{{ __('dynamic.content.profile-tab.download-button') }}</button>
                 @endif
             </div>
         </div>

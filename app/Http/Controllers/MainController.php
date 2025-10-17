@@ -58,7 +58,7 @@ class MainController extends Controller
         if (empty($locale)) {
             $locale = Locale::where('code', $base_l)->first();
         }
-        $reports = $locale->reports()->where('active', 1)->where('continent_id', $continent_id)->get();
+        $reports = $locale->reports()->where('active', 1)->where('continent_id', $continent_id)->orderBy('order', 'asc')->get();
         return view('home', [
             'reports' => $reports,
             'token' => $token,
@@ -300,10 +300,10 @@ class MainController extends Controller
         if (!Auth::check()) {
             throw new AuthenticationException();
         }
-        if (file_exists(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.emission-filename')))) { //emission-asia-africa-filename
-            return response()->download(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.emission-filename')));
+        if (file_exists(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.emission-asia-africa-filename')))) { 
+            return response()->download(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.emission-asia-africa-filename')));
         } else {
-            throw new FileNotFoundException('storage/app/pdfs/' . __('dynamic.pdf-files.emission-filename'));
+            throw new FileNotFoundException('storage/app/pdfs/' . __('dynamic.pdf-files.emission-asia-africa-filename'));
         }
     }
 
@@ -333,10 +333,10 @@ class MainController extends Controller
         if (!Auth::check()) {
             throw new AuthenticationException();
         }
-        if (file_exists(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.ghg-filename')))) { //ghg-asia-africa-filename
-            return response()->download(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.ghg-filename')));
+        if (file_exists(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.ghg-asia-africa-filename')))) { 
+            return response()->download(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.ghg-asia-africa-filename')));
         } else {
-            throw new FileNotFoundException('storage/app/pdfs/' . __('dynamic.pdf-files.ghg-filename'));
+            throw new FileNotFoundException('storage/app/pdfs/' . __('dynamic.pdf-files.ghg-asia-africa-filename'));
         }
     }
 
