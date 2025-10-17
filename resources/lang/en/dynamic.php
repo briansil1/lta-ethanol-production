@@ -96,6 +96,12 @@ return [
             'increased-octane-number' => 'Increased octane number',
             'gasoline-95' => 'Gasoline 95',
             'gasoline-98' => 'Gasoline 98',
+            'gasoline-1' => 'Gasoline 1',
+            'gasoline-2' => 'Gasoline 2',
+            'gasoline-91' => 'Gasoline 91',
+            'gasoline-92' => 'Gasoline 92',
+            'gasoline-94' => 'Gasoline 94',
+            'gasoline-97' => 'Gasoline 97',
             'legends' => [
                 'catalytic_gasoline' => 'Catalytic gasoline',
                 'reformate' => 'Reformate',

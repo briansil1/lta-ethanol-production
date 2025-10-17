@@ -12,6 +12,7 @@ return [
     'components-list' => 'get-components-list',
     'price-update-results' => 'price-update-get-results',
     'tools-continent' => 'dynamic-tools-continent',
+    'tools-continent2' => 'dynamic-tools-continent',
     'ghg-file' => 'ghg-file-en',
     'home-continent' => 'home-continent',
     'profile-europe-pdf' => 'profile-europe-pdf-en',

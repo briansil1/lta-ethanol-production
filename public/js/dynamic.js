@@ -67,13 +67,13 @@ $(function () {
     $('#switch_continent_asia_africa').on('click', evt => {
         evt.preventDefault();
         continent_label.innerHTML = continent_names_json.asia_africa;
-        window.location.href = _get_change_continent(3);
+        window.location.href = _get_change_continent2(3);
     });
 
     $('#switch_continent_europe').on('click', evt => {
         evt.preventDefault();
         continent_label.innerHTML = continent_names_json.europa;
-        window.location.href = _get_change_continent(2);
+        window.location.href = _get_change_continent2(2);
     });
 
     $('.lang-select').off('change').on('change', function (evt) {

@@ -69,7 +69,10 @@
         var _getImpactFileUrl = () => '{{ route(__('routes.emission-file')) }}';
         var _getPriceUpdateResultsURL = (country, gasolineRegular, gasolinePremium, normalButane, ethanol, emtbe, btxWeighted) => '{{ route(__('routes.price-update-results')) }}/' + country + (gasolineRegular ? '/' + gasolineRegular : '') + (gasolinePremium ? '/' + gasolinePremium : '') + (normalButane ? '/' + normalButane : '') + (ethanol ? '/' + ethanol : '') + (emtbe ? '/' + emtbe : '') + (btxWeighted ? '/' + btxWeighted : '');
         var _getGhgByCountryURL = (country) => '{{ route('get-ghg-by-country') }}/' + country;
+
         var _get_change_continent = (continent_id) => '{{ route(__('routes.tools-continent')) }}/' + continent_id;
+        var _get_change_continent2 = (continent_id) => '{{ route(__('routes.tools-continent2')) }}/' + continent_id;
+
         var _getGhgFileUrl = () => '{{ route(__('routes.ghg-file')) }}';
         var _getProfileEuropePDFUrl = () => '{{ route(__('routes.profile-europe-pdf')) }}';
         var _getProfileAsiaAfricaPDFUrl = () => '{{ route(__('routes.profile-asia-africa-pdf')) }}';
