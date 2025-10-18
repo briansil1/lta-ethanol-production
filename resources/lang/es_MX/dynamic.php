@@ -233,6 +233,7 @@ return [
         'ethanol_default' => 'txt-ethanol-esp.png',
         'component_blending' => 'grafica_componentes_esp.png',
         'component_blending_europe' => 'graph_components_europe_eng.png', 
+        'component_blending_asia' => 'graph_components_asia-africa_eng.png', 
         'component_benefits' => 'beneficios_componentes_esp.png',
         'component_comparison' => 'componentes-comparacion.png',
         'life_cycle_emmision' => 'ghg-grafica-circular-espaniol.png',

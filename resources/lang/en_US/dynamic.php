@@ -239,6 +239,7 @@ return [
         'ethanol_default' => 'txt-ethanol-eng.png',
         'component_blending' => 'graph_components_eng.png',
         'component_blending_europe' => 'graph_components_europe_eng.png', 
+        'component_blending_asia' => 'graph_components_asia-africa_eng.png', 
         'component_benefits' => 'benefits_components_eng.png',
         'component_comparison' => 'components-comparison.png',
         'life_cycle_emmision' => 'ghg-grafica-circular-ingles.png',

@@ -6,8 +6,10 @@
 
         @if ($continent_id == '1')
             <img src="{{ asset('images/' . __('dynamic.images.component_blending')) }}" class="img-fluid">
-        @else
+        @elseif ($continent_id == '2')
             <img src="{{ asset('images/' . __('dynamic.images.component_blending_europe')) }}" class="img-fluid">
+        @else
+            <img src="{{ asset('images/' . __('dynamic.images.component_blending_asia')) }}" class="img-fluid">
         @endif
         
     </div>
