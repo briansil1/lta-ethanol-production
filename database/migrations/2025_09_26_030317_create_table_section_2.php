@@ -856,6 +856,17 @@ class CreateTableSection2 extends Migration
           ['region_id' => '16', 'tipo'  => 'R', 'country'  => 'Africa', 'emission_type' => 'Emissions (Ton/day)', 'emission_component' => 'pm',  'e0' => '0.148620542622419', 'e10' => '0.0677080895139448', 'e15' => '0.0673765513804023', 'e20' => '0.0715207780496812', 'e25' => '0.0745617829987247', 'e30' => '0.233288522519469'],
           ['region_id' => '16', 'tipo'  => 'R', 'country'  => 'Africa', 'emission_type' => 'Emissions (Ton/day)', 'emission_component' => 'voc',  'e0' => '3.42356168881765', 'e10' => '1.34919147833652', 'e15' => '1.33307943788328', 'e20' => '1.01762474805162', 'e25' => '1.38423127888791', 'e30' => '17.3285193364379'],
 
+          ['region_id' => '4',  'tipo'  => 'L', 'country'  => 'United States', 'emission_type' => 'Emissions (g/km)', 'emission_component' => 'co',  'e0' => '3.49946261600691', 'e10' => '3.49946261600691', 'e15' => '3.49946261600691', 'e20' => '3.49946261600691', 'e25' => '3.49946261600691', 'e30' => '3.49946261600691'],
+        ['region_id' => '4',  'tipo'  => 'L', 'country'  => 'United States', 'emission_type' => 'Emissions (g/km)', 'emission_component' => 'nox',  'e0' => '0.202720709778064', 'e10' => '0.202720709778064', 'e15' => '0.202720709778064', 'e20' => '0.202720709778064', 'e25' => '0.202720709778064', 'e30' => '0.202720709778064'],
+        ['region_id' => '4',  'tipo'  => 'L', 'country'  => 'United States', 'emission_type' => 'Emissions (g/km)', 'emission_component' => 'co2',  'e0' => '255.384194763071', 'e10' => '255.384194763071', 'e15' => '255.384194763071', 'e20' => '255.384194763071', 'e25' => '255.384194763071', 'e30' => '255.384194763071'],
+        ['region_id' => '4',  'tipo'  => 'L', 'country'  => 'United States', 'emission_type' => 'Emissions (g/km)', 'emission_component' => 'pm',  'e0' => '0.00656704176865306', 'e10' => '0.00656704176865306', 'e15' => '0.00656704176865306', 'e20' => '0.00656704176865306', 'e25' => '0.00656704176865306', 'e30' => '0.00656704176865306'],
+        ['region_id' => '4',  'tipo'  => 'L', 'country'  => 'United States', 'emission_type' => 'Emissions (g/km)', 'emission_component' => 'voc',  'e0' => '0.273286946591026', 'e10' => '0.273286946591026', 'e15' => '0.273286946591026', 'e20' => '0.273286946591026', 'e25' => '0.273286946591026', 'e30' => '0.273286946591026'],
+        ['region_id' => '6',  'tipo'  => 'L', 'country'  => 'UE 6', 'emission_type' => 'Emissions (g/km)', 'emission_component' => 'co',  'e0' => '1', 'e10' => '1', 'e15' => '1', 'e20' => '1', 'e25' => '1', 'e30' => '1'],
+        ['region_id' => '6',  'tipo'  => 'L', 'country'  => 'UE 6', 'emission_type' => 'Emissions (g/km)', 'emission_component' => 'nox',  'e0' => '0.06', 'e10' => '0.06', 'e15' => '0.06', 'e20' => '0.06', 'e25' => '0.06', 'e30' => '0.06'],
+        ['region_id' => '6',  'tipo'  => 'L', 'country'  => 'UE 6', 'emission_type' => 'Emissions (g/km)', 'emission_component' => 'co2',  'e0' => '95', 'e10' => '95', 'e15' => '95', 'e20' => '95', 'e25' => '95', 'e30' => '95'],
+        ['region_id' => '6',  'tipo'  => 'L', 'country'  => 'UE 6', 'emission_type' => 'Emissions (g/km)', 'emission_component' => 'pm',  'e0' => '0.005', 'e10' => '0.005', 'e15' => '0.005', 'e20' => '0.005', 'e25' => '0.005', 'e30' => '0.005'],
+        ['region_id' => '6',  'tipo'  => 'L', 'country'  => 'UE 6', 'emission_type' => 'Emissions (g/km)', 'emission_component' => 'voc',  'e0' => '0.1', 'e10' => '0.1', 'e15' => '0.1', 'e20' => '0.1', 'e25' => '0.1', 'e30' => '0.1'],
+
         ]);
      }
 
