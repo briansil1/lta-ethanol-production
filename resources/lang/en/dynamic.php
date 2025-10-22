@@ -3,6 +3,7 @@
 return [
     'title' => 'Dynamic Tools',
     'content' => [
+        'start' => 'Go back to Home',
         'profiles' => 'ETHANOL IMPACT TOOL',
         'america' => 'LATIN AMERICA',
         'dynamic-tool' => 'Dynamic Tool',
@@ -181,7 +182,7 @@ return [
             'graph-title-pm' => 'Particulate matter (PM) emissions in grams per km',
             'graph-title-nox' => 'Nitrogen oxides (NOx) emissions in grams per km',
             'graph-title-btx' => 'Aromatics (BTX) emissions in grams per km',
-            'graph-usa-emissions' => 'Current US emissions',
+            'graph-usa-emissions' => 'TIER3 USA',
             'graph-euro-emissions' => 'Euro 6 Standard',
             'vehicles-stop-circulating' => 'The emission reduction is equivalent to the following thousands of vehicles ceasing to circulate daily:'
         ],
@@ -195,7 +196,10 @@ return [
             'graph-title-greet' => 'Life cycle Emissions GREET',
             'circular-graph-title-greet' => 'Global GHG Emissions for 2023',
             'ipcc-graph-title-greet' => 'IPCC Transport Sector Sustainable Sector Scenario, 2023',
-            'graph-source' => 'Source: IPCC, 2023'
+            'graph-source' => 'Source: IPCC, 2023',
+            'graph-measure' => 'MMTons/yr',
+            'reduction' => 'Reduction',
+            'target-participation' => 'Target Participation',
         ],
     ],
     'table-texts' => [

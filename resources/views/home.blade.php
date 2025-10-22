@@ -40,7 +40,7 @@
                         <input type="hidden" class="form-control" id="user_locale_hidden" aria-label="user_locale_hidden" aria-describedby="user_locale_hidden" value="{{ app()->getLocale() }}">
                        </div>
                     <div class="back-blue text-center">
-                        <h2 class="h1 uppercase text-2xl md:text-5xl text-white container oswald">{{ __('main.content.profiles') }} <br> {{ __('main.content.profiles-2') }}</h2>
+                        <h2 class="h1 uppercase text-2xl md:text-5xl text-white container oswald">{{ __('dynamic.content.profiles') }} <br> {{ __('main.content.profiles-2') }}</h2>
                         <h3 class="text-white mt-0 pt-0 oswald">
                             <label id="tool_continent"  class="text-white mt-0 pt-0 oswald" aria-label="tool_continent" aria-describedby="tool_continent">{{ $continent_name }}</label>
                         </h3>
@@ -79,7 +79,7 @@
                             </a>
                             <a href="#" id="switch_continent_global" class="flex-1 mg-button mg-button--larger mg-button--tertiary mx-4 p-3 flex  items-center text-base md:text-lg lg:text-3xl " style="flex-direction: column;">
                                 <div class="mx-auto w-100">
-                                    <img src="{{ asset('images/map-global-en.png') }}" alt="" class="hero-sec-img">
+                                    <img src="{{ asset('images/map-global-en.jpg') }}" alt="" class="hero-sec-img">
                                 
                                 </div>
                                 <p class="card-p">

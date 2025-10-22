@@ -14,10 +14,16 @@ class AsiaReports extends Migration
     public function up()
     {
 
-        // Example: Check if a user with a specific email already exists
+        // Example: Check if a country with a specific id already exists
         if (!DB::table('countries')->where('id', 62)->exists()) {
              DB::table('countries')->insert([
             ['region_id' => '15', 'name' => 'full-report', 'code' => 'ge'],
+            ]);
+        }
+
+        if (!DB::table('countries')->where('id', 63)->exists()) {
+             DB::table('countries')->insert([
+            ['region_id' => '6', 'name' => 'full-report', 'code' => 'gee'],
             ]);
         }
 
@@ -31,6 +37,7 @@ class AsiaReports extends Migration
             ['country_id' => '57', 'locale_id' => '2', 'report_url' => 'THAILAND_ENG.pdf', 'continent_id' => '3', 'order' => '7', 'active' => '1'],
             ['country_id' => '55', 'locale_id' => '2', 'report_url' => 'VIETNAM_ENG.pdf', 'continent_id' => '3', 'order' => '8', 'active' => '1'],
             ['country_id' => '62', 'locale_id' => '2', 'report_url' => 'ASIA_AFRICA_ENG.pdf', 'continent_id' => '3', 'order' => '1', 'active' => '1'],
+            ['continent_id' => '2', 'country_id' => '63', 'locale_id' => '2', 'report_url' => 'EUROPE_ENG.pdf', 'order' => '1', 'active' => '1'],
         ]);
     }
 

@@ -365,7 +365,7 @@ class MainController extends Controller
         if (empty($locale)) {
             $locale = Locale::where('code', $base_l)->first();
         }
-
+        
         // $country_profiles = Profile::select('country_id')->where('country_id', '<>', env('APP_EUROPE_ID'))->groupBy('country_id')->get();
         $country_profiles = Profile::join('countries', 'countries.id', '=', 'profiles.country_id')
             ->join('regions', 'regions.id', '=', 'countries.region_id')

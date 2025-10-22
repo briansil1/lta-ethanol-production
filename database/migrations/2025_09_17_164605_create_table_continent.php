@@ -24,7 +24,7 @@ class CreateTableContinent extends Migration
         });
 
         DB::table('continents')->insert([
-            [ 'name' => 'Latin-america', 'code' => 'LATAM'],
+            [ 'name' => 'Latin-America', 'code' => 'LATAM'],
             [ 'name' => 'Europe', 'code' => 'EURO'],
             [ 'name' => 'Asia-Africa', 'code' => 'AS-AF'],
             [ 'name' => 'General', 'code' => 'GEN'],

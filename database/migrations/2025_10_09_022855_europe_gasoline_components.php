@@ -16,8 +16,8 @@ class EuropeGasolineComponents extends Migration
         
         Schema::table('gasoline_components', function (Blueprint $table) {
             if (!Schema::hasColumn('gasoline_components', 'tame')) {
-                $table->string('tame', 60)->after('ethanol')->nullable();
-                $table->string('etbe', 60)->after('ethanol')->nullable();
+                $table->string('tame', 60)->after('raffinate')->nullable();
+                $table->string('etbe', 60)->after('raffinate')->nullable();
             }
         });
 

@@ -213,6 +213,13 @@
     <div class="col-12 text-justify">
         {{ __('dynamic.content.component-tab.instructions-5') }}
     </div>
+
+    <p>
+        <br><br>
+        {{ __('dynamic.content.component-tab.benefits-4') }}
+
+        </p>
+
     <div class="col-12 mb-3 mt-2 text-center">
 
         @if ($continent_id == '1')
@@ -221,12 +228,10 @@
             <button id="{{ isset($chart_id) ? $chart_id : 'chart' }}-download-component-europe-db" class="btn btn-primary px-4 py-1">{{ __('dynamic.content.component-tab.download-full-database-button') }}</button>
         @else
             <button id="{{ isset($chart_id) ? $chart_id : 'chart' }}-download-component-asia-africa-db" class="btn btn-primary px-4 py-1">{{ __('dynamic.content.component-tab.download-full-database-button') }}</button>
-        @endif
-        
+        @endif        
 
     </div>
     <p>
-        {{ __('dynamic.content.component-tab.benefits-4') }}
         <br><br>
         <small>
             <i>{{ __('dynamic.content.component-tab.components-notes') }}</i>

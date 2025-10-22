@@ -85,7 +85,6 @@
                         </div>
                         <div class="col-12 vehicles-stop">
                             <div class="row m-0 pt-3 pb-1 px-0">
-                                {{-- <div class="col-12 text-center mb-2">{{ __('dynamic.content.impact-tab.vehicles-stop-circulating') }}</div> --}}
                                 <div class="col-2 text-center e0"> xxx </div>
                                 <div class="col-2 text-center e10"> xxx </div>
                                 <div class="col-2 text-center e15"> xxx </div>
@@ -111,46 +110,15 @@
                 </div>
             </div>
 
-
-
-            <!-- <div class="tab-pane fade tab-greet" id="{{ isset($chart_id) ? $chart_id : 'chart' }}-ghg-greet" role="tabpanel" aria-labelledby="v-ghg-profile-tab">
-                <div class="container-fluid p-0">
-                    <div class="row">
-                        <div class="col-12 canvas-container">
-                            <canvas id="{{ isset($chart_id) ? $chart_id : 'chart' }}-greet">
-                                <p>{{ __('dynamic.content.impact-tab.graphics-fallback-text') }}</p>
-                            </canvas>
-                        </div>
-                        <div class="col-12 vehicles-stop">
-                            <div class="row m-0 pt-3 pb-1 px-0">
-                                {{-- <div class="col-12 text-center mb-2">{{ __('dynamic.content.impact-tab.vehicles-stop-circulating') }}</div> --}}
-                                <div class="col-2 text-center e0"> xxx </div>
-                                <div class="col-2 text-center e10"> xxx </div>
-                                <div class="col-2 text-center e15"> xxx </div>
-                                <div class="col-2 text-center e20"> xxx </div>
-                                <div class="col-2 text-center e25"> xxx </div>
-                                <div class="col-2 text-center e30"> xxx </div>
-                            </div>
-                        </div>
-                        <div class="col-12 target">
-                            <div class="row m-0 pt-3 pb-1 px-0">
-                                <div class="col-2 text-center e0"> xxx </div>
-                                <div class="col-2 text-center e10"> xxx </div>
-                                <div class="col-2 text-center e15"> xxx </div>
-                                <div class="col-2 text-center e20"> xxx </div>
-                                <div class="col-2 text-center e25"> xxx </div>
-                                <div class="col-2 text-center e30"> xxx </div>
-                                <div class="col-12 text-center mt-3 {{ ($tab == 4 && isset($compareCountry) && $compareCountry) ? '' : 'hidden' }}">
-                                    <span class="impact-vehicles">{{ __('countries.' . $country->name) }}</span> | <span class="impact-vehicles-compare">{{ ($tab == 4 && isset($compareCountry) && $compareCountry) ? __('countries.impact-select.' . $compareCountry->name) : ''}}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
+            <div class="col-12 text-left">
+                <p class="italic">
+                    R(%) = {{ __('dynamic.content.ghg-tab.reduction') }} </br>
+                    T(%) = {{ __('dynamic.content.ghg-tab.target-participation') }}
+                </p>
+            </div>
 
 
         </div>
     </div>
+
 </div>

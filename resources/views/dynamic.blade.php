@@ -28,8 +28,8 @@
             'pm': '{{ __('dynamic.content.impact-tab.graph-title-pm') }}',
             'nox': '{{ __('dynamic.content.impact-tab.graph-title-nox') }}',
             'btx': '{{ __('dynamic.content.impact-tab.graph-title-btx') }}',
-            'redii': '{{ isset($country->id) && $country ? __('countries.' . $country->name) : '' }}',
-            'greet': '{{ isset($country->id) && $country ? __('countries.' . $country->name) : '' }}'
+            'redii': '{{ isset($country->id) && $country ? __('countries.' . $country->name)  . ' ' .  __('dynamic.content.ghg-tab.graph-measure')  : '' }}',
+            'greet': '{{ isset($country->id) && $country ? __('countries.' . $country->name)  . ' ' .  __('dynamic.content.ghg-tab.graph-measure')  : '' }}'
         };
         var _emissions_euro = '{{ __('dynamic.content.impact-tab.graph-euro-emissions') }}';
         var _emissions_usa = '{{ __('dynamic.content.impact-tab.graph-usa-emissions') }}';
@@ -112,8 +112,9 @@
                     <div class="back-blue text-center">
 
                         <input type="hidden" class="form-control" id="user_locale_hidden" aria-label="user_locale_hidden" aria-describedby="user_locale_hidden" value="{{ app()->getLocale() }}">
+                        <h3 class="text-left"><a href="{{ route(__('routes.home')) }}" class="text-white text-left">{{ __('dynamic.content.start') }}</a></h3>
                         
-                        <h2 class="h1 uppercase text-2xl md:text-5xl container oswald"><a href="{{ route(__('routes.home')) }}" class="text-white">{{ __('dynamic.content.profiles') }}</a></h2>
+                        <h2 class="h1 uppercase md:text-5xl"><a href="{{ route(__('routes.home')) }}" class="text-white">{{ __('dynamic.content.profiles') }}</a></h2>
                         
                         <label id="tool_continent"  class="text-white mt-0 pt-0 oswald" aria-label="tool_continent" aria-describedby="tool_continent">@if (isset($continent_text)) {{ $continent_text }} @endif</label>
                         <h3 class="text-white mt-0 pt-0 oswald">{{ __('dynamic.content.dynamic-tool') }}</h3>

@@ -3,6 +3,7 @@
 return [
     'title' => 'Herramientas Dinámicas',
     'content' => [
+        'start' => 'Regresar al Inicio',
         'profiles' => 'PERFILES DE GASOLINA E IMPACTO DE LAS MEZCLAS CON ETANOL',
         'america' => 'AMÉRICA LATINA',
         'dynamic-tool' => 'Herramienta dinámica',
@@ -174,7 +175,7 @@ return [
             'graph-title-pm' => 'Emisiones de Materia Particulada en gramos por km',
             'graph-title-nox' => 'Emisiones de Óxido de Nitrógeno (NOx) en gramos por km',
             'graph-title-btx' => 'Emisiones de Benceno (BTX) en gramos por km',
-            'graph-usa-emissions' => 'Emisiones actuales Estados Unidos',
+            'graph-usa-emissions' => 'TIER3 USA',
             'graph-euro-emissions' => 'Estándar emisiones Euro 6',
             'vehicles-stop-circulating' => 'La reducción de emisiones es equivalente a que los siguientes miles de vehículos dejen de circular diariamente:'
         ],
@@ -189,7 +190,10 @@ return [
             'graph-title-greet' => 'Ciclo de Vida Emisiones GREET',
             'circular-graph-title-greet' => 'Emisiones Globales GEI de 2023',
             'ipcc-graph-title-greet' => 'IPCC Escenario de Desarrollo Sustentable del Sector Transporte, 2023',
-            'graph-source' => 'Fuente: IPCC, 2023'
+            'graph-source' => 'Fuente: IPCC, 2023',
+            'graph-measure' => 'MMTons/año',
+            'reduction' => 'Reducción',
+            'target-participation' => 'Participación Objetivo',
         ],
     ],
     'table-texts' => [
