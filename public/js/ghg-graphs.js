@@ -99,19 +99,19 @@ function changeGraphTabGhg() {
 
                     lang_json = GetLanguageJson(lang);
 
-                    let e0_reduction = '<span class="impact-vehicles">' + lang_json.reduction + ('e0' in redvsbase_redii && redvsbase_redii['e0'] ? (redvsbase_redii['e0'] * 100).toFixed(1)+'%' : '0%') + '</span>'
-                    let e10_reduction = '<span class="impact-vehicles">' + ('e10' in redvsbase_redii ? (redvsbase_redii['e10'] * 100).toFixed(1)+'%' : '0') + '</span>';
-                    let e15_reduction = '<span class="impact-vehicles">' + ('e15' in redvsbase_redii ? (redvsbase_redii['e15'] * 100).toFixed(1)+'%' : '0') + '</span>';
-                    let e20_reduction = '<span class="impact-vehicles">' + ('e20' in redvsbase_redii ? (redvsbase_redii['e20'] * 100).toFixed(1)+'%' : '0') + '</span>';
-                    let e25_reduction = '<span class="impact-vehicles">' + ('e25' in redvsbase_redii ? (redvsbase_redii['e25'] * 100).toFixed(1)+'%' : '0') + '</span>';
-                    let e30_reduction = '<span class="impact-vehicles">' + ('e30' in redvsbase_redii ? (redvsbase_redii['e30'] * 100).toFixed(1)+'%' : '0') + '</span>';
+                    let e0_reduction = '<span class="impact-vehicles">' + lang_json.reduction + ('e0' in redvsbase_redii && redvsbase_redii['e0'] ? (redvsbase_redii['e0'] * 100).toFixed(3)+'%' : '0%') + '</span>'
+                    let e10_reduction = '<span class="impact-vehicles">' + ('e10' in redvsbase_redii ? (redvsbase_redii['e10'] * 100).toFixed(3)+'%' : '0') + '</span>';
+                    let e15_reduction = '<span class="impact-vehicles">' + ('e15' in redvsbase_redii ? (redvsbase_redii['e15'] * 100).toFixed(3)+'%' : '0') + '</span>';
+                    let e20_reduction = '<span class="impact-vehicles">' + ('e20' in redvsbase_redii ? (redvsbase_redii['e20'] * 100).toFixed(3)+'%' : '0') + '</span>';
+                    let e25_reduction = '<span class="impact-vehicles">' + ('e25' in redvsbase_redii ? (redvsbase_redii['e25'] * 100).toFixed(3)+'%' : '0') + '</span>';
+                    let e30_reduction = '<span class="impact-vehicles">' + ('e30' in redvsbase_redii ? (redvsbase_redii['e30'] * 100).toFixed(3)+'%' : '0') + '</span>';
                     
-                    let e0_target = '<span class="impact-vehicles">' + lang_json.target_participation + ('e0' in redvstarget_redii && redvstarget_redii['e0'] ? (redvstarget_redii['e0'] * 100).toFixed(1)+'%' : '0%') + '</span>'
-                    let e10_target = '<span class="impact-vehicles">' + ('e10' in redvstarget_redii ? (redvstarget_redii['e10'] * 100).toFixed(1)+'%' : '0') + '</span>';
-                    let e15_target = '<span class="impact-vehicles">' + ('e15' in redvstarget_redii ? (redvstarget_redii['e15'] * 100).toFixed(1)+'%' : '0') + '</span>';
-                    let e20_target = '<span class="impact-vehicles">' + ('e20' in redvstarget_redii ? (redvstarget_redii['e20'] * 100).toFixed(1)+'%' : '0') + '</span>';
-                    let e25_target = '<span class="impact-vehicles">' + ('e25' in redvstarget_redii ? (redvstarget_redii['e25'] * 100).toFixed(1)+'%' : '0') + '</span>';
-                    let e30_target = '<span class="impact-vehicles">' + ('e30' in redvstarget_redii ? (redvstarget_redii['e30'] * 100).toFixed(1)+'%' : '0') + '</span>';
+                    let e0_target = '<span class="impact-vehicles">' + lang_json.target_participation + ('e0' in redvstarget_redii && redvstarget_redii['e0'] ? (redvstarget_redii['e0'] * 100).toFixed(3)+'%' : '0%') + '</span>'
+                    let e10_target = '<span class="impact-vehicles">' + ('e10' in redvstarget_redii ? (redvstarget_redii['e10'] * 100).toFixed(3)+'%' : '0') + '</span>';
+                    let e15_target = '<span class="impact-vehicles">' + ('e15' in redvstarget_redii ? (redvstarget_redii['e15'] * 100).toFixed(3)+'%' : '0') + '</span>';
+                    let e20_target = '<span class="impact-vehicles">' + ('e20' in redvstarget_redii ? (redvstarget_redii['e20'] * 100).toFixed(3)+'%' : '0') + '</span>';
+                    let e25_target = '<span class="impact-vehicles">' + ('e25' in redvstarget_redii ? (redvstarget_redii['e25'] * 100).toFixed(3)+'%' : '0') + '</span>';
+                    let e30_target = '<span class="impact-vehicles">' + ('e30' in redvstarget_redii ? (redvstarget_redii['e30'] * 100).toFixed(3)+'%' : '0') + '</span>';
                     
                     
                     // if ('compare_emission_ghg' in response.data) {

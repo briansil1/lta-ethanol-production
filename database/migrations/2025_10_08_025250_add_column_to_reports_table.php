@@ -48,8 +48,6 @@ class AddColumnToReportsTable extends Migration
             ['continent_id' => '2', 'country_id' => '52', 'locale_id' => '2', 'report_url' => 'SPAIN_ENG.pdf', 'order' => '27', 'active' => '1'],
             ['continent_id' => '2', 'country_id' => '53', 'locale_id' => '2', 'report_url' => 'SWEDEN_ENG.pdf', 'order' => '28', 'active' => '1'],
             ['continent_id' => '2', 'country_id' => '54', 'locale_id' => '2', 'report_url' => 'UNITED_KINGDOM_ENG.pdf', 'order' => '29', 'active' => '1'],
-            ['continent_id' => '1', 'country_id' => '21', 'locale_id' => '2', 'report_url' => 'LATAM_ENG.pdf', 'order' => '1', 'active' => '1'],
-            ['continent_id' => '1', 'country_id' => '21', 'locale_id' => '4', 'report_url' => 'LATAM_ESP.pdf', 'order' => '1', 'active' => '1'],
             ['continent_id' => '2', 'country_id' => '63', 'locale_id' => '2', 'report_url' => 'EUROPE_ENG.pdf', 'order' => '1', 'active' => '1'],
         ]);
 
@@ -70,6 +68,7 @@ class AddColumnToReportsTable extends Migration
     public function down()
     {
         
+        DB::table('reports')->where('country_id', '=', 21)->where('id', '>', 30)->delete(); //Esto es para eliminar el full report de LATAM
         DB::table('reports')->where('country_id', '>', 26)->delete();
     }
 }

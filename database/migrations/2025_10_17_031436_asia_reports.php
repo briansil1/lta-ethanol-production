@@ -37,7 +37,6 @@ class AsiaReports extends Migration
             ['country_id' => '57', 'locale_id' => '2', 'report_url' => 'THAILAND_ENG.pdf', 'continent_id' => '3', 'order' => '7', 'active' => '1'],
             ['country_id' => '55', 'locale_id' => '2', 'report_url' => 'VIETNAM_ENG.pdf', 'continent_id' => '3', 'order' => '8', 'active' => '1'],
             ['country_id' => '62', 'locale_id' => '2', 'report_url' => 'ASIA_AFRICA_ENG.pdf', 'continent_id' => '3', 'order' => '1', 'active' => '1'],
-            ['continent_id' => '2', 'country_id' => '63', 'locale_id' => '2', 'report_url' => 'EUROPE_ENG.pdf', 'order' => '1', 'active' => '1'],
         ]);
     }
 
