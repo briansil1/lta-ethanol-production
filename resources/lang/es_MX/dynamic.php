@@ -120,7 +120,8 @@ return [
                 'etbe' => 'ETBE',
                 'tame' => 'TAME'
             ],
-            'modal-price-update' => 'Por favor, introduzca los nuevos precios. Los precios deben ser precios de referencia spot en dólares estadounidenses por galón del mismo período y lugar (por ejemplo, la Costa del Golfo de EE. UU.). Si es necesario, puede obtener los precios del informe "Datos del mercado y precios del etanol" de US Grains"',
+            'modal-price-update' => 'Por favor, introduzca los nuevos precios. Los precios deben ser precios de referencia spot en dólares estadounidenses por galón del mismo período y lugar (por ejemplo, la Costa del Golfo de EE. UU.). Si es necesario, puede obtener los precios del ',
+            'modal-price-update-link' => 'Informe sobre el mercado y los precios del etanol de U.S. Grains & BioProducts Council\'s.',
             'modal-price-update-fuel-component' => 'Fuel / Component',
             'modal-price-update-price' => 'Price (US$/gal)',
             'modal-price-update-gasoline-regular' => 'Gasolina (Regular)',

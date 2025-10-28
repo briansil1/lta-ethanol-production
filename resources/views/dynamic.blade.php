@@ -112,8 +112,7 @@
                     <div class="back-blue text-center">
 
                         <input type="hidden" class="form-control" id="user_locale_hidden" aria-label="user_locale_hidden" aria-describedby="user_locale_hidden" value="{{ app()->getLocale() }}">
-                        <h3 class="text-left"><a href="{{ route(__('routes.home')) }}" class="text-white text-left">{{ __('dynamic.content.start') }}</a></h3>
-                        
+                                               
                         <h2 class="h1 uppercase md:text-5xl"><a href="{{ route(__('routes.home')) }}" class="text-white">{{ __('dynamic.content.profiles') }}</a></h2>
                         
                         <label id="tool_continent"  class="text-white mt-0 pt-0 oswald" aria-label="tool_continent" aria-describedby="tool_continent">@if (isset($continent_text)) {{ $continent_text }} @endif</label>
@@ -257,7 +256,9 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p> {{ __('dynamic.content.component-tab.modal-price-update') }}</p>
+                                                    <p> {{ __('dynamic.content.component-tab.modal-price-update') }}
+                                                        <span class="text-underline-blue"><a href="https://grains.org/ethanol_report/" target="_blank">{{ __('dynamic.content.component-tab.modal-price-update-link') }}</a></span>
+                                                    </p>
                                                         
                                                     <form id="price-update-form" method="post" action="{{ route('price-update-get-results') }}" >
                                                                      
@@ -335,9 +336,6 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p> {{ __('dynamic.content.component-tab.modal-price-update') }}</p>
-
-
 
                                                     <div class="table-responsive">
                                                         <table class="table-bordered" border="1" cellpadding="0" cellspacing="0">

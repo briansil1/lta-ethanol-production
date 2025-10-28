@@ -28,6 +28,8 @@ class EmissionController extends Controller
                 'europe_vehicles' => $vehicles_europe ? $vehicles_europe->toArray() : [],
                 'usa' => $usa ? $usa->toArray() : [],
                 'usa_vehicles' => $vehicles_usa ? $vehicles_usa->toArray() : [],
+                'has_europe_value' => $europe != null ? 1 : 0,
+                'has_usa_value' => $usa != null ? 1 : 0,
             ]
         ];
         if ($compare) {

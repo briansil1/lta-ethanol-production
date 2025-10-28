@@ -26,12 +26,12 @@ class CreateTableRegions extends Migration
 
         DB::table('regions')->insert([
             [ 'continent_id' => '1', 'name' => 'south-america', 'code' => 'SUDAM'],
-            [ 'continent_id' => '1', 'name' => 'central-americ', 'code' => 'CENAM'],
+            [ 'continent_id' => '1', 'name' => 'central-america', 'code' => 'CENAM'],
             [ 'continent_id' => '1', 'name' => 'caribbean', 'code' => 'CARIB'],
             [ 'continent_id' => '1', 'name' => 'north-america', 'code' => 'NORAM'],
             [ 'continent_id' => '1', 'name' => 'latin-america', 'code' => 'LATAM'],
             [ 'continent_id' => '2', 'name' => 'europe', 'code' => 'EURO'],
-            [ 'continent_id' => '2', 'name' => 'europa27', 'code' => 'EU27'],
+            [ 'continent_id' => '2', 'name' => 'EU27', 'code' => 'EU27'],
             [ 'continent_id' => '2', 'name' => 'north-europe', 'code' => 'NORE'],
             [ 'continent_id' => '2', 'name' => 'west-europe', 'code' => 'WESE'],
             [ 'continent_id' => '2', 'name' => 'east-europe', 'code' => 'EASE'],

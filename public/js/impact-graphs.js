@@ -64,21 +64,6 @@ function changeGraphTab() {
                     const graphData = {
                         labels: ['E0', 'E10', 'E15', 'E20', 'E25', 'E30'],
                         datasets: [{
-                            label: _emissions_euro,
-                            data: [europe_emissions['e0'], europe_emissions['e10'], europe_emissions['e15'], europe_emissions['e20'], europe_emissions['e25'], europe_emissions['e30']],
-                            backgroundColor: '#CF8228',
-                            borderColor: '#CF8228',
-                            pointRadius: 0,
-                            type: 'line',
-                            borderCapStyle: 'round'
-                        }, {
-                            label: _emissions_usa,
-                            data: [usa_emissions['e0'], usa_emissions['e10'], usa_emissions['e15'], usa_emissions['e20'], usa_emissions['e25'], usa_emissions['e30']],
-                            backgroundColor: '#72AC4D',
-                            borderColor: '#72AC4D',
-                            pointRadius: 0,
-                            type: 'line',
-                        }, {
                             label: country_name,
                             data: [national_emissions['e0'], national_emissions['e10'], national_emissions['e15'], national_emissions['e20'], national_emissions['e25'], national_emissions['e30']],
                             backgroundColor: '#0A5D74',
@@ -86,6 +71,32 @@ function changeGraphTab() {
                             type: 'bar'
                         }]
                     };
+
+                    if (response.data['has_europe_value'] == 1) {
+                        graphData['datasets'].push({
+                            label: _emissions_euro,
+                            data: [europe_emissions['e0'], europe_emissions['e10'], europe_emissions['e15'], europe_emissions['e20'], europe_emissions['e25'], europe_emissions['e30']],
+                            backgroundColor: '#CF8228',
+                            borderColor: '#CF8228',
+                            pointRadius: 0,
+                            type: 'line',
+                            borderCapStyle: 'round'
+                        })
+                    }
+
+                    if (response.data['has_usa_value'] == 1) {
+                        graphData['datasets'].push({
+                            label: _emissions_usa,
+                            data: [usa_emissions['e0'], usa_emissions['e10'], usa_emissions['e15'], usa_emissions['e20'], usa_emissions['e25'], usa_emissions['e30']],
+                            backgroundColor: '#72AC4D',
+                            borderColor: '#72AC4D',
+                            pointRadius: 0,
+                            type: 'line',
+                        })
+                    }
+
+
+
                     let e0_vehicles = '<span class="impact-vehicles">' + ('e0' in response.data['country_vehicles'] && response.data['country_vehicles']['e0'] ? response.data['country_vehicles']['e0'] : '-') + '</span>'
                     let e10_vehicles = '<span class="impact-vehicles">' + ('e10' in response.data['country_vehicles'] ? response.data['country_vehicles']['e10'] : '-') + '</span>';
                     let e15_vehicles = '<span class="impact-vehicles">' + ('e15' in response.data['country_vehicles'] ? response.data['country_vehicles']['e15'] : '-') + '</span>';

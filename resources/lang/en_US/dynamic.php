@@ -126,7 +126,8 @@ return [
                 'etbe' => 'ETBE',
                 'tame' => 'TAME'
             ],
-            'modal-price-update' => 'Please input the new prices. Prices should be spot reference prices in US dollars per gallon from the same period in time and place (e.g. US Gulf Coast).  If needed, prices can be obtained from the US Grains\’s “Ethanol Market and Price Data” Report.',
+            'modal-price-update' => 'Please input the new prices. Prices should be spot reference prices in US dollars per gallon from the same period in time and place (e.g. US Gulf Coast).  If needed, prices can be obtained from the ',
+            'modal-price-update-link' => 'U.S. Grains & BioProducts Council\'s Ethanol Market and Pricing Data Report.',
             'modal-price-update-fuel-component' => 'Fuel / Component',
             'modal-price-update-price' => 'Price (US$/gal)',
             'modal-price-update-gasoline-regular' => 'Gasoline (Regular)',
@@ -187,7 +188,7 @@ return [
             'vehicles-stop-circulating' => 'The emission reduction is equivalent to the following thousands of vehicles ceasing to circulate daily:'
         ],
         'ghg-tab' => [
-            'first-paragraph' => 'The Global Agenda for Climate Action calls for countries, cities and regions, businesses, and members of civil society around the world to achieve a low-carbon and climate-resilient economies in support of the Paris Agreement. Road Transportation accounts for 15% of total GHG emissions (IPCC,2023).',
+            'first-paragraph' => 'The Global Agenda for Climate Action calls for countries, cities and regions, businesses, and members of civil society around the world to achieve low-carbon and climate-resilient economies in support of the Paris Agreement. Road Transportation accounts for 15% of total GHG emissions (IPCC,2023).',
             'second-paragraph' => 'Ethanol gasoline blends are an internationally adopted practice that offer significant immediate benefits. When implemented, these blends can lead to reduced greenhouse gas emissions, improved air quality, and economic advantages for consumers. As a renewable fuel, ethanol decreases our reliance on oil. Its high-octane content also substantially enhances the quality of blended fuel, contributing to cleaner cities and lower pollutant emissions. Biofuels are an important solution to achieve reduction targets in the transportation sector.',
             'third-paragraph' => 'The GHG emission reduction for each country is calculated using the GREET and the RED III life cycle GHG emission methodologies and compared to the current Target.',
             'compare-select' => 'Select',
