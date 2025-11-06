@@ -61,19 +61,13 @@ function changeGraphTab() {
                     const usa_emissions = response.data['usa'];
                     $('#chart-accordion-pills-' + parts[2]).addClass('show active');
                     $('#chart-tab-pills-' + parts[2]).addClass('show active');
-                    const graphData = {
+                    
+                    var graphData = {};
+
+                    if (response.data['has_europe_value'] == 1 && response.data['has_usa_value'] == 1) {
+                        graphData = {
                         labels: ['E0', 'E10', 'E15', 'E20', 'E25', 'E30'],
                         datasets: [{
-                            label: country_name,
-                            data: [national_emissions['e0'], national_emissions['e10'], national_emissions['e15'], national_emissions['e20'], national_emissions['e25'], national_emissions['e30']],
-                            backgroundColor: '#0A5D74',
-                            borderColor: '#0A5D74',
-                            type: 'bar'
-                        }]
-                    };
-
-                    if (response.data['has_europe_value'] == 1) {
-                        graphData['datasets'].push({
                             label: _emissions_euro,
                             data: [europe_emissions['e0'], europe_emissions['e10'], europe_emissions['e15'], europe_emissions['e20'], europe_emissions['e25'], europe_emissions['e30']],
                             backgroundColor: '#CF8228',
@@ -81,10 +75,9 @@ function changeGraphTab() {
                             pointRadius: 0,
                             type: 'line',
                             borderCapStyle: 'round'
-                        })
-                    }
+                            }]
+                        };
 
-                    if (response.data['has_usa_value'] == 1) {
                         graphData['datasets'].push({
                             label: _emissions_usa,
                             data: [usa_emissions['e0'], usa_emissions['e10'], usa_emissions['e15'], usa_emissions['e20'], usa_emissions['e25'], usa_emissions['e30']],
@@ -92,17 +85,38 @@ function changeGraphTab() {
                             borderColor: '#72AC4D',
                             pointRadius: 0,
                             type: 'line',
-                        })
+                        });
+
+                        graphData['datasets'].push({
+                            label: country_name,
+                            data: [national_emissions['e0'], national_emissions['e10'], national_emissions['e15'], national_emissions['e20'], national_emissions['e25'], national_emissions['e30']],
+                            backgroundColor: '#0A5D74',
+                            borderColor: '#0A5D74',
+                            type: 'bar',
+                        });
+                    }
+                    else{
+                        graphData = {
+                        labels: ['E0', 'E10', 'E15', 'E20', 'E25', 'E30'],
+                        datasets: [{
+                            label: country_name,
+                            data: [national_emissions['e0'], national_emissions['e10'], national_emissions['e15'], national_emissions['e20'], national_emissions['e25'], national_emissions['e30']],
+                            backgroundColor: '#0A5D74',
+                            borderColor: '#0A5D74',
+                            type: 'bar'
+                            }]
+                        };
                     }
 
 
 
-                    let e0_vehicles = '<span class="impact-vehicles">' + ('e0' in response.data['country_vehicles'] && response.data['country_vehicles']['e0'] ? response.data['country_vehicles']['e0'] : '-') + '</span>'
-                    let e10_vehicles = '<span class="impact-vehicles">' + ('e10' in response.data['country_vehicles'] ? response.data['country_vehicles']['e10'] : '-') + '</span>';
-                    let e15_vehicles = '<span class="impact-vehicles">' + ('e15' in response.data['country_vehicles'] ? response.data['country_vehicles']['e15'] : '-') + '</span>';
-                    let e20_vehicles = '<span class="impact-vehicles">' + ('e20' in response.data['country_vehicles'] ? response.data['country_vehicles']['e20'] : '-') + '</span>';
-                    let e25_vehicles = '<span class="impact-vehicles">' + ('e25' in response.data['country_vehicles'] ? response.data['country_vehicles']['e25'] : '-') + '</span>';
-                    let e30_vehicles = '<span class="impact-vehicles">' + ('e30' in response.data['country_vehicles'] ? response.data['country_vehicles']['e30'] : '-') + '</span>';
+
+                    let e0_vehicles = '<span class="impact-vehicles">' + ('e0' in response.data['country_vehicles'] && (response.data['country_vehicles']['e0']).toFixed(1) ? response.data['country_vehicles']['e0'] : ' - ') + '</span>'
+                    let e10_vehicles = '<span class="impact-vehicles">' + ('e10' in response.data['country_vehicles'] ? (response.data['country_vehicles']['e10']).toFixed(1) : ' 0 ') + '</span>';
+                    let e15_vehicles = '<span class="impact-vehicles">' + ('e15' in response.data['country_vehicles'] ? (response.data['country_vehicles']['e15']).toFixed(1) : ' 0 ') + '</span>';
+                    let e20_vehicles = '<span class="impact-vehicles">' + ('e20' in response.data['country_vehicles'] ? (response.data['country_vehicles']['e20']).toFixed(1) : ' 0 ') + '</span>';
+                    let e25_vehicles = '<span class="impact-vehicles">' + ('e25' in response.data['country_vehicles'] ? (response.data['country_vehicles']['e25']).toFixed(1) : ' 0 ') + '</span>';
+                    let e30_vehicles = '<span class="impact-vehicles">' + ('e30' in response.data['country_vehicles'] ? (response.data['country_vehicles']['e30']).toFixed(1) : ' 0 ') + '</span>';
                     if ('compare' in response.data) {
                         const compare_emissions = response.data['compare'];
                         graphData['datasets'].push({
@@ -112,12 +126,12 @@ function changeGraphTab() {
                             borderColor: '#742457',
                             type: 'bar'
                         })
-                        e0_vehicles += ' | <span class="impact-vehicles-compare">' + ('e0' in response.data['compare_vehicles'] && response.data['compare_vehicles']['e0'] ? response.data['compare_vehicles']['e0'] : ' - ') + '</span>';
-                        e10_vehicles += ' | <span class="impact-vehicles-compare">' + ('e10' in response.data['compare_vehicles'] ? response.data['compare_vehicles']['e10'] : ' - ') + '</span>';
-                        e15_vehicles += ' | <span class="impact-vehicles-compare">' + ('e15' in response.data['compare_vehicles'] ? response.data['compare_vehicles']['e15'] : ' - ') + '</span>';
-                        e20_vehicles += ' | <span class="impact-vehicles-compare">' + ('e20' in response.data['compare_vehicles'] ? response.data['compare_vehicles']['e20'] : ' - ') + '</span>';
-                        e25_vehicles += ' | <span class="impact-vehicles-compare">' + ('e25' in response.data['compare_vehicles'] ? response.data['compare_vehicles']['e25'] : ' - ') + '</span>';
-                        e30_vehicles += ' | <span class="impact-vehicles-compare">' + ('e30' in response.data['compare_vehicles'] ? response.data['compare_vehicles']['e30'] : ' - ') + '</span>';
+                        e0_vehicles += ' | <span class="impact-vehicles-compare">' + ('e0' in response.data['compare_vehicles'] && (response.data['compare_vehicles']['e0']).toFixed(1) ? response.data['compare_vehicles']['e0'] : ' - ') + '</span>';
+                        e10_vehicles += ' | <span class="impact-vehicles-compare">' + ('e10' in response.data['compare_vehicles'] ? (response.data['compare_vehicles']['e10']).toFixed(1) : ' 0 ') + '</span>';
+                        e15_vehicles += ' | <span class="impact-vehicles-compare">' + ('e15' in response.data['compare_vehicles'] ? (response.data['compare_vehicles']['e15']).toFixed(1) : ' 0 ') + '</span>';
+                        e20_vehicles += ' | <span class="impact-vehicles-compare">' + ('e20' in response.data['compare_vehicles'] ? (response.data['compare_vehicles']['e20']).toFixed(1) : ' 0 ') + '</span>';
+                        e25_vehicles += ' | <span class="impact-vehicles-compare">' + ('e25' in response.data['compare_vehicles'] ? (response.data['compare_vehicles']['e25']).toFixed(1) : ' 0 ') + '</span>';
+                        e30_vehicles += ' | <span class="impact-vehicles-compare">' + ('e30' in response.data['compare_vehicles'] ? (response.data['compare_vehicles']['e30']).toFixed(1) : ' 0 ') + '</span>';
                     }
                     $('.tab-' + parts[2] + ' .vehicles-stop .e0').html(e0_vehicles);
                     $('.tab-' + parts[2] + ' .vehicles-stop .e10').html(e10_vehicles);

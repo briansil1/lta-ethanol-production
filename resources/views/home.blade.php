@@ -24,6 +24,7 @@
         };
 
         var _get_change_continent = (continent_id) => '{{ route(__('routes.home-continent')) }}/' + continent_id;
+        var _get_change_continent2 = (continent_id) => '{{ route('home-continent') }}/' + continent_id;
     </script>
 @endsection
 

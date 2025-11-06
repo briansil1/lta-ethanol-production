@@ -119,7 +119,7 @@ return [
         'profiles' => 'PERFILES DE GASOLINA E IMPACTO',
         'profiles-2' => 'DE LAS MEZCLAS CON ETANOL',
         'america' => 'AMÉRICA LATINA',
-        'asia-africa' => 'ASIA-AFRICA',
+        'asia-africa' => 'ASIA',
         'europe' => 'EUROPA',
         'global' => 'GLOBAL',
         'detail' => 'Existen retos importantes en la calidad de los combustibles y las emisiones de los vehículos al medio ambiente en la región.',

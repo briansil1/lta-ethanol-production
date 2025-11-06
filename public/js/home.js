@@ -21,7 +21,7 @@ function getEnglishJson() {
     return {
                 'america': 'LATIN AMERICA',
                 'america_id': '1',
-                'asia_africa': 'ASIA-AFRICA',
+                'asia_africa': 'ASIA',
                 'asia_africa_id': '3',
                 'europa': 'EUROPE',
                 'europa_id': '2',
@@ -34,7 +34,7 @@ function getSpanishJson() {
     return {
                 'america': 'AMÉRICA LATINA',
                 'america_id': '1',
-                'asia_africa': 'ASIA-AFRICA',
+                'asia_africa': 'ASIA',
                 'asia_africa_id': '3',
                 'europa': 'EUROPA',
                 'europa_id': '2',
@@ -64,12 +64,12 @@ $(function () {
 
     $('#switch_continent_asia_africa').on('click', evt => {
         evt.preventDefault();
-        window.location.href = _get_change_continent(3);
+        window.location.href = _get_change_continent2(3);
     });
 
     $('#switch_continent_europe').on('click', evt => {
         evt.preventDefault();
-        window.location.href = _get_change_continent(2);
+        window.location.href = _get_change_continent2(2);
     });
 
     $('#switch_continent_global').on('click', evt => {

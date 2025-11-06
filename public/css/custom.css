@@ -45,7 +45,7 @@ p {
 }
 
 .off-blue {
-    background-color: #0c657e !important;
+    background-color: #007580 !important;
 }
 
 .border-radius-5 {
@@ -164,7 +164,7 @@ h3 {
     align-items: center;
     width: 100%;
     padding: 14px 0;
-    background-color: #7f7363;
+    background-color: #425cc7;
     cursor: pointer;
 }
 
@@ -173,7 +173,7 @@ h3 {
 }
 
 .nav-link-3.active {
-    background-color: #402f15;
+    background-color: #00205c;
     color: #ECE7E2;
 }
 

@@ -120,7 +120,7 @@ return [
         'profiles' => 'GASOLINE PROFILES AND IMPACT OF ETHANOL BLENDING',
         'profiles-2' => '',
         'america' => 'LATIN AMERICA',
-        'asia-africa' => 'ASIA-AFRICA',
+        'asia-africa' => 'ASIA',
         'europe' => 'EUROPE',
         'global' => 'GLOBAL',
         'detail' => 'Use our interactive tool to explore the fuel quality and vehicle emissions for these target geographies.',

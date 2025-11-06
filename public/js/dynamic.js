@@ -20,7 +20,7 @@ function getEnglishJsonn() {
     return {
                 'america': 'LATIN AMERICA',
                 'america_id': '1',
-                'asia_africa': 'ASIA-AFRICA',
+                'asia_africa': 'ASIA',
                 'asia_africa_id': '3',
                 'europa': 'EUROPE',
                 'europa_id': '2',
@@ -32,7 +32,7 @@ function getSpanishJsonn() {
     return {
                 'america': 'AMÉRICA LATINA',
                 'america_id': '1',
-                'asia_africa': 'ASIA-AFRICA',
+                'asia_africa': 'ASIA',
                 'asia_africa_id': '3',
                 'europa': 'EUROPA',
                 'europa_id': '2',
