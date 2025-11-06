@@ -59,7 +59,11 @@
                 @if ($continent_id == '1')
                     <h4 class="m-0">{{ __('dynamic.content.profile-tab.demand-title') }}</h4>
                 @else
-                    <h4 class="m-0">{{ __('dynamic.content.profile-tab.exports-title') }}</h4>
+                    @if($country->id != 56 && $country->id != 59) <!-- Colombia && Philippines -->
+                        <h4 class="m-0">{{ __('dynamic.content.profile-tab.exports-title') }}</h4>
+                    @else
+                        <h4 class="m-0">{{ __('dynamic.content.profile-tab.gasoline-components-title') }}</h4>
+                    @endif
                 @endif
             </div>
             <div class="p-2 bd-highlight">

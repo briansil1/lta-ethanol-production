@@ -403,6 +403,12 @@ function changeCountry(evt) {
                     $('.ccname').each((i, el) => { // Change RON Country name
                        const parts = el.innerHTML.split('-');
                        parts[1] = ` ${country_compare_name} `;
+                       if(country_compare_id == 10 || country_compare_id == 11) {
+                        parts[0] = 'AKI ';
+                       }
+                       else{
+                        parts[0] = 'RON ';
+                       }
                        el.innerHTML = parts.join('-');
                     });
                     let gasolineSelect = document.querySelector('#chart-tab-country-compare-gasoline');

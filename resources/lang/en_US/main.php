@@ -132,7 +132,7 @@ return [
         'report-section' => [
             'image-url' => 'images/map-en.png',
             'image-url-europe' => 'images/map-europe-en.jpg',
-            'image-url-asia-africa' => 'images/map-asia-africa-en.jpg',
+            'image-url-asia-africa' => 'images/map-asia-africa-en.png',
             'description' => 'Gasoline profiles and impact of ethanol blending.',
             'sections' => 'Report sections:',
             'sections-options-1' => 'Gasoline profile by country.',

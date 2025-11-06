@@ -195,10 +195,16 @@
                 </div>
                 <div class="w-100"></div>
                 <div class="col-{{ ($tab == 2 && isset($compareCountry) && $compareCountry) ? '6' : '12'}} single-country mt-2 mb-2 text-center font-bold">
-                    RON - {{ __('countries.' . $country->name) }} - <span class="restriction-text"></span>
+                    @if($country->id == 10 || $country->id == 11) <!-- Mexico && Jamaica -->
+                        AKI 
+                    @else
+                        RON
+                    @endif  
+                                        
+                    - {{ __('countries.' . $country->name) }} - <span class="restriction-text"></span>
                 </div>
                 <div class="col-6 mt-2 mb-2 text-center font-bold compare-country ccname @if(!($tab == 2 && isset($compareCountry) && $compareCountry)) hidden @endif">
-                    RON - {{ $tab == 2 && isset($compareCountry) && $compareCountry ? __('countries.' . $compareCountry->name) : '' }} - <span class="restriction-text-compare"></span>
+                    RON - {{ $tab == 2 && isset($compareCountry) && $compareCountry ? __('countries.' . $compareCountry->idsdd) : '' }} - <span class="restriction-text-compare"></span>
                 </div>
             </div>
         </div>

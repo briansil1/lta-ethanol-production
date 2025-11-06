@@ -267,10 +267,10 @@ class MainController extends Controller
         if (!Auth::check()) {
             throw new AuthenticationException();
         }
-        if (file_exists(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.component-pdf-filename')))) { //component-asia-africa-pdf-filename
-            return response()->download(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.component-pdf-filename')));
+        if (file_exists(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.component-asia-africa-pdf-filename')))) { //component-asia-africa-pdf-filename
+            return response()->download(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.component-asia-africa-pdf-filename')));
         } else {
-            throw new FileNotFoundException('storage/app/pdfs/' . __('dynamic.pdf-files.component-pdf-filename'));
+            throw new FileNotFoundException('storage/app/pdfs/' . __('dynamic.pdf-files.component-asia-africa-pdf-filename'));
         }
     }
 
