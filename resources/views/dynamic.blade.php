@@ -110,7 +110,32 @@
                     <div class="mg-banded-primary-darkest text-white white-links antialiased">
                     </div>
                     <div class="back-blue text-center">
-
+                        <div class="back-blue text-center">
+                        <!-- capa flotante de lado derecho con 3 botones  con imagenes de America, europa y asia, alinear a la derecha  -->
+                        <div class="floating-buttons-container" 
+                        style="
+                            position: fixed; 
+                            top: 150px; 
+                            right: 10px; 
+                            transform: translateY(-50%); 
+                            z-index: 1000;
+                            display: flex; 
+                            gap: 10px;   /* Espacio entre botones */
+                        ">
+                            
+                            <a href="{{ env('URL_GLOBAL') }}" 
+                                style="
+                                    border: 1px solid #FFF; 
+                                    border-radius: 10px; 
+                                    width: 60px;
+                                    height: 60px;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                ">
+                                <img src="{{ asset('images/map-global-en.png') }}" alt="America" width="40">
+                            </a>
+                        </div>
                         <input type="hidden" class="form-control" id="user_locale_hidden" aria-label="user_locale_hidden" aria-describedby="user_locale_hidden" value="{{ app()->getLocale() }}">
                                                
                         <h2 class="h1 uppercase md:text-5xl"><a href="{{ route(__('routes.home')) }}" class="text-white">{{ __('dynamic.content.profiles') }}</a></h2>
