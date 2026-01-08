@@ -15,7 +15,7 @@ use Inertia\Inertia;
 |
 */
 // Front-end Routes(Home, User login, sing-in, dynamic tools, and downloadable files routes english versión
-Route::group(['prefix' => 'en', 'middleware' => 'translations'], function () {
+Route::group(['prefix' => 'en', 'middleware' => 'translate'], function () {
     Route::get('/static-home', '\App\Http\Controllers\MainController@home')->name('home');
     Route::get('/static-home/reset-pass/{token}', '\App\Http\Controllers\MainController@home')->name('reset-pass');
     Route::get('/dynamic-tools/{tab?}/{country?}/{compareCountry?}', '\App\Http\Controllers\MainController@tools')->name('dynamic-tools');
@@ -38,7 +38,7 @@ Route::group(['prefix' => 'en', 'middleware' => 'translations'], function () {
 });
 
 // Front-end Routes(Home, User login, sing-in, dynamic tools, and downloadable files routes spanish versión
-Route::group(['prefix' => 'es', 'middleware' => 'translations'], function () {
+Route::group(['prefix' => 'es', 'middleware' => 'translate'], function () {
     Route::get('/static-hogar', '\App\Http\Controllers\MainController@home')->name('hogar');
     Route::get('/static-hogar/cambiar-contrasena/{token}', '\App\Http\Controllers\MainController@home')->name('cambiar-contra');
     Route::get('/herramientas-dinamicas/{tab?}/{country?}/{compareCountry?}', '\App\Http\Controllers\MainController@tools')->name('herramientas-dinamicas');
