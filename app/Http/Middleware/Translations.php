@@ -22,8 +22,8 @@ class Translations
     public function handle(Request $request, Closure $next)
     {
         $group_lang = $request->route()->getPrefix();
-        $group_locale_clean = substr($group_lang, 0,2);
-        //$group_locale_clean = substr($group_lang, 1);
+        //$group_locale_clean = substr($group_lang, 0,2);
+        $group_locale_clean = substr($group_lang, 1);
         app()->setLocale($this->languages[$group_locale_clean]);
         return $next($request);
     }
