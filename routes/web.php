@@ -15,7 +15,7 @@ use Inertia\Inertia;
 |
 */
 // Front-end Routes(Home, User login, sing-in, dynamic tools, and downloadable files routes english versión
-Route::group(['prefix' => 'en', 'middleware' => 'translate'], function() {
+Route::group(['prefix' => 'en', 'middleware' => 'translations'], function () {
     Route::get('/static-home', '\App\Http\Controllers\MainController@home')->name('home');
     Route::get('/static-home/reset-pass/{token}', '\App\Http\Controllers\MainController@home')->name('reset-pass');
     Route::get('/dynamic-tools/{tab?}/{country?}/{compareCountry?}', '\App\Http\Controllers\MainController@tools')->name('dynamic-tools');
@@ -23,14 +23,14 @@ Route::group(['prefix' => 'en', 'middleware' => 'translate'], function() {
     Route::get('/download-profile-report', '\App\Http\Controllers\MainController@downloadProfile')->name('profile-pdf-en');
     Route::get('/download-emission-report', '\App\Http\Controllers\MainController@downloadEmission')->name('emission-file-en');
     Route::get('/download-ghg-report', '\App\Http\Controllers\MainController@downloadGhg')->name('ghg-file-en');
-    Route::get('/download-components-report', '\App\Http\Controllers\MainController@downloadComponents')->name('components-file-en'); 
+    Route::get('/download-components-report', '\App\Http\Controllers\MainController@downloadComponents')->name('components-file-en');
     Route::get('component/price-update/{country?}/{gasolineRegular?}/{gasolinePremium?}/{normalButane?}/{ethanol?}/{emtbe?}/{btxWeighted?}', '\App\Http\Controllers\ComponentController@getPriceUpdateResults')->middleware(['auth', 'verified'])->name('price-update-get-results');
     Route::get('/dynamic-tools-continent/{tab?}/{country?}/{compareCountry?}', '\App\Http\Controllers\MainController@toolsContinent')->name('dynamic-tools-continent');
     Route::get('/static-home-continent/{continentId?}', '\App\Http\Controllers\MainController@homeContinent')->name('home-continent');
     Route::get('/download-profile-europe-report', '\App\Http\Controllers\MainController@downloadProfileEurope')->name('profile-europe-pdf-en');
     Route::get('/download-profile-asia-africa-report', '\App\Http\Controllers\MainController@downloadProfileAsiaAfrica')->name('profile-asia-africa-pdf-en');
-    Route::get('/download-components-europe-report', '\App\Http\Controllers\MainController@downloadComponentsEurope')->name('components-europe-file-en'); 
-    Route::get('/download-components-asia-africa-report', '\App\Http\Controllers\MainController@downloadComponentsAsiaAfrica')->name('components-asia-africa-file-en'); 
+    Route::get('/download-components-europe-report', '\App\Http\Controllers\MainController@downloadComponentsEurope')->name('components-europe-file-en');
+    Route::get('/download-components-asia-africa-report', '\App\Http\Controllers\MainController@downloadComponentsAsiaAfrica')->name('components-asia-africa-file-en');
     Route::get('/download-emission-europe-report', '\App\Http\Controllers\MainController@downloadEmissionEurope')->name('emission-europe-file-en');
     Route::get('/download-emission-asia-africa-report', '\App\Http\Controllers\MainController@downloadEmissionAsiaAfrica')->name('emission-asia-africa-file-en');
     Route::get('/download-ghg-europe-report', '\App\Http\Controllers\MainController@downloadGhgEurope')->name('ghg-europe-file-en');
@@ -38,7 +38,7 @@ Route::group(['prefix' => 'en', 'middleware' => 'translate'], function() {
 });
 
 // Front-end Routes(Home, User login, sing-in, dynamic tools, and downloadable files routes spanish versión
-Route::group(['prefix' => 'es', 'middleware' => 'translate'], function() {
+Route::group(['prefix' => 'es', 'middleware' => 'translations'], function () {
     Route::get('/static-hogar', '\App\Http\Controllers\MainController@home')->name('hogar');
     Route::get('/static-hogar/cambiar-contrasena/{token}', '\App\Http\Controllers\MainController@home')->name('cambiar-contra');
     Route::get('/herramientas-dinamicas/{tab?}/{country?}/{compareCountry?}', '\App\Http\Controllers\MainController@tools')->name('herramientas-dinamicas');
@@ -52,8 +52,8 @@ Route::group(['prefix' => 'es', 'middleware' => 'translate'], function() {
     Route::get('/static-hogar-continente/{continentId?}', '\App\Http\Controllers\MainController@homeContinent')->name('hogar-continente');
     Route::get('/download-profile-europe-report', '\App\Http\Controllers\MainController@downloadProfileEurope')->name('profile-europe-pdf-es');
     Route::get('/download-profile-asia-africa-report', '\App\Http\Controllers\MainController@downloadProfileAsiaAfrica')->name('profile-asia-africa-pdf-es');
-    Route::get('/download-components-europe-report', '\App\Http\Controllers\MainController@downloadComponentsEurope')->name('components-europe-file-es'); 
-    Route::get('/download-components-asia-africa-report', '\App\Http\Controllers\MainController@downloadComponentsAsiaAfrica')->name('components-asia-africa-file-es'); 
+    Route::get('/download-components-europe-report', '\App\Http\Controllers\MainController@downloadComponentsEurope')->name('components-europe-file-es');
+    Route::get('/download-components-asia-africa-report', '\App\Http\Controllers\MainController@downloadComponentsAsiaAfrica')->name('components-asia-africa-file-es');
     Route::get('/download-emission-europe-report', '\App\Http\Controllers\MainController@downloadEmissionEurope')->name('emission-europe-file-es');
     Route::get('/download-emission-asia-africa-report', '\App\Http\Controllers\MainController@downloadEmissionAsiaAfrica')->name('emission-asia-africa-file-es');
     Route::get('/download-ghg-europe-report', '\App\Http\Controllers\MainController@downloadGhgEurope')->name('ghg-europe-file-es');
@@ -103,4 +103,4 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
