@@ -15,9 +15,12 @@ use Illuminate\Contracts\Filesystem\FileNotFoundException;
 use Illuminate\Support\Facades\Session;
 use App\Models\Continent;
 
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 class MainController extends Controller
 {
-    public function home(Request $request, $token = false) {
+    public function home(Request $request, $token = false)
+    {
 
         $continent_name = __('main.content.america');
 
@@ -33,10 +36,11 @@ class MainController extends Controller
             'token' => $token,
             'continent_id' => 1,
             'continent_name' => $continent_name,
-        ]); 
+        ]);
     }
 
-    public function homeContinent($continent_id = null, $token = false) {
+    public function homeContinent($continent_id = null, $token = false)
+    {
 
         switch ($continent_id) {
             case 1:
@@ -64,10 +68,11 @@ class MainController extends Controller
             'token' => $token,
             'continent_id' => $continent_id,
             'continent_name' => $continent_name,
-        ]); 
+        ]);
     }
 
-    public function tools(Request $request, $tab = '1', Country $country = null, Country $compareCountry = null) {
+    public function tools(Request $request, $tab = '1', Country $country = null, Country $compareCountry = null)
+    {
         if (!Auth::check()) {
             return redirect(route(__('routes.home')));
         }
@@ -75,7 +80,7 @@ class MainController extends Controller
         if (!session('continent_id')) {
             return redirect(route('logout-session'));
         }
-       
+
         $continent_id = session('continent_id');
         $continent_text = session('continent_text');
 
@@ -137,7 +142,7 @@ class MainController extends Controller
 
         $gasoline_types = $country->gasolineComponents()->select('gasoline_type')->groupBy('gasoline_type')->get();
         $gasoline_grades = $country->gasolineComponents()->select('quality_restriction')->groupBy('quality_restriction')->get();
- 
+
         return view('dynamic', [
             'tab' => $tab,
             'country' => $country,
@@ -158,7 +163,8 @@ class MainController extends Controller
         ]);
     }
 
-    public function setLocale(Request $request) {
+    public function setLocale(Request $request)
+    {
         $request->validate([
             'new_locale' => ['required', Rule::in(['es', 'en', 'fr'])],
             'route' => 'required|string|min:4'
@@ -188,7 +194,8 @@ class MainController extends Controller
      * @throws AuthenticationException
      * @throws FileNotFoundException
      */
-    public function downloadProfile() {
+    public function downloadProfile()
+    {
         if (!Auth::check()) {
             throw new AuthenticationException();
         }
@@ -203,7 +210,8 @@ class MainController extends Controller
      * @throws AuthenticationException
      * @throws FileNotFoundException
      */
-    public function downloadProfileEurope() {
+    public function downloadProfileEurope()
+    {
         if (!Auth::check()) {
             throw new AuthenticationException();
         }
@@ -218,7 +226,8 @@ class MainController extends Controller
      * @throws AuthenticationException
      * @throws FileNotFoundException
      */
-    public function downloadProfileAsiaAfrica() {
+    public function downloadProfileAsiaAfrica()
+    {
         if (!Auth::check()) {
             throw new AuthenticationException();
         }
@@ -233,7 +242,8 @@ class MainController extends Controller
      * @throws AuthenticationException
      * @throws FileNotFoundException
      */
-    public function downloadComponents() {
+    public function downloadComponents()
+    {
         if (!Auth::check()) {
             throw new AuthenticationException();
         }
@@ -248,11 +258,12 @@ class MainController extends Controller
      * @throws AuthenticationException
      * @throws FileNotFoundException
      */
-    public function downloadComponentsEurope() {
+    public function downloadComponentsEurope()
+    {
         if (!Auth::check()) {
             throw new AuthenticationException();
         }
-        if (file_exists(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.component-europe-pdf-filename')))) { 
+        if (file_exists(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.component-europe-pdf-filename')))) {
             return response()->download(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.component-europe-pdf-filename')));
         } else {
             throw new FileNotFoundException('storage/app/pdfs/' . __('dynamic.pdf-files.component-europe-pdf-filename'));
@@ -263,7 +274,8 @@ class MainController extends Controller
      * @throws AuthenticationException
      * @throws FileNotFoundException
      */
-    public function downloadComponentsAsiaAfrica() {
+    public function downloadComponentsAsiaAfrica()
+    {
         if (!Auth::check()) {
             throw new AuthenticationException();
         }
@@ -274,7 +286,8 @@ class MainController extends Controller
         }
     }
 
-    public function downloadEmission() {
+    public function downloadEmission()
+    {
         if (!Auth::check()) {
             throw new AuthenticationException();
         }
@@ -285,29 +298,32 @@ class MainController extends Controller
         }
     }
 
-    public function downloadEmissionEurope() {
+    public function downloadEmissionEurope()
+    {
         if (!Auth::check()) {
             throw new AuthenticationException();
         }
-        if (file_exists(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.emission-europe-filename')))) { 
+        if (file_exists(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.emission-europe-filename')))) {
             return response()->download(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.emission-europe-filename')));
         } else {
             throw new FileNotFoundException('storage/app/pdfs/' . __('dynamic.pdf-files.emission-europe-filename'));
         }
     }
 
-    public function downloadEmissionAsiaAfrica() {
+    public function downloadEmissionAsiaAfrica()
+    {
         if (!Auth::check()) {
             throw new AuthenticationException();
         }
-        if (file_exists(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.emission-asia-africa-filename')))) { 
+        if (file_exists(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.emission-asia-africa-filename')))) {
             return response()->download(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.emission-asia-africa-filename')));
         } else {
             throw new FileNotFoundException('storage/app/pdfs/' . __('dynamic.pdf-files.emission-asia-africa-filename'));
         }
     }
 
-    public function downloadGhg() {
+    public function downloadGhg()
+    {
         if (!Auth::check()) {
             throw new AuthenticationException();
         }
@@ -318,31 +334,34 @@ class MainController extends Controller
         }
     }
 
-    public function downloadGhgEurope() {
+    public function downloadGhgEurope()
+    {
         if (!Auth::check()) {
             throw new AuthenticationException();
         }
-        if (file_exists(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.ghg-europe-filename')))) { 
+        if (file_exists(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.ghg-europe-filename')))) {
             return response()->download(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.ghg-europe-filename')));
         } else {
             throw new FileNotFoundException('storage/app/pdfs/' . __('dynamic.pdf-files.ghg-europe-filename'));
         }
     }
 
-    public function downloadGhgAsiaAfrica() {
+    public function downloadGhgAsiaAfrica()
+    {
         if (!Auth::check()) {
             throw new AuthenticationException();
         }
-        if (file_exists(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.ghg-asia-africa-filename')))) { 
+        if (file_exists(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.ghg-asia-africa-filename')))) {
             return response()->download(base_path('storage/app/pdfs/' . __('dynamic.pdf-files.ghg-asia-africa-filename')));
         } else {
             throw new FileNotFoundException('storage/app/pdfs/' . __('dynamic.pdf-files.ghg-asia-africa-filename'));
         }
     }
 
-    
 
-    public function toolsContinent($continent_id = null) {
+
+    public function toolsContinent($continent_id = null)
+    {
         if (!Auth::check()) {
             return redirect(route(__('routes.home')));
         }
@@ -350,11 +369,11 @@ class MainController extends Controller
         if (!session('continent_id')) {
             return redirect(route('logout-session'));
         }
-       
+
         Session::put('continent_id', $continent_id);
 
         $continent = Continent::find($continent_id);
-        if(!empty($continent)){
+        if (!empty($continent)) {
             Session::put('continent_text', $continent->name);
             $continent_text = $continent->name;
         }
@@ -365,7 +384,7 @@ class MainController extends Controller
         if (empty($locale)) {
             $locale = Locale::where('code', $base_l)->first();
         }
-        
+
         // $country_profiles = Profile::select('country_id')->where('country_id', '<>', env('APP_EUROPE_ID'))->groupBy('country_id')->get();
         $country_profiles = Profile::join('countries', 'countries.id', '=', 'profiles.country_id')
             ->join('regions', 'regions.id', '=', 'countries.region_id')
