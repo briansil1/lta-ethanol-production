@@ -122,7 +122,47 @@
                             display: flex; 
                             gap: 10px;   /* Espacio entre botones */
                         ">
-                            
+
+<a href="{{ env('URL_AMERICA') }}"
+                            style="
+                                    border: 1px solid #FFF; 
+                                    border-radius: 10px; 
+                                    width: 60px;
+                                    height: 60px;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                ">
+                            <img src="{{ asset('images/map.png') }}" alt="America" width="40">
+                        </a>
+
+                        <a href="{{ env('URL_EUROPE') }}"
+                            style="
+                                    border: 1px solid #FFF; 
+                                    border-radius: 10px; 
+                                    width: 60px;
+                                    height: 60px;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                ">
+                            <img src="{{ asset('images/europa2.png') }}" alt="Europe" width="40">
+                        </a>
+
+                        <a href="{{ env('URL_ASIA') }}"
+                            style="
+                                    border: 1px solid #FFF; 
+                                    border-radius: 10px; 
+                                    width: 60px;
+                                    height: 60px;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                ">
+                            <img src="{{ asset('images/asia.png') }}" alt="Asia" width="40">
+                        </a>
+    
+                        
                             <a href="{{ env('URL_GLOBAL') }}" 
                                 style="
                                     border: 1px solid #FFF; 
