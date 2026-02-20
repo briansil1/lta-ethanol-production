@@ -133,7 +133,7 @@
                     @endif
 
                     @if ($continent_id != '2')
-                        <td colspan="{{ count($europeData) }}">{{ __('countries.' . $europeUnion->name) }}</td>
+                        <td colspan="{{ count($europeData) }}">{{ __('countries.' . $europeUnion->name) : '' }}</td>
                     @endif
                 </tr>
                 <tr>
