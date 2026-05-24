@@ -1,0 +1,110 @@
+name: Deploy a regional.vision-it.com.mx
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-regional
+  cancel-in-progress: false
+
+env:
+  APP_NAME: lta-regional
+  SSH_USER: deploy
+  PHP_VERSION: '8.1'
+  NODE_VERSION: '18'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP ${{ env.PHP_VERSION }}
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ env.PHP_VERSION }}
+          extensions: mbstring, xml, curl, zip, mysql, bcmath, intl, gd
+          tools: composer:v2
+          coverage: none
+
+      - name: Setup Node ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Cache Composer
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: composer-${{ runner.os }}-${{ hashFiles('composer.lock') }}
+          restore-keys: composer-${{ runner.os }}-
+
+      - name: Install Composer deps
+        run: composer install --no-dev --prefer-dist --no-interaction --optimize-autoloader
+
+      - name: Install npm deps
+        run: npm install --no-audit --no-fund --no-progress
+
+      - name: Build assets
+        run: npm run prod
+
+      - name: Build release tarball
+        run: |
+          RELEASE_NAME="${{ github.sha }}-$(date -u +%Y%m%d%H%M%S)"
+          echo "RELEASE_NAME=$RELEASE_NAME" >> $GITHUB_ENV
+          tar --exclude='./.git' \
+              --exclude='./node_modules' \
+              --exclude='./tests' \
+              --exclude='./.github' \
+              --exclude='./storage' \
+              --exclude='./.env*' \
+              -czf "/tmp/${RELEASE_NAME}.tar.gz" .
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Upload tarball
+        run: |
+          scp -i ~/.ssh/id_ed25519 \
+            "/tmp/${RELEASE_NAME}.tar.gz" \
+            "${SSH_USER}@${{ secrets.SSH_HOST }}:/tmp/"
+
+      - name: Remote deploy
+        run: |
+          ssh -i ~/.ssh/id_ed25519 "${SSH_USER}@${{ secrets.SSH_HOST }}" bash -s <<EOF
+          set -euo pipefail
+          APP_DIR="/var/www/${APP_NAME}"
+          SHARED="\$APP_DIR/shared"
+          NEW_RELEASE="\$APP_DIR/releases/${RELEASE_NAME}"
+
+          mkdir -p "\$NEW_RELEASE"
+          tar -xzf "/tmp/${RELEASE_NAME}.tar.gz" -C "\$NEW_RELEASE"
+          rm "/tmp/${RELEASE_NAME}.tar.gz"
+
+          ln -sfn "\$SHARED/.env" "\$NEW_RELEASE/.env"
+          rm -rf "\$NEW_RELEASE/storage"
+          ln -sfn "\$SHARED/storage" "\$NEW_RELEASE/storage"
+
+          cd "\$NEW_RELEASE"
+          php artisan storage:link || true
+          php artisan migrate --force
+          php artisan config:cache
+          php artisan route:cache
+          php artisan view:cache
+
+          ln -sfn "\$NEW_RELEASE" "\$APP_DIR/current"
+          sudo systemctl reload php8.1-fpm
+
+          # Mantener solo los últimos 3 releases
+          cd "\$APP_DIR/releases"
+          ls -1t | tail -n +4 | xargs -r rm -rf
+          echo "OK: deployed ${RELEASE_NAME}"
+          EOF
