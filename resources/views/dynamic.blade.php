@@ -122,7 +122,7 @@
                                                         gap: 10px;
                                                     ">
 
-                                    <a href="{{ env('URL_AMERICA') }}"
+                                    <a href="{{ config('links.america') }}"
                                         style="
                                     border: 1px solid #FFF; 
                                     border-radius: 10px; 
@@ -135,7 +135,7 @@
                                         <img src="{{ asset('images/map.png') }}" alt="America" width="40">
                                     </a>
 
-                                    <a href="{{ env('URL_EUROPE') }}"
+                                    <a href="{{ config('links.europe') }}"
                                         style="
                                     border: 1px solid #FFF; 
                                     border-radius: 10px; 
@@ -148,7 +148,7 @@
                                         <img src="{{ asset('images/europa2.png') }}" alt="Europe" width="40">
                                     </a>
 
-                                    <a href="{{ env('URL_ASIA') }}"
+                                    <a href="{{ config('links.asia') }}"
                                         style="
                                     border: 1px solid #FFF; 
                                     border-radius: 10px; 
@@ -162,7 +162,7 @@
                                     </a>
 
 
-                                    <a href="{{ env('URL_GLOBAL') }}"
+                                    <a href="{{ config('links.global') }}"
                                         style="
                                     border: 1px solid #FFF; 
                                     border-radius: 10px; 

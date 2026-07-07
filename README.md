@@ -40,3 +40,21 @@ The id is 24
 
 - **ADMIN_PASS**
 This password is set by US Grains
+
+### Dominio base y botones de continente / global (dynamic-tools)
+
+Los botones flotantes de la vista `dynamic-tools` (y el botón "Global" de la
+home) enlazan con URL absoluta. Solo el **dominio** cambia entre entornos, por
+eso se define en variables; las rutas viven en `config/links.php` y se consumen
+vía `config('links.*')` (compatible con `php artisan config:cache`).
+
+- **TOOL_BASE_URL** — dominio base de **este** sitio. Construye los botones
+  America/Europe/Asia (`/en/dynamic-tools-continent/1|2|3`). Migrar de dominio =
+  cambiar solo esta variable. Por defecto: `https://regional.vision-it.com.mx`.
+  En cliente/producción ajustar (ej: `https://ethanolblendslta.grains.org`).
+- **GLOBAL_TOOL_URL** — dominio del sitio de la herramienta **Global** (destino
+  del botón "Global", que apunta al OTRO sitio). Construye `/en/global`. Por
+  defecto: `https://global.vision-it.com.mx`.
+
+> Nota: usar siempre `config('links.xxx')` en las vistas, **no** `env('...')`
+> directamente, porque con la config cacheada `env()` devuelve `null` en runtime.

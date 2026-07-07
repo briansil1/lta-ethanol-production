@@ -12,6 +12,7 @@
         var _url_post_request_token = "{{ route('password.email') }}";
         var _url_post_reset_pass = "{{ route('password.update') }}";
         var _url_tools = "{{ route(__('routes.tools'), ['tab' => 1]) }}";
+        var _url_global_tool = "{{ config('links.global') }}";
         var _csrf_token = "{{ csrf_token() }}";
         var _is_logged = @auth true @else false @endauth;
         var _auth_modal = null;
