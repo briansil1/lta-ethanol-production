@@ -74,7 +74,7 @@ $(function () {
 
     $('#switch_continent_global').on('click', evt => {
         evt.preventDefault();
-        window.location.href = 'https://globaltool.vision-it.com.mx/en/static-home'; // Navigates to Global Tool
+        window.location.href = 'https://ethanolblendslta.grains.org/en/global'; // Navigates to Global Tool
     });
 
 
