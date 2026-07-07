@@ -1,3 +1,5 @@
+# LTA Regional
+
 ## Requirements
 
 - **PHP extension php_zip enabled**
@@ -11,50 +13,51 @@
 
 ## Database
 
-For the database, you need to follow the following instructions.
+For the database, follow these instructions.
 
-1. You need to create a backup of the production environment, You must execute the following instruction
+1. Create a backup of the production environment by running:
 
-- **mysqldump -u [username] -p [database] > prod_database.sq**
+- **mysqldump -u [username] -p [database] > prod_database.sql**
 
-2. Create user table backup, You must execute the following instruction
+2. Create a backup of the users table by running:
 
 - **mysqldump -u [username] -p [database] users > users.sql**
 
-3. Download the latest changes and deploy the application
+3. Download the latest changes and deploy the application.
 
-4. Create database migrations
+4. Run the database migrations:
+
 - **php artisan migrate:fresh --seed**
 
-5. Finally we must return the information from the users table, for this it is necessary to execute the following instruction
+5. Finally, restore the users table data by running:
 
 - **mysql -u [username] -p [database] < users.sql**
 
-## Enviroment variables
-- **APP_EUROPE_ID**
-The id is 23
-- **APP_DEFAULT_COUNTRY_ID**
-The id is 4
-- **APP_USA_ID**
-The id is 24
+## Environment variables
 
-- **ADMIN_PASS**
-This password is set by US Grains
+- **APP_EUROPE_ID** — the id is 23.
+- **APP_DEFAULT_COUNTRY_ID** — the id is 4.
+- **APP_USA_ID** — the id is 24.
+- **ADMIN_PASS** — this password is set by US Grains.
 
-### Dominio base y botones de continente / global (dynamic-tools)
+### Base domain and continent / global buttons (dynamic-tools)
 
-Los botones flotantes de la vista `dynamic-tools` (y el botón "Global" de la
-home) enlazan con URL absoluta. Solo el **dominio** cambia entre entornos, por
-eso se define en variables; las rutas viven en `config/links.php` y se consumen
-vía `config('links.*')` (compatible con `php artisan config:cache`).
+The floating buttons on the `dynamic-tools` view (and the "Global" button on the
+home page) link using absolute URLs. Only the **domain** changes between
+environments, so it is defined through variables; the routes live in
+`config/links.php` and are consumed via `config('links.*')` (compatible with
+`php artisan config:cache`).
 
-- **TOOL_BASE_URL** — dominio base de **este** sitio. Construye los botones
-  America/Europe/Asia (`/en/dynamic-tools-continent/1|2|3`). Migrar de dominio =
-  cambiar solo esta variable. Por defecto: `https://regional.vision-it.com.mx`.
-  En cliente/producción ajustar (ej: `https://ethanolblendslta.grains.org`).
-- **GLOBAL_TOOL_URL** — dominio del sitio de la herramienta **Global** (destino
-  del botón "Global", que apunta al OTRO sitio). Construye `/en/global`. Por
-  defecto: `https://global.vision-it.com.mx`.
+- **TOOL_BASE_URL** — the base domain of **this** site. Builds the
+  America/Europe/Asia buttons (`/en/dynamic-tools-continent/1|2|3`). Changing the
+  domain means changing only this variable. Defaults to
+  `https://regional.vision-it.com.mx`. In a client/production environment set it
+  to the real domain (e.g. `https://ethanolblendslta.grains.org`).
+- **GLOBAL_TOOL_URL** — the domain of the **Global** tool site (the target of the
+  "Global" button, which points to the OTHER site). Builds `/en/global`.
+  Defaults to `https://global.vision-it.com.mx`.
 
-> Nota: usar siempre `config('links.xxx')` en las vistas, **no** `env('...')`
-> directamente, porque con la config cacheada `env()` devuelve `null` en runtime.
+> Note: always use `config('links.xxx')` in the views, **not** `env('...')`
+> directly. Because the pipeline runs `php artisan config:cache`, `env()`
+> returns `null` at runtime once the config is cached. If a variable is not
+> defined, the default value from `config/links.php` is used.
