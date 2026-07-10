@@ -373,6 +373,7 @@ class MainController extends Controller
         Session::put('continent_id', $continent_id);
 
         $continent = Continent::find($continent_id);
+        $continent_text = null;
         if (!empty($continent)) {
             Session::put('continent_text', $continent->name);
             $continent_text = $continent->name;
