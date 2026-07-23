@@ -4,30 +4,30 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Enlaces externos de los botones de continente / global
+    | Enlace al tool GLOBAL (unico enlace entre-sitios configurable)
     |--------------------------------------------------------------------------
     |
-    | Botones flotantes de la vista dynamic-tools (y boton "Global" de la home):
+    | Los botones internos (America / Europe / Asia) NO viven aqui: se generan
+    | con route(__('routes.tools-continent'), N) en las vistas, por lo que
+    | apuntan siempre al dominio actual sin necesidad de configuracion.
     |
-    |  - America / Europe / Asia -> rutas dynamic-tools-continent de ESTE sitio.
-    |    Solo cambia el dominio entre entornos => variable TOOL_BASE_URL.
+    | El unico enlace que cruza a OTRO despliegue es el boton "Global" (lleva
+    | del tool regional al tool global). Como el tool global puede vivir en
+    | otro dominio y/o path segun el entorno, se define su URL COMPLETA en una
+    | sola variable de entorno: GLOBAL_TOOL_URL (dominio + path, sin nada
+    | hardcodeado aqui).
     |
-    |  - Global -> apunta al OTRO sitio (la herramienta global), por eso usa una
-    |    variable de dominio distinta => GLOBAL_TOOL_URL.
+    | Ejemplos de GLOBAL_TOOL_URL:
+    |   - Proveedor (staging/demo): https://global.vision-it.com.mx/en/static-home
+    |   - Cliente (mismo dominio, por path): https://ethanolblendslta.grains.org/en/global
     |
-    | Se consumen via config('links.xxx') para que funcionen con
+    | Se consume via config('links.global') para que funcione con
     | `php artisan config:cache` (env() directo en Blade devuelve null cacheado).
-    | Los valores por defecto son los dominios de staging; el proveedor solo
-    | ajusta TOOL_BASE_URL y GLOBAL_TOOL_URL en su .env al desplegar.
+    | El default es el entorno del proveedor; cada entorno del cliente define su
+    | propio valor en su .env.
     |
     */
 
-    'base'        => $base   = rtrim(env('TOOL_BASE_URL', 'https://regional.vision-it.com.mx'), '/'),
-    'global_base' => $global = rtrim(env('GLOBAL_TOOL_URL', 'https://global.vision-it.com.mx'), '/'),
-
-    'america' => $base.'/en/dynamic-tools-continent/1',
-    'europe'  => $base.'/en/dynamic-tools-continent/2',
-    'asia'    => $base.'/en/dynamic-tools-continent/3',
-    'global'  => $global.'/en/global',
+    'global' => rtrim(env('GLOBAL_TOOL_URL', 'https://global.vision-it.com.mx/en/static-home'), '/'),
 
 ];

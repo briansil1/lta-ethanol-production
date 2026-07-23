@@ -74,7 +74,11 @@ $(function () {
 
     $('#switch_continent_global').on('click', evt => {
         evt.preventDefault();
-        window.location.href = (typeof _url_global_tool !== 'undefined' && _url_global_tool) ? _url_global_tool : 'https://global.vision-it.com.mx/en/global'; // Navigates to Global Tool
+        // URL del tool global: 100% desde config (GLOBAL_TOOL_URL via _url_global_tool).
+        // Sin fallback hardcodeado: si no esta configurada, no navega a otro dominio.
+        if (typeof _url_global_tool !== 'undefined' && _url_global_tool) {
+            window.location.href = _url_global_tool;
+        }
     });
 
 

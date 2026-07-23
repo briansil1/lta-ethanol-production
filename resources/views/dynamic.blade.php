@@ -114,7 +114,7 @@
                         <div class="back-blue text-center">
                             <!-- capa que se ajuste a la derecha y que no se mueva -->
                             <div style="display: flex; justify-content: flex-end;">
-                                 
+                                
                                 <div class="floating-buttons-container"
                                     style="
                                                         transform: translateY(-50%); 
@@ -122,7 +122,7 @@
                                                         gap: 10px;
                                                     ">
 
-                                    <a href="{{ config('links.america') }}"
+                                    <a href="{{ route(__('routes.tools-continent'), 1) }}"
                                         style="
                                     border: 1px solid #FFF; 
                                     border-radius: 10px; 
@@ -135,7 +135,7 @@
                                         <img src="{{ asset('images/map.png') }}" alt="America" width="40">
                                     </a>
 
-                                    <a href="{{ config('links.europe') }}"
+                                    <a href="{{ route(__('routes.tools-continent'), 2) }}"
                                         style="
                                     border: 1px solid #FFF; 
                                     border-radius: 10px; 
@@ -148,7 +148,7 @@
                                         <img src="{{ asset('images/europa2.png') }}" alt="Europe" width="40">
                                     </a>
 
-                                    <a href="{{ config('links.asia') }}"
+                                    <a href="{{ route(__('routes.tools-continent'), 3) }}"
                                         style="
                                     border: 1px solid #FFF; 
                                     border-radius: 10px; 

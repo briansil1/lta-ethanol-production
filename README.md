@@ -42,24 +42,40 @@ For the database, follow these instructions.
 - **APP_USA_ID** — the id is 24.
 - **ADMIN_PASS** — this password is set by US Grains.
 
-### Base domain and continent / global buttons (dynamic-tools)
+### Continent / Global buttons (works on every domain, nothing hardcoded)
 
-The floating buttons on the `dynamic-tools` view (and the "Global" button on the
-home page) link using absolute URLs. Only the **domain** changes between
-environments, so it is defined through variables; the routes live in
-`config/links.php` and are consumed via `config('links.*')` (compatible with
-`php artisan config:cache`).
+The tool must work on any domain (our staging, the client's QA, the client's
+production) **without editing code**. Two kinds of links exist:
 
-- **TOOL_BASE_URL** — the base domain of **this** site. Builds the
-  America/Europe/Asia buttons (`/en/dynamic-tools-continent/1|2|3`). Changing the
-  domain means changing only this variable. Defaults to
-  `https://regional.vision-it.com.mx`. In a client/production environment set it
-  to the real domain (e.g. `https://ethanolblendslta.grains.org`).
-- **GLOBAL_TOOL_URL** — the domain of the **Global** tool site (the target of the
-  "Global" button, which points to the OTHER site). Builds `/en/global`.
-  Defaults to `https://global.vision-it.com.mx`.
+- **Internal buttons — America / Europe / Asia.** They point to the continent
+  view of **this same** tool. They are generated with
+  `route(__('routes.tools-continent'), N)`, so Laravel builds them for the
+  **current domain automatically**. No configuration needed — they just work on
+  whatever domain the site is served from (as long as `APP_URL` matches it).
 
-> Note: always use `config('links.xxx')` in the views, **not** `env('...')`
-> directly. Because the pipeline runs `php artisan config:cache`, `env()`
-> returns `null` at runtime once the config is cached. If a variable is not
-> defined, the default value from `config/links.php` is used.
+- **Cross-site button — Global.** It sends the user from the regional tool to the
+  **Global** tool, which may live on a **different domain and/or path** depending
+  on the environment. This is the **only** cross-site link, and its **full URL**
+  is set in a single environment variable:
+
+  - **GLOBAL_TOOL_URL** — full URL (domain + path) of the Global tool. Consumed
+    via `config('links.global')`. Examples:
+    - Provider (staging/demo): `https://global.vision-it.com.mx/en/static-home`
+    - Client (same domain, by path): `https://ethanolblendslta.grains.org/en/global`
+
+> There is **no hardcoded fallback** anywhere. If `GLOBAL_TOOL_URL` is not set,
+> the default in `config/links.php` (the provider's staging URL) is used, and the
+> "Global" button simply does nothing if the value is empty — it never jumps to a
+> foreign domain by surprise.
+
+> Note: the value is read via `config('links.global')`, **not** `env('...')`
+> directly in Blade. Because the pipeline runs `php artisan config:cache`,
+> `env()` returns `null` at runtime once the config is cached.
+
+> **Client action required:** the Global tool must actually be reachable at the
+> URL you put in `GLOBAL_TOOL_URL`. Today `…grains.org/en/global` returns 404
+> because the Global tool is not mounted there yet — that is a deployment step on
+> the client side, independent of this code.
+
+See `docs/CONFIGURATION.en.md` (English) / `docs/CONFIGURATION.es.md` (Spanish)
+for the full per-environment configuration guide.
