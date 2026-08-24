@@ -1,0 +1,110 @@
+name: Guard de migraciones
+
+# Por qué existe este workflow
+# ----------------------------
+# Laravel decide qué migraciones ejecutar comparando NOMBRES contra la tabla
+# `migrations`, nunca el contenido del archivo. Editar el up() de una migración
+# ya ejecutada NO publica nada: `php artisan migrate --force` responde
+# "Nothing to migrate.", el despliegue sale verde y la base conserva los datos
+# anteriores. No hay ningún error visible.
+#
+# Ese fallo silencioso llegó a producción cuatro veces (2026-07-07, 08-17,
+# 08-21, 08-23). Este guard lo convierte en un fallo ruidoso, antes de desplegar.
+#
+# Regla: toda carga o corrección de datos va en un archivo de migración NUEVO.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check-migrations:
+    name: Migraciones modificadas
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout con historia completa
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Resolver rango de comparación
+        id: range
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            BASE="${{ github.event.pull_request.base.sha }}"
+            HEAD="${{ github.event.pull_request.head.sha }}"
+          else
+            BASE="${{ github.event.before }}"
+            HEAD="${{ github.sha }}"
+          fi
+
+          # Rama nueva o force push: `before` viene en ceros o el objeto no
+          # existe. Sin base con la que comparar, no hay nada que verificar.
+          if [ -z "$BASE" ] || [ "$BASE" = "0000000000000000000000000000000000000000" ] \
+             || ! git cat-file -e "$BASE^{commit}" 2>/dev/null; then
+            echo "skip=true" >> $GITHUB_OUTPUT
+            echo "Sin commit base con el que comparar — se omite la verificación."
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+            echo "base=$BASE" >> $GITHUB_OUTPUT
+            echo "head=$HEAD" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Verificar que ninguna migración existente fue modificada
+        if: steps.range.outputs.skip == 'false'
+        env:
+          BASE: ${{ steps.range.outputs.base }}
+          HEAD: ${{ steps.range.outputs.head }}
+        run: |
+          set -euo pipefail
+
+          MODIFIED=$(git diff --name-only --diff-filter=M "$BASE" "$HEAD" -- database/migrations/ || true)
+          ADDED=$(git diff --name-only --diff-filter=A "$BASE" "$HEAD" -- database/migrations/ || true)
+
+          COUNT_ADDED=$(printf '%s' "$ADDED" | grep -c . || true)
+          echo "Migraciones nuevas en este cambio: ${COUNT_ADDED}"
+
+          if [ -z "$MODIFIED" ]; then
+            echo "OK — ninguna migración existente fue modificada."
+            exit 0
+          fi
+
+          # Escape hatch para correcciones legítimas a una migración que aún no
+          # se ha desplegado (un typo detectado el mismo día, por ejemplo).
+          if git log --format=%B "$BASE..$HEAD" | grep -qF '[allow-migration-edit]'; then
+            echo "::warning::Migraciones modificadas, permitido por [allow-migration-edit]."
+            printf '%s\n' "$MODIFIED" | sed 's/^/  - /'
+            echo ""
+            echo "Si alguna de estas ya corrió en el servidor, su cambio NO se aplicará."
+            exit 0
+          fi
+
+          COUNT=$(printf '%s' "$MODIFIED" | grep -c . || true)
+
+          echo "::error::${COUNT} migración(es) ya existente(s) fueron modificadas. Estos cambios NO llegarán a la base de datos."
+          echo ""
+          echo "Archivos modificados:"
+          printf '%s\n' "$MODIFIED" | sed 's/^/  - /'
+          echo ""
+          echo "Por qué falla:"
+          echo "  Laravel registra las migraciones ejecutadas por NOMBRE en la tabla \`migrations\`."
+          echo "  Si el nombre ya está registrado, no vuelve a ejecutarla aunque su contenido cambie."
+          echo "  El despliegue diría 'Nothing to migrate.' y saldría verde, con los datos viejos."
+          echo ""
+          echo "Cómo corregirlo:"
+          echo "  1. Revertir los cambios a esos archivos:"
+          echo "     git checkout $BASE -- database/migrations/"
+          echo "  2. Crear una migración NUEVA con la carga de datos:"
+          echo "     php artisan make:migration carga_datos_$(date +%Y_%m)"
+          echo "  3. Hacerla idempotente: si usa insert() masivo, limpiar antes su rango"
+          echo "     de country_id, o proteger con if (!...->exists())."
+          echo ""
+          echo "  Referencia: ADR-007 del framework — las cargas de datos requieren archivo nuevo."
+          echo "  Ejemplo real: database/migrations/2026_08_21_120000_reapply_august_2026_data_load.php"
+
+          exit 1

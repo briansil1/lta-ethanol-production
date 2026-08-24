@@ -21,6 +21,29 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Historia completa: el paso siguiente compara contra el commit anterior.
+          fetch-depth: 0
+
+      # Si este cambio toca migraciones, esperamos que `migrate` aplique algo.
+      # Cuando no lo hace, el paso final de verificación falla el despliegue.
+      - name: Detectar cambios en migraciones
+        id: migrations
+        run: |
+          set -euo pipefail
+          BASE="${{ github.event.before }}"
+
+          if [ -z "$BASE" ] || [ "$BASE" = "0000000000000000000000000000000000000000" ] \
+             || ! git cat-file -e "$BASE^{commit}" 2>/dev/null; then
+            echo "touched=unknown" >> $GITHUB_OUTPUT
+            echo "Sin commit base — no se puede determinar si hubo cambios en migraciones."
+          elif [ -n "$(git diff --name-only "$BASE" "${{ github.sha }}" -- database/migrations/)" ]; then
+            echo "touched=true" >> $GITHUB_OUTPUT
+            echo "Este cambio toca database/migrations/ — se verificará que se apliquen."
+          else
+            echo "touched=false" >> $GITHUB_OUTPUT
+            echo "Sin cambios en database/migrations/."
+          fi
 
       - name: Setup PHP ${{ env.PHP_VERSION }}
         uses: shivammathur/setup-php@v2
@@ -79,7 +102,8 @@ jobs:
 
       - name: Remote deploy
         run: |
-          ssh -i ~/.ssh/id_ed25519 "${SSH_USER}@${{ secrets.SSH_HOST }}" bash -s <<EOF
+          set -o pipefail
+          ssh -i ~/.ssh/id_ed25519 "${SSH_USER}@${{ secrets.SSH_HOST }}" bash -s <<EOF | tee remote-output.log
           set -euo pipefail
           APP_DIR="/var/www/${APP_NAME}"
           SHARED="\$APP_DIR/shared"
@@ -108,3 +132,36 @@ jobs:
           ls -1t | tail -n +4 | xargs -r rm -rf
           echo "OK: deployed ${RELEASE_NAME}"
           EOF
+
+      # El código ya está publicado; lo que sigue solo decide el color del job.
+      # Un cambio que toca migraciones y termina en "Nothing to migrate." dejó la
+      # base sin actualizar: eso NO puede reportarse como éxito.
+      - name: Verificar que las migraciones se aplicaron
+        if: steps.migrations.outputs.touched == 'true'
+        run: |
+          set -euo pipefail
+
+          if ! grep -q "Nothing to migrate" remote-output.log; then
+            echo "OK — las migraciones se aplicaron."
+            grep -E "Migrating:|Migrated:" remote-output.log || true
+            exit 0
+          fi
+
+          echo "::error::El cambio toca migraciones pero artisan reportó 'Nothing to migrate.' — la base de datos NO se actualizó."
+          echo ""
+          echo "El código sí quedó publicado. Lo que no se aplicó son los datos."
+          echo ""
+          echo "Causa:"
+          echo "  Laravel registra las migraciones ejecutadas por NOMBRE en la tabla \`migrations\`."
+          echo "  Si se editó el up() de una migración ya ejecutada, su nombre sigue registrado"
+          echo "  y artisan la omite — sin error, con el despliegue en verde."
+          echo ""
+          echo "Migraciones tocadas por este cambio:"
+          git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" -- database/migrations/ | sed 's/^/  - /'
+          echo ""
+          echo "Cómo corregirlo:"
+          echo "  Publicar la carga en una migración NUEVA (timestamp nuevo) e idempotente."
+          echo "  Referencia: ADR-007 del framework."
+          echo "  Ejemplo: database/migrations/2026_08_21_120000_reapply_august_2026_data_load.php"
+
+          exit 1
